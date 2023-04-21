@@ -12,11 +12,13 @@ form{
     padding: 15px;
     margin: auto;
     margin-left: 60px;
-    margin-top: 80px;
+    margin-top: 70px;
 }
 .logo{
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 85px;
+    margin-bottom: 10px;
+    border-radius: 30%;
 }
 .photolog{
     border-radius: 10%;
