@@ -23,11 +23,11 @@
         <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
       </div>
       <h4 class="mb-3">Sign Up</h4>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate action="PHP/SignupHandler.php" method="post">
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" value="" required>
+            <input type="text" class="form-control" id="firstName" placeholder="FirstName" value="" required name="FirstName">
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
@@ -35,7 +35,7 @@
 
           <div class="col-sm-6">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name" value="" required>
+            <input type="text" class="form-control" id="LastName" placeholder="Last Name" value="" required name="LastName">
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
@@ -45,7 +45,7 @@
             <label for="email" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text">@</span>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" name="Email">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -55,7 +55,7 @@
           <div class="col-12">
             <label for="password" class="form-label">Password</label>
             <div class="input-group has-validation">
-              <input type="password" class="form-control" id="password" placeholder="Password" required>
+              <input type="password" class="form-control" id="password" placeholder="Password" required name="Password">
               <div class="invalid-feedback">
                 Your password is required.
               </div>
@@ -64,7 +64,7 @@
 
           <div class="col-12">
             <label for="datebirth" class="form-label">Date of Birth</label>
-            <input class="form-control" type="date">
+            <input class="form-control" type="date" name="Date">
           </div>
         </div>
         <hr class="my-4">

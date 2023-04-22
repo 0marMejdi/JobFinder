@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
   <link rel="stylesheet" href="css/styleLogin.css">
 </head>
-
 <body >
   <div class="container">
     <div class="row text-center" style="margin: auto;">
@@ -18,7 +17,7 @@
         <p id="registernow">Don't you have an account? <a href="register.html">Register Now</a></p>
       </div>
       <div class="col-5 text-center">
-        <form>
+        <form action="PHP/LoginHandler.php" method="post">
           <img class="logo" src="logo.png" alt="" srcset="">
           <h1 class="h3 ">Please sign in</h1>
           <div class="form-floating">
@@ -37,6 +36,6 @@
       </div>
     </div>
   </div>
-</body>
 
+</body>
 </html>
