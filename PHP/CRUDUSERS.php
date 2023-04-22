@@ -2,7 +2,6 @@
 // make a class called CRUD that contains functions to create, read, update and delete data from the database through ConnexionBD
 class CRUDUSERS
 {
-
     public static function create($firstname, $lastname, $email, $password, $date)
     {
         $bdd = ConnexionBD::getInstance();
