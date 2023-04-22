@@ -81,5 +81,4 @@ class CRUDUSERS
         $requete->execute(array('id'=>$id));
         echo "Delete successfully! <br>";
     }
-
 }
