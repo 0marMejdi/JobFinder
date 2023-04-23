@@ -22,6 +22,9 @@
           style="border-radius: 30%; margin-bottom: 18px;">
         <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
       </div>
+      <?php
+        echo "{$_COOKIE['aziz']}";
+      ?>
       <h4 class="mb-3">Sign Up</h4>
       <form class="needs-validation" novalidate action="PHP/SignupHandler.php" method="post">
         <div class="row g-3">

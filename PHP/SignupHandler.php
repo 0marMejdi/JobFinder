@@ -7,6 +7,6 @@ $Email= $_POST['Email'];
 $Password= $_POST['Password'];
 $Date=$_POST['Date'];
 CRUDUSERS::create($FirstName,$LastName,$Email,$Password,$Date);
-header("Location: ../login.html");
-exit;
+setcookie('aziz',true,time()+60*3);
+header("Location: ../index.php");
 ?>
