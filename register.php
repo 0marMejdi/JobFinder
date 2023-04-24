@@ -89,5 +89,4 @@
   <script src="checkout.js"></script>
   <script src="registration.js"></script>
 </body>
-
 </html>
