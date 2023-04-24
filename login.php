@@ -20,6 +20,15 @@
         <form action="PHP/LoginHandler.php" method="post">
           <img class="logo" src="logo.png" alt="" srcset="">
           <h1 class="h3 ">Please sign in</h1>
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == 1) {
+                    echo '<div class="alert alert-danger" role="alert">
+                    Please check your email and password combination ! 
+                    </div>';
+                }
+            }
+            ?>
           <div class="form-floating">
             <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
             <label for="floatingInput">Email address</label>
