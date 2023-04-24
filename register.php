@@ -23,7 +23,13 @@
         <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
       </div>
       <?php
-        echo "{$_COOKIE['aziz']}";
+          if (isset($_GET['error'])) {
+              if ($_GET['error'] == 1) {
+                  echo '<div class="alert alert-danger" role="alert">
+            This email is already used! Please try another one.
+            </div>';
+              }
+      }
       ?>
       <h4 class="mb-3">Sign Up</h4>
       <form class="needs-validation" novalidate action="PHP/SignupHandler.php" method="post">
@@ -80,8 +86,8 @@
   </div>
 
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
   <script src="checkout.js"></script>
+  <script src="registration.js"></script>
 </body>
 
 </html>
