@@ -23,12 +23,20 @@
         <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
       </div>
       <?php
-          if (isset($_GET['error'])) {
+          /*if (isset($_GET['error'])) {
               if ($_GET['error'] == 1) {
                   echo '<div class="alert alert-danger" role="alert">
             This email is already used! Please try another one.
             </div>';
               }
+      }
+          */
+      session_start();
+      if (isset($_SESSION['error'])) {
+          unset($_SESSION['error']);
+              echo "<div class='alert alert-danger' role='alert'>
+            This email is already used! Please try another one.
+            </div>";
       }
       ?>
       <h4 class="mb-3">Sign Up</h4>
