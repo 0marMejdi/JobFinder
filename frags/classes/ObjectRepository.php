@@ -179,21 +179,21 @@ class ObjectRepository
         return $newValues;
     }
     /**
-     * this function inserts an object into table of a datadabse (which is by default jobfinder database)
+     * this function inserts an object into table of a database (which is by default jobfinder database)
      * it loops through properties of the object, and deduces the column name from the attribute name, and the column value from attribute value, if an attribute is not initialized, it  inserts null instead
-     * oops through properties of the object, and deduces the column name from the attribute name, and the column value from attribute value, if an attribute is not initialized, it  inserts null instead
+     * loops through properties of the object, and deduces the column name from the attribute name, and the column value from attribute value, if an attribute is not initialized, it  inserts null instead
      * @param $table_name string name of the table to insert data into
      * @param $object object object to insert
-     * @return string - errorcode : returns empty string "" if it was successful, otherwise it returns the error message
+     * @return boolean true if it was successful, false if problem occurred
      */
 
     static function insert($table_name, $object)
     {
-        if ($object==NULL)  return NULL ;
+        if ($object==NULL)  return false ;
         try {
             $db = ConnexionBD::GetInstance();
         } catch (Exception $exception) {
-            return $exception->getMessage();
+            return false;
         }
         try {
             $objectFields = self::getFieldAndValuesFromObject($object);
@@ -208,7 +208,7 @@ class ObjectRepository
         } catch (PDOException  $exception) {
             return $exception->getMessage();
         }
-        return "";
+        return true;
     }
 
     static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
@@ -281,7 +281,7 @@ class ObjectRepository
 
         $setClause = rtrim($setClause, ', ');
         $whereClause = rtrim($whereClause, ' AND ');
-        var_dump($updateValues);
+
         $query = "UPDATE $table_name SET $setClause $whereClause";
 
         $SQLQuery = $db->prepare($query);

@@ -56,4 +56,9 @@ class UserRepository extends ObjectRepository {
     {
         return parent::deleteWhere("Users", ...$CouplesField_Value);
     }
+
+    static function isExistingUserWhere(...$CouplesField_Value){
+        $isit = (UserRepository::getUsersBy_And(...$CouplesField_Value)!=NULL);
+        return $isit;
+    }
 }

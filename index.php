@@ -1,6 +1,8 @@
 <?php
     include_once "allFrags.php";
-    header("Location: CrudTest.php");
+    session_start();
+//    sendError("wrong_password","login");
+    header("Location: login.php");
 
 
 
