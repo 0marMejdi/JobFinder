@@ -1,6 +1,15 @@
 <?php include_once "allFrags.php";
 includeHeader("Authentification");
 needsNOAuthentication();
+session_start_once();
+function getPerviousInsertedEmail()
+{
+    if(!isset($_SESSION['insertedEmail']))
+        return "";
+    session_start_once();
+    return $_SESSION['insertedEmail'];
+}
+
 ?>
 
 <body >
@@ -26,7 +35,14 @@ needsNOAuthentication();
 //            }
 //            ?>
           <div class="form-floating">
-            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+            <input
+                    name="email"
+                    type="email"
+                    class="form-control"
+                    id="floatingInput"
+                    value = '<?php echo getPerviousInsertedEmail() ; unset($_SESSION['insertedEmail']); ?>'
+                    placeholder="name@example.com"
+            />
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating">

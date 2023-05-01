@@ -9,23 +9,25 @@
         return $Errors;
     }
     function showErrorIfExists(){
+        session_start_once();
         $errors = getErrors();
-        if (!isset($_GET['errorCode'])) return "";
-        $errorCode = $_GET['errorCode'];
-        $str="";
-        $str.= '<div class="alert alert-danger" role="alert">';
+        if (!isset($_SESSION['errorCode'])) return "";
+        $errorCode = $_SESSION['errorCode'];
+        $str = '<div class="alert alert-danger" role="alert">';
         if (array_key_exists($errorCode, $errors)){
             $str.= $errors[$errorCode];
         }else{
             $str.= "Error Code: " .$errorCode;
         }
         $str.= '</div>';
-        unset($_GET['errorCode']);
+        unset($_SESSION['errorCode']);
         return $str;
     }
 
     function sendError($errorCode,$to){
-        header("Location: $to.php?errorCode=$errorCode");
+        session_start_once();
+        $_SESSION['errorCode']=$errorCode;
+        header("Location: $to.php");
         exit;
     }
 

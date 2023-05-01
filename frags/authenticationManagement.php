@@ -1,9 +1,13 @@
 <?php
-function isAuthenticated(): bool
-{
-    if (session_status() === PHP_SESSION_NONE) {
+function session_start_once():void{
+    if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
     }
+}
+
+function isAuthenticated(): bool
+{
+    session_start_once();
     if (!isset($_SESSION["currentUser"])){
         return false;
     }
