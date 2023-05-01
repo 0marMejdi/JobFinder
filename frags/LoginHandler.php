@@ -1,6 +1,6 @@
 <?php
-require_once 'CRUDUSERS.php';
-require_once 'ConnexionBD.php';
+require_once 'classes/CRUDUSERS.php';
+require_once 'classes/ConnexionBD.php';
 $Email= $_POST['email'];
 $Password= $_POST['password'];
 if (CRUDUSERS::readOne($Email)>0) {

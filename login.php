@@ -13,12 +13,12 @@
   <div class="container">
     <div class="row text-center" style="margin: auto;">
       <div class="col-7 text-center">
-        <img class="photolog" src="photolog.jpg" alt="" srcset="" style="width: 100%; height: 100%;">
+        <img class="photolog" src="assets/templates/LoginBackground.jpg" alt="" srcset="" style="width: 100%; height: 100%;">
         <p id="registernow">Don't you have an account? <a href="register.php">Register Now</a></p>
       </div>
       <div class="col-5 text-center">
-        <form action="PHP/LoginHandler.php" method="post">
-          <img class="logo" src="logo.png" alt="" srcset="">
+        <form action="frags/LoginHandler.php" method="post">
+          <img class="logo" src="assets/templates/logo.png" alt="" srcset="">
           <h1 class="h3 ">Please sign in</h1>
             <?php
             if (isset($_GET['error'])) {

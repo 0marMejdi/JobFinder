@@ -1,6 +1,6 @@
 <?php
-require_once 'CRUDUSERS.php';
-require_once 'ConnexionBD.php';
+require_once 'classes/CRUDUSERS.php';
+require_once 'classes/ConnexionBD.php';
 $FirstName= $_POST['FirstName'];
 $LastName= $_POST['LastName'];
 $Email= $_POST['Email'];

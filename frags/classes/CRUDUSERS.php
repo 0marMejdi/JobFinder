@@ -5,7 +5,7 @@ class CRUDUSERS
     public static function create($firstname, $lastname, $email, $password, $date)
     {
         $bdd = ConnexionBD::getInstance();
-        $requete = "INSERT INTO `users`(`FirstName`, `LastName`, `Email`, `Password`, `DateOfBirth`)
+        $requete = "INSERT INTO `users`(`'FirstName`, `LastName`, `Email`, `Password`, `DateOfBirth`)
                     VALUES ('{$firstname}','{$lastname}','{$email}','{$password}','{$date}')";
         $reponse = $bdd->prepare($requete);
         $reponse->execute();

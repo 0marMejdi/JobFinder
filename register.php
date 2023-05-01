@@ -18,8 +18,8 @@
   <div class="container" style="max-width: 600px;">
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto " src="logo.png" alt="" width="150" height="100"
-          style="border-radius: 30%; margin-bottom: 18px;">
+        <img class="d-block mx-auto " src="assets/templates/logo.png" alt="" width="150" height="100"
+             style="border-radius: 30%; margin-bottom: 18px;">
         <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
       </div>
       <?php
@@ -32,7 +32,7 @@
       }
       ?>
       <h4 class="mb-3">Sign Up</h4>
-      <form class="needs-validation" novalidate action="PHP/SignupHandler.php" method="post">
+      <form class="needs-validation" novalidate action="frags/SignupHandler.php" method="post">
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="firstName" class="form-label">First Name</label>
