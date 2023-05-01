@@ -1,7 +1,7 @@
 <?php include_once "allFrags.php";
 includeHeader("Authentification");
+session_start();
 needsNOAuthentication();
-session_start_once();
 function getPerviousInsertedEmail()
 {
     if(!isset($_SESSION['insertedEmail']))

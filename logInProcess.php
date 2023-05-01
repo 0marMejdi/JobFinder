@@ -1,6 +1,6 @@
 <?php
 include_once 'allFrags.php';
-session_start_once();
+session_start();
 
 
 $email = $_POST['email'];
