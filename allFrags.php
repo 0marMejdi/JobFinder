@@ -3,6 +3,7 @@ include_once "frags/classConverter.php";
 include_once "frags/header.php";
 include_once "frags/authenticationManagement.php";
 include_once "frags/errorManagement.php";
+include_once "frags/filesHandling.php";
 
 include_once "frags/classes/Employer.php";
 include_once "frags/classes/EmployerRepository.php";

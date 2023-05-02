@@ -1,3 +1,9 @@
+<?php
+include_once "allFrags.php";
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,17 +28,9 @@
                  style="border-radius: 30%; margin-bottom: 18px;">
             <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
         </div>
-        <?php
-        if (isset($_GET['error'])) {
-            if ($_GET['error'] == 1) {
-                echo '<div class="alert alert-danger" role="alert">
-            This email is already used! Please try another one.
-            </div>';
-            }
-        }
-        ?>
+        <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
-        <form class="needs-validation" novalidate action="frags/SignupHandler.php" method="post">
+        <form class="needs-validation" novalidate action="registerProcess.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label for="firstName" class="form-label">First Name</label>
@@ -54,7 +52,7 @@
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text">@</span>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com" name="Email">
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com" name="Email" required>
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
@@ -73,7 +71,7 @@
 
                 <div class="col-12">
                     <label for="datebirth" class="form-label">Date of Birth</label>
-                    <input class="form-control" type="date" name="Date">
+                    <input class="form-control" type="date" name="Date" required>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -86,7 +84,7 @@
             <div class="col-sm-6">
                 <label for="gender" class="form-label">Gender</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked required>
                     <label class="form-check-label" for="male">
                         Male
                     </label>
@@ -150,7 +148,21 @@
                     Please select a valid state.
                 </div>
             </div>
-
+            <div class="col-sm-6">
+                <label for="userType" class="form-label">Are you: </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userType" id="user" value="user">
+                    <label class="form-check-label" for="user">
+                        Job Seeker?
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userType" id="employer" value="employer" required>
+                    <label class="form-check-label" for="employer">
+                        Employer?
+                    </label>
+                </div>
+            </div>
 
             <hr class="my-4">
             <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
