@@ -101,7 +101,7 @@ session_start();
             <div class="col-12">
                 <label for="profile-picture" class="form-label">Profile Picture</label>
                 <div style="display: flex; justify-content: left; align-items: center; margin: 20px;">
-                    <img id="preview"  src="assets/templates/default-profile-icon-24.jpg" alt="Preview Image"  width="200" height="200">
+                    <img id="preview"  src="assets/templates/default-profile-icon-24.jpg" alt="Preview Image"  width="200" height="200" style="border-radius: 30%; margin: auto;">
                 </div>
                 <input class="form-control" type="file" id="profile-picture" name="ProfilePicture" onchange="previewImage()">
 
