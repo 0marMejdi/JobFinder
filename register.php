@@ -97,7 +97,7 @@ session_start();
                 </div>
             </div>
 
-
+   
             <div class="col-12">
                 <label for="profile-picture" class="form-label">Profile Picture</label>
                 <div style="display: flex; justify-content: left; align-items: center; margin: 20px;">
