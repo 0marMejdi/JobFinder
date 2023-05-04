@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Register Company</title>
     <!-- GoogleFonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,29 +26,37 @@ session_start();
         <div class="py-5 text-center">
             <img class="d-block mx-auto " src="assets/templates/logo.png" alt="" width="150" height="100"
                  style="border-radius: 30%; margin-bottom: 18px;">
-            <h1 style="font-family: 'Poltawski Nowy', serif; color: #B0DAFF;">Connect to Opportunity</h1>
+            <h1 style="font-family: 'Poltawski Nowy', serif; color: #19A7CE;">Find Great Employees</h1>
         </div>
         <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
         <form class="needs-validation" novalidate action="registerProcess.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">First Name</label>
+                <div class="col-sm-9">
+                    <label for="phone" class="form-label">Company Name</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
+                    <div class="invalid-feedback">
+                        Valid Company Name is required.
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                    <label for="phone" class="form-label">Buisness Sector</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
+                    <div class="invalid-feedback">
+                        Valid Business Sector is required.
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                    <label for="firstName" class="form-label">Address</label>
                     <input type="text" class="form-control" id="firstName" placeholder="FirstName" value="" required name="FirstName">
                     <div class="invalid-feedback">
-                        Valid first name is required.
+                        Valid Address is required.
                     </div>
                 </div>
 
-                <div class="col-sm-6">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="LastName" placeholder="Last Name" value="" required name="LastName">
-                    <div class="invalid-feedback">
-                        Valid last name is required.
-                    </div>
-                </div>
-
-                <div class="col-12">
+                <div class="col-sm-9">
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text">@</span>
@@ -59,7 +67,7 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-sm-9">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group has-validation">
                         <input type="password" class="form-control" id="password" placeholder="Password" required name="Password">
@@ -69,62 +77,77 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <label for="datebirth" class="form-label">Date of Birth</label>
-                    <input class="form-control" type="date" name="Date" required>
+                <div class="col-sm-9">
+                    <label for="datebirth" class="form-label">Date Of Foundation</label>
+                    <div class="input-group has-validation">
+                        <input class="form-control" type="date" name="Date" required>
+                        <div class="invalid-feedback">
+                            Your Date Of Foundation is required.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <label for="phone" class="form-label">Phone Number</label>
+            
+                <div class="col-sm-9">
+
+            <label for="phone" class="form-label">Phone Number</label>
+                
                 <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
+                
                 <div class="invalid-feedback">
-                    Valid phone number is required.
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <label for="gender" class="form-label">Gender</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked required>
-                    <label class="form-check-label" for="male">
-                        Male
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                    <label class="form-check-label" for="female">
-                        Female
-                    </label>
+                Valid phone number is required.
                 </div>
             </div>
 
-   
-            <div class="col-12">
-                <label for="profile-picture" class="form-label">Profile Picture</label>
+
+            <div class="col-sm-9">
+                
+            <label for="profile-picture" class="form-label">Business Logo</label>
+                
                 <div style="display: flex; justify-content: left; align-items: center; margin: 20px;">
-                    <img id="preview"  src="assets/templates/default-profile-icon-24.jpg" alt="Preview Image"  width="200" height="200" style="border-radius: 30%; margin: auto;">
+
+                <img id="preview"  src="assets/templates/default-profile-icon-24.jpg" alt="Preview Image"  width="200" height="200" style="border-radius: 30%; margin: auto;">
+                
                 </div>
+                
                 <input class="form-control" type="file" id="profile-picture" name="ProfilePicture" onchange="previewImage()">
 
+            
             </div>
 
+            
             <script>
+                
                 function previewImage() {
+                    
                     var preview = document.getElementById('preview');
+                    
                     var fileInput = document.getElementById('profile-picture');
+                    
                     var file = fileInput.files[0];
+                    
                     if (file) {
+                        
                         var reader = new FileReader();
+                        
                         reader.onloadend = function() {
+                        
                             preview.src = reader.result;
+                        
                         }
+                        
                         reader.readAsDataURL(file);
+                    
                     } else {
+                      
                         preview.src = "assets/templates/default-profile-icon-24.jpg";
+                    
                     }
+                
                 }
+            
             </script>
 
-            <div class="col-sm-6">
+            <div class="col-sm-9">
                 <label for="country" class="form-label">Country</label>
                 <select class="form-select" id="country" required name="Country">
                     <option value="">Choose...</option>
@@ -134,7 +157,7 @@ session_start();
                     Please select a valid country.
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-9">
                 <label for="state" class="form-label">State</label>
                 <select class="form-select" id="state" required name="State">
                     <option value="">Choose...</option>
@@ -148,7 +171,8 @@ session_start();
                     Please select a valid state.
                 </div>
             </div>
-            <div class="col-sm-6">
+
+            <!-- <div class="col-sm-7">
                 <label for="userType" class="form-label">Are you: </label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="userType" id="user" value="user">
@@ -162,14 +186,14 @@ session_start();
                         Employer?
                     </label>
                 </div>
-            </div>
+            </div> -->
 
-            <hr class="my-4">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+            <hr class="my-4 w-75">
+            <button class="w-75 btn btn-primary btn-lg" type="submit">Sign Up</button>
         </form>
     </main>
-    <footer class="my-5 pt-1 text-body-secondary text-center text-small">
-        <p class="mb-1">&copy; 2023 JobFinder</p>
+    <footer class="my-5 pt-1 text-body-secondary text-small" >
+        <p class="mb-1" style="padding-left: 150px;">&copy; 2023 JobFinder</p>
     </footer>
 </div>
 
