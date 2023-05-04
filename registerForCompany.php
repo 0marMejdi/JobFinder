@@ -33,26 +33,18 @@ session_start();
         <form class="needs-validation" novalidate action="registerProcess.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
                 <div class="col-sm-9">
-                    <label for="phone" class="form-label">Company Name</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
+                    <label for="Company Name" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="CompanyName" placeholder="Company Name" value="" required name="CompanyName">
                     <div class="invalid-feedback">
                         Valid Company Name is required.
                     </div>
                 </div>
 
                 <div class="col-sm-9">
-                    <label for="phone" class="form-label">Buisness Sector</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
+                    <label for="Buisness Sector" class="form-label">Buisness Sector</label>
+                    <input type="text" class="form-control" id="Buisness Sector" placeholder="Buisness Sector" value="" required name="Buisness Sector">
                     <div class="invalid-feedback">
                         Valid Business Sector is required.
-                    </div>
-                </div>
-
-                <div class="col-sm-9">
-                    <label for="firstName" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="FirstName" value="" required name="FirstName">
-                    <div class="invalid-feedback">
-                        Valid Address is required.
                     </div>
                 </div>
 
@@ -148,6 +140,22 @@ session_start();
             </script>
 
             <div class="col-sm-9">
+                <label for="Size" class="form-label">Size</label>
+                <select class="form-select" id="Size" required name="Size">
+                    <option value="">Choose...</option>
+                    <option value="0-50">0-50</option>
+                    <option value="50-100">50-100</option>
+                    <option value="100-150">100-150</option>
+                    <option value="150-200">150-200</option>
+                    <option value="more">more</option>
+                    <!-- add more options here -->
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid state.
+                </div>
+            </div>
+
+            <div class="col-sm-9">
                 <label for="country" class="form-label">Country</label>
                 <select class="form-select" id="country" required name="Country">
                     <option value="">Choose...</option>
@@ -170,6 +178,19 @@ session_start();
                 <div class="invalid-feedback">
                     Please select a valid state.
                 </div>
+            </div>
+
+            <div class="col-sm-9">
+                    <label for="firstName" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="Address" placeholder="Address" value="" required name="Address">
+                    <div class="invalid-feedback">
+                        Valid Address is required.
+                    </div>
+            </div>
+
+            <div class="col-sm-9">
+                <label for="DesctionTextArea" class="form-label">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
             <!-- <div class="col-sm-7">

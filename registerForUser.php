@@ -169,6 +169,12 @@ session_start();
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
+            <div class="col-sm-9">
+                    <label for="Experience" class="form-label">Experience</label>
+                    <input type="number" class="form-control" id="expertise" placeholder="Experience" value="" >
+            </div>
+            
+
             <hr class="my-4 w-75">
             <button class="w-75 btn btn-primary btn-lg" type="submit">Sign Up</button>
         </form>
