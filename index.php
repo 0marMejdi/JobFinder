@@ -1,5 +1,7 @@
 <?php
-//     include_once "allFrags.php";
+include_once "allFrags.php";
+
+ConnexionBD::checkTables();
 //     session_start();
 // //    sendError("wrong_password","login");
 //     header("Location: login.php");

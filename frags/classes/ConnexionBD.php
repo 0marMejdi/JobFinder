@@ -41,22 +41,27 @@ class ConnexionBD
             );
 ";
         $tableJobSeekers =
-            "CREATE TABLE IF NOT EXISTS jobseekers(
-                'id 'int PRIMARY KEY AUTO_INCREMENT,
-                `email` varchar(320), 
-                `name` varchar(30) ,
-                `lastName` varchar(30), 
-                `password` varchar(50),
-                `hasPhoto` BOOLEAN,
-                `gender` varchar(10), 
-                `number` varchar(15),
-                `birthdate` DATE,
-                `country` varchar(20),
-                `state` varchar(20),
-                `hasResume` BOOLEAN,
-                `idealJob` varchar(30),
-                `personType` varchar(20)
-            );                    
+            "CREATE TABLE IF NOT EXISTS jobSeeker(
+                    id INT PRIMARY KEY AUTO_INCREMENT,
+                    email VARCHAR(320),
+                    firstName VARCHAR(30),
+                    lastName VARCHAR(255),
+                    password VARCHAR(255),
+                    userType VARCHAR(255),
+                    gender VARCHAR(255),
+                    number VARCHAR(255),
+                    birthdate VARCHAR(255),
+                    country VARCHAR(255),
+                    region VARCHAR(255),
+                    address VARCHAR(255),
+                    education VARCHAR(255),
+                    section VARCHAR(255),
+                    subSection VARCHAR(255),
+                    experience int,
+                    bio VARCHAR(255),
+                    hasPhoto BOOLEAN
+);
+            
             ";
         self::GetInstance()->query($tableCompanies);
         self::GetInstance()->query($tableJobSeekers);

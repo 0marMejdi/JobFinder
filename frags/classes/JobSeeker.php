@@ -2,49 +2,71 @@
 include_once "allFrags.php";
 class JobSeeker{
     //primary and necessary attributes
-    public int $id;
-    public string $email, $name, $lastName, $password,$personType;
-    //secondary complementary attributes that are added later
+    public int $id=0,$experience;
+    public string $email, $firstName, $lastName, $password,$userType,
+        $gender, $number, $birthdate, $country, $region,
+        $address, $education, $section, $subSection, $bio;
     public bool $hasPhoto;
-    public string $gender, $number, $birthdate, $country, $state;
 
-    public bool $hasResume;
-    public string $idealJob;
-    public function __construct($name = "",  $lastName = "", $email = "", $password = "", $gender = "", $number = "", $birthdate = "", $country = "", $state = "", $hasResume = false, $idealJob = "") {
-        $this->id =0;
-        $this->name = $name;
+    public function __construct(
+        string $email = '',
+        string $password = '',
+        string $firstName = '',
+        string $lastName = '',
+        string $gender = '',
+        string $number = '',
+        string $birthdate = '',
+        string $country = '',
+        string $region = '',
+        string $address = '',
+        string $education = '',
+        string $section = '',
+        string $subSection = '',
+        int $experience = 0,
+        string $bio = '',
+        bool $hasPhoto = false
+    ) {
         $this->email = $email;
+        $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->password = $password;
-        $this->hasPhoto = false;
+        $this->userType = "jobSeeker";
         $this->gender = $gender;
         $this->number = $number;
         $this->birthdate = $birthdate;
         $this->country = $country;
-        $this->state = $state;
-        $this->personType = "Undefined";
-        $this->hasResume = $hasResume;
-        $this->idealJob = $idealJob;
-        $this->personType="JobSeeker";
+        $this->region = $region;
+        $this->address = $address;
+        $this->education = $education;
+        $this->section = $section;
+        $this->subSection = $subSection;
+        $this->experience = $experience;
+        $this->bio = $bio;
+        $this->hasPhoto = $hasPhoto;
     }
+
     public function __toString(): string
     {
-
-        $str = "ID: " . $this->id . "<br>";
-        $str .= "Name: " . $this->name . " " . $this->lastName ."<br>";
+        $str = "Name: " . $this->firstName . " " . $this->lastName . "<br>";
         $str .= "Email: " . $this->email . "<br>";
         $str .= "Password: " . $this->password . "<br>";
-        $str .= "Person Type: " . $this->personType . "<br>";
-        $str .= "Has Photo: " . ($this->hasPhoto ? "Yes" : "No") ."<br>";
-        $str .= "Gender: " . $this->gender ."<br>";
+        $str .= "User Type: " . $this->userType . "<br>";
+        $str .= "Gender: " . $this->gender . "<br>";
         $str .= "Number: " . $this->number . "<br>";
         $str .= "Birthdate: " . $this->birthdate . "<br>";
         $str .= "Country: " . $this->country . "<br>";
-        $str .= "State: " . $this->state . "<br>";
-        $str .= "Has Resume: " .  ($this->hasResume ? "Yes" : "No") . "<br>";
-        $str .= "Ideal Job: " . $this->idealJob . "<br>";
+        $str .= "Region: " . $this->region . "<br>";
+        $str .= "Address: " . $this->address . "<br>";
+        $str .= "Education: " . $this->education . "<br>";
+        $str .= "Section: " . $this->section . "<br>";
+        $str .= "Subsection: " . $this->subSection . "<br>";
+        $str .= "Experience: " . $this->experience . "<br>";
+        $str .= "Bio: " . $this->bio . "<br>";
+        $str .= "Has Photo: " . ($this->hasPhoto ? 'Yes' : 'No') . "<br>";
+
         return $str;
     }
+
 
 
     /**
@@ -56,7 +78,7 @@ class JobSeeker{
      * it's false when attribute name is wrong
      */
     public function modify(string $attributeName, $newValue){
-        return ObjectRepository::modifyAttributeAndDatabase( "JobSeekers", $this , $attributeName, $newValue);
+        return ObjectRepository::modifyAttributeAndDatabase( "JobSeeker", $this , $attributeName, $newValue);
     }
 }
 
