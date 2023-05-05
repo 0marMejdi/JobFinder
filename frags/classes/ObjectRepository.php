@@ -338,4 +338,17 @@ class ObjectRepository
 
 
     }
+    public function modifyAttributeAndDatabase(string $tablename, $obj, string $attributeName, $newValue) //TODO: Should be redefined for sub-classes
+    {
+
+        if (property_exists($obj, $attributeName)) {
+            ObjectRepository::update($tablename,$obj,$attributeName,$newValue);
+            $obj->{$attributeName} = $newValue;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+

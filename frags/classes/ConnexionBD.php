@@ -41,9 +41,9 @@ class ConnexionBD
             );
 ";
         $tableJobSeekers =
-            "CREATE TABLE IF NOT EXISTS users(
+            "CREATE TABLE IF NOT EXISTS jobseekers(
                 'id 'int PRIMARY KEY AUTO_INCREMENT,
-                `email` varchar(30), 
+                `email` varchar(320), 
                 `name` varchar(30) ,
                 `lastName` varchar(30), 
                 `password` varchar(50),
