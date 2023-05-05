@@ -31,17 +31,17 @@
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="index.html">JobFinder</a></h1>
+                    <h1><a href="jobseekerprofile.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.html">Home Page</a></li>
+                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
                         <!-- well work on it ghodwa -->
-                        <li><a class="nav-link scrollto active" href="jobseekerprofile.html">My Profile</a></li>
+                        <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-
+                        <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->

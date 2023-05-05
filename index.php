@@ -34,7 +34,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">JobFinder</a></h1>
+        <h1><a href="index.php">JobFinder</a></h1>
 
       </div>
 
