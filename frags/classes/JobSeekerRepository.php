@@ -1,8 +1,8 @@
 <?php
 include_once "ObjectRepository.php";
-include_once "User.php";
+include_once "JobSeeker.php";
 include_once "frags/classConverter.php";
-class UserRepository extends ObjectRepository {
+class JobSeekerRepository extends ObjectRepository {
 
     static function insertUser($user){
         return ObjectRepository::insert("Users",$user);
@@ -18,7 +18,7 @@ class UserRepository extends ObjectRepository {
 
     /**
      * @param $CoupleField_Value
-     * @return User[]|null
+     * @return JobSeeker[]|null
      *
      * null if no row found
      *
@@ -28,7 +28,7 @@ class UserRepository extends ObjectRepository {
         $objArray = ObjectRepository::selectEqualsAnd("Users",...$CoupleField_Value);
         if($objArray==NULL)
             return NULL;
-        $userArray = objectToClassArray($objArray,"User");
+        $userArray = objectToClassArray($objArray,"JobSeeker");
         return $userArray;
     }
 
@@ -37,9 +37,9 @@ class UserRepository extends ObjectRepository {
      *
      * otherwise one user
      * @param $CoupleField_Value
-     * @return null|User
+     * @return null|JobSeeker
      */
-    static function getOnlyUserBy_And(...$CoupleField_Value):null|User{
+    static function getOnlyUserBy_And(...$CoupleField_Value):null|JobSeeker{
         $user = self::getUsersBy_And(...$CoupleField_Value);
         if ( $user != NULL)
             return $user[0];
@@ -58,7 +58,7 @@ class UserRepository extends ObjectRepository {
     }
 
     static function isExistingUserWhere(...$CouplesField_Value){
-        $isit = (UserRepository::getUsersBy_And(...$CouplesField_Value)!=NULL);
+        $isit = (JobSeekerRepository::getUsersBy_And(...$CouplesField_Value)!=NULL);
         return $isit;
     }
 }
