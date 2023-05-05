@@ -19,7 +19,7 @@ function getPerviousInsertedEmail()
         <?= showErrorIfExists() ?>
       <div class="col-7 text-center">
         <img class="photolog" src="assets/templates/LoginBackground.jpg" alt="" srcset="" style="width: 100%; height: 100%;">
-        <p id="registernow">Don't you have an account? Register Now <a href="registerForUser.php">as Employee</a> or <a href="registerForCompany.php">as Company</a></p>
+        <p id="registernow">Don't you have an account? Register Now <a href="registerForJobSeeker.php">as Employee</a> or <a href="registerForCompany.php">as Company</a></p>
       </div>
       <div class="col-5 text-center">
         <form action="logInProcess.php" method="post">

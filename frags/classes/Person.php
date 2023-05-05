@@ -23,7 +23,7 @@ class Person
         $this->birthdate = $birthdate;
         $this->country = $country;
         $this->state = $state;
-        $this->personType = "Undedined";
+        $this->personType = "Undefined";
     }
     public function __toString(): string
     {

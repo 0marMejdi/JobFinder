@@ -30,7 +30,7 @@ session_start();
         </div>
         <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
-        <form class="needs-validation" novalidate action="registerProcess.php" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="registerProcessForJobSeeker.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
                 <div class="col-sm-9">
                     <label for="firstName" class="form-label">First Name</label>

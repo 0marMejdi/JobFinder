@@ -30,21 +30,35 @@ session_start();
         </div>
         <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
-        <form class="needs-validation" novalidate action="registerProcess.php" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="registerprocessforcompany.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
                 <div class="col-sm-9">
-                    <label for="Company Name" class="form-label">Company Name</label>
-                    <input type="text" class="form-control" id="CompanyName" placeholder="Company Name" value="" required name="CompanyName">
+                    <label for="phone" class="form-label">Company Name</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Company Name" value="" required name="Name">
                     <div class="invalid-feedback">
                         Valid Company Name is required.
                     </div>
                 </div>
 
                 <div class="col-sm-9">
-                    <label for="Buisness Sector" class="form-label">Buisness Sector</label>
-                    <input type="text" class="form-control" id="Buisness Sector" placeholder="Buisness Sector" value="" required name="Buisness Sector">
+                    <label for="phone" class="form-label">Business Sector</label>
+                    <input type="text" class="form-control" id="Business Sector" placeholder="Business Sector" value="" required name="Sector">
                     <div class="invalid-feedback">
                         Valid Business Sector is required.
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                    <label for="firstName" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Address" value="" required name="Address">
+                    <div class="invalid-feedback">
+                        Valid Address is required.
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Description"></textarea>                    <div class="invalid-feedback">
+                        Valid Description is required.
                     </div>
                 </div>
 
@@ -72,7 +86,7 @@ session_start();
                 <div class="col-sm-9">
                     <label for="datebirth" class="form-label">Date Of Foundation</label>
                     <div class="input-group has-validation">
-                        <input class="form-control" type="date" name="Date" required>
+                        <input class="form-control" type="date" name="FoundationDate" required>
                         <div class="invalid-feedback">
                             Your Date Of Foundation is required.
                         </div>
@@ -89,6 +103,16 @@ session_start();
                 Valid phone number is required.
                 </div>
             </div>
+                <div class="col-sm-9">
+
+                    <label for="phone" class="form-label">Number of Employees</label>
+
+                    <input type="tel" class="form-control" id="phone" placeholder="Number of Employees" value="" required name="Size">
+
+                    <div class="invalid-feedback">
+                        Valid phone number is required.
+                    </div>
+                </div>
 
 
             <div class="col-sm-9">
@@ -217,7 +241,6 @@ session_start();
         <p class="mb-1" style="padding-left: 150px;">&copy; 2023 JobFinder</p>
     </footer>
 </div>
-
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script src="checkout.js"></script>
 <script src="registration.js"></script>

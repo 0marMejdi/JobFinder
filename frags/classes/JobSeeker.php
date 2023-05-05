@@ -1,13 +1,13 @@
 <?php
 include_once "Person.php";
-class User extends Person{
+class JobSeeker extends Person{
     public bool $hasResume;
     public string $idealJob;
     public function __construct($name = "",  $lastName = "", $email = "", $password = "", $gender = "", $number = "", $birthdate = "", $country = "", $state = "", $hasResume = false, $idealJob = "") {
         parent::__construct( $name, $lastName, $email, $password, $gender, $number, $birthdate, $country, $state);
         $this->hasResume = $hasResume;
         $this->idealJob = $idealJob;
-        $this->personType="user";
+        $this->personType="JobSeeker";
     }
     public function __toString(): string
     {
