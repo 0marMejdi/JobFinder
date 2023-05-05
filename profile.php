@@ -1,3 +1,10 @@
+<?php
+include_once "allFrags.php";
+includeHeader("Home");
+//needsAuthentication();
+session_start();
+$detail = $_SESSION["currentUser"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,32 +65,33 @@
                 <div class="row align-items-center flex-row-reverse">
                     <div class="col-lg-6">
                         <div class="about-text go-to">
-                            <h3 class="dark-color">Cherif Ghassen</h3>
+
+                            <h3 class="dark-color"> <?= $detail->name." ".$detail->lastName ?> </h3>
                             <h6 class="theme-color lead">A Software Engineering Student</h6>
-                            <p>un petit bio</p>
+                            <p><?= $detail->bio ?></p>
                             <div class="row about-list">
                                 <div class="col-md-6">
                                     <div class="media">
                                         <label>Birthday</label>
-                                        <p>4th april 1998</p>
+                                        <p><?= $detail->preparedate(); ?></p>
                                     </div>
                                     <div class="media">
                                         <label>Gender</label>
-                                        <p>Male</p>
+                                        <p><?= $detail->gender ?></p>
                                     </div>
                                     <div class="media">
                                         <label>Address</label>
-                                        <p>Testour, TUN</p>
+                                        <p><?= $detail->state." , ".$detail->country ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="media">
                                         <label>E-mail</label>
-                                        <p>info@domain.com</p>
+                                        <p><?= $detail->email ?></p>
                                     </div>
                                     <div class="media">
                                         <label>Phone</label>
-                                        <p>820-885-3321</p>
+                                        <p><?= $detail->number ?></p>
                                     </div>
                                     <div class="media">
                                         <label>Skype</label>

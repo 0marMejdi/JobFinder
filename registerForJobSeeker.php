@@ -166,7 +166,7 @@ session_start();
 
             <div class="col-sm-9">
                 <label for="exampleFormControlTextarea1" class="form-label">Bio</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio"></textarea>
             </div>
 
             <hr class="my-4 w-75">

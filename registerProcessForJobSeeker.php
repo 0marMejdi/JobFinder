@@ -12,10 +12,12 @@ $PhoneNumber = $_POST["PhoneNumber"];
 $gender = $_POST["gender"];
 $Country   = $_POST["Country"];
 $State= $_POST["State"];
+$bio = $_POST["bio"];
 //$ProfilePicture = $_FILES["ProfilePicture"];
-$newUser = new JobSeeker($FirstName,$LastName,$Email,$Password,$gender,$PhoneNumber,$Date,$Country,$State);
+$newUser = new JobSeeker($FirstName,$LastName,$Email,$Password,$gender,$PhoneNumber,$Date,$Country,$State,false,"",$bio."");
+ConnexionBD::checkTables();
 JobSeekerRepository::insertUser($newUser);
-$newUser = JobSeekerRepository::getOnlyUserBy_And("email",$newUser->email,"password",$newUser->password);
+//$newUser = JobSeekerRepository::getOnlyUserBy_And("email",$newUser->email,"password",$newUser->password);
 if (isFileUploaded("ProfilePicture")){
     $dir = "assets/data/jobSeekers/".$newUser->id;
     if (!file_exists($dir)) mkdir($dir, 0777, true);
@@ -25,8 +27,7 @@ if (isFileUploaded("ProfilePicture")){
 }
 session_start();
 $_SESSION["currentUser"] = $newUser;
-header("Location: homePage.php");
-
+header("Location: profile.php");
 
 
 

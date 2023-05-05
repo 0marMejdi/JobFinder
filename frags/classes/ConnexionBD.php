@@ -2,7 +2,7 @@
 // create a class that lets me connect to the phpmyadmin database in the constructor using PDO
 class ConnexionBD
 {
-    private static  $_dbname = "JobFinder";
+    private static  $_dbname = "jobfinder";
     private static $_user = "root";
     private static $_pwd = "";
     private static $_host = "localhost";
@@ -39,10 +39,10 @@ class ConnexionBD
                 `address` varchar(50),
                 `hasLogo` BOOLEAN
             );
-";
+            ";
         $tableJobSeekers =
-            "CREATE TABLE IF NOT EXISTS users(
-                'id 'int PRIMARY KEY AUTO_INCREMENT,
+            "CREATE TABLE IF NOT EXISTS Users(
+                `id` int PRIMARY KEY AUTO_INCREMENT,
                 `email` varchar(30), 
                 `name` varchar(30) ,
                 `lastName` varchar(30), 
@@ -55,11 +55,12 @@ class ConnexionBD
                 `state` varchar(20),
                 `hasResume` BOOLEAN,
                 `idealJob` varchar(30),
-                `personType` varchar(20)
+                `personType` varchar(20),
+                `bio` varchar(100)
             );                    
             ";
-        self::GetInstance()->query($tableCompanies);
         self::GetInstance()->query($tableJobSeekers);
+        self::GetInstance()->query($tableCompanies);
     }
 }
 ?>

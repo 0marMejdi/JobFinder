@@ -59,4 +59,36 @@ class Person
             return false;
         }
     }
+    public function preparedate()
+    {
+        // make date string of form yyyy-mm-dd to : 2nd of January 2021 form
+        $date = explode("-", $this->birthdate);
+        $day = $date[2];
+        $month = $date[1];
+        $year = $date[0];
+        if ($day=='1')
+        {
+            $day = $day . "st";
+        }
+        else
+        {
+            if ($day=='2')
+            {
+                $day = $day . "nd";
+            }
+            else
+            {
+                if ($day=='3')
+                {
+                    $day = $day . "rd";
+                }
+                else
+                {
+                    $day = $day . "th";
+                }
+            }
+        }
+        $date=$day." of ".$month . " , " . $year;
+        return $date;
+    }
 }

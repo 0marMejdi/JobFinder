@@ -3,17 +3,20 @@ include_once "Person.php";
 class JobSeeker extends Person{
     public bool $hasResume;
     public string $idealJob;
-    public function __construct($name = "",  $lastName = "", $email = "", $password = "", $gender = "", $number = "", $birthdate = "", $country = "", $state = "", $hasResume = false, $idealJob = "") {
-        parent::__construct( $name, $lastName, $email, $password, $gender, $number, $birthdate, $country, $state);
+    public string $bio;
+    public function __construct($name = "",  $lastName = "", $email = "", $password = "", $gender = "", $number = "", $birthdate = "", $country = "", $state = "", $hasResume = false, $idealJob = "", $bio = "") {
+        parent::__construct($name, $lastName, $email, $password, $gender, $number, $birthdate, $country, $state);
         $this->hasResume = $hasResume;
         $this->idealJob = $idealJob;
         $this->personType="JobSeeker";
+        $this->bio = $bio;
     }
     public function __toString(): string
     {
         $str= parent::__toString();
         $str .= "Has Resume: " .  ($this->hasResume ? "Yes" : "No") . "<br>";
         $str .= "Ideal Job: " . $this->idealJob . "<br>";
+        $str .= "Bio: " . $this->bio . "<br>";
         return $str;
     }
 
