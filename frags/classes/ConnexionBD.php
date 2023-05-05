@@ -23,25 +23,26 @@ class ConnexionBD
         return self::$_bdd;
     }
     public static function checkTables(){
-        $tableUsers =
-            "CREATE TABLE IF NOT EXISTS Employers(
+        $tableCompanies =
+            "CREATE TABLE IF NOT EXISTS companies(
                 `id` int PRIMARY KEY AUTO_INCREMENT,
-                `email` varchar(50), 
-                `name` varchar(30),
-                `lastName` varchar(30), 
+                `email` varchar(30),        
+                `name` varchar(30) ,
                 `password` varchar(50),
-                `hasPhoto` BOOLEAN,
-                `gender` varchar(10), 
-                `number` varchar(15),
-                `birthdate` DATE,
+                `description` varchar(100),
+                `sector` varchar(30),
+                `size` int,
+                `foundationDate` DATE,
+                `phoneNumber` varchar(15),
                 `country` varchar(20),
                 `state` varchar(20),
-                `personType` varchar(20)
+                `address` varchar(50),
+                `hasLogo` BOOLEAN
             );
-            ";
-        $tableEmployers =
-            "CREATE TABLE IF NOT EXISTS Users(
-                `id` int PRIMARY KEY AUTO_INCREMENT,
+";
+        $tableJobSeekers =
+            "CREATE TABLE IF NOT EXISTS users(
+                'id 'int PRIMARY KEY AUTO_INCREMENT,
                 `email` varchar(30), 
                 `name` varchar(30) ,
                 `lastName` varchar(30), 
@@ -55,11 +56,10 @@ class ConnexionBD
                 `hasResume` BOOLEAN,
                 `idealJob` varchar(30),
                 `personType` varchar(20)
-                                
             );                    
             ";
-        self::GetInstance()->query($tableEmployers);
-        self::GetInstance()->query($tableUsers);
+        self::GetInstance()->query($tableCompanies);
+        self::GetInstance()->query($tableJobSeekers);
     }
 }
 ?>
