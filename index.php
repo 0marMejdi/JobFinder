@@ -186,16 +186,16 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Create a job</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4 class="title"><a href="">Post a Job</a></h4>
+              <p class="description">Hire the best talent with JobFinder. Post your job today and connect with qualified candidates</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Connect with people </a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4 class="title"><a href="">Find a Job Opportunity Online </a></h4>
+              <p class="description">Discover your next career move with JobFinder - search thousands of job opportunities from top employers</p>
             </div>
           </div>
         </div>
