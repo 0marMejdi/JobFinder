@@ -192,6 +192,7 @@ class ObjectRepository
         if ($object==NULL)  return false ;
         try {
             $db = ConnexionBD::GetInstance();
+            ConnexionBD::checkTables();
         } catch (Exception $exception) {
             return false;
         }
