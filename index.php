@@ -139,7 +139,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="112" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="1102" data-purecounter-duration="1"
                       class="purecounter"></span>
                     <p>Explore thousands of job opportunities across various industries and locations, all in one place
                       on JobFinder</p>
