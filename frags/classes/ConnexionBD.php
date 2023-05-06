@@ -58,7 +58,7 @@ class ConnexionBD
                     section VARCHAR(255),
                     subSection VARCHAR(255),
                     experience int,
-                    bio VARCHAR(255),
+                    bio VARCHAR(65535),
                     hasPhoto BOOLEAN
 );
             

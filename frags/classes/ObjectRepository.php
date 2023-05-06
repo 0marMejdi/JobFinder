@@ -321,10 +321,6 @@ class ObjectRepository
         $query = "DELETE from `$tableName` $whereStatemnt ";
         $response = $db->prepare($query);
         $response->execute(self::getValuesForPreparedStatement($args));
-        $rows = $response->fetchAll(PDO::FETCH_OBJ);
-        if ($rows == false)
-            return NULL;
-        else return $rows;
     }
 
     static function delete($tableName,$object){
@@ -338,7 +334,7 @@ class ObjectRepository
 
 
     }
-    public function modifyAttributeAndDatabase(string $tablename, $obj, string $attributeName, $newValue) //TODO: Should be redefined for sub-classes
+    public static function modifyAttributeAndDatabase(string $tablename, $obj, string $attributeName, $newValue) //TODO: Should be redefined for sub-classes
     {
 
         if (property_exists($obj, $attributeName)) {

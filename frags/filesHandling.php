@@ -36,3 +36,26 @@ function renameFile($oldFilePath, $newFileName) {
         return false;
     }
 }
+
+/**
+ * it will try to find the picture with the given name and gonna associate it with it prefix and return it
+ * returns empty string if no picture found
+ * @param string $nameWithoutSuffix without Suffix
+ * @param string $directory directory where the picture is located
+ * @return string
+ */
+function findPictureWithSuffix($nameWithoutSuffix, $directory) {
+    // List of possible suffixes for image files
+    $suffixes = array(".jpg", ".jpeg", ".png", ".gif");
+
+    // Loop over all suffixes and try to find a file with that name
+    foreach ($suffixes as $suffix) {
+        $filename = $nameWithoutSuffix . $suffix;
+        $fullpath = $directory . "/" . $filename;
+        if (file_exists($fullpath)) {
+            return $fullpath; // File found
+        }
+    }
+    // No file found
+    return false;
+}

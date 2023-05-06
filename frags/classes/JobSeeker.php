@@ -30,7 +30,7 @@ class JobSeeker{
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->password = $password;
-        $this->userType = "jobSeeker";
+        $this->userType = "JobSeeker";
         $this->gender = $gender;
         $this->number = $number;
         $this->birthdate = $birthdate;
