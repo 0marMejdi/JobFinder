@@ -167,13 +167,13 @@ session_start();
                 </div>
                 <!--   Section -->
                 <div class="col-sm-9">
-                    <label for="section" class="form-label">Section</label>
+                    <label for="section" class="form-label">Experience in sector of:  </label>
                     <select class="form-select" id="section" name="section" required>
                         <option value="">Choose...</option>
                         <option value="tunisia">Tech</option>
                     </select>
                     <div class="invalid-feedback">
-                        Please select a valid section.
+                        Please select a valid sector.
                     </div>
                 </div>
                 <!--   Sub-Section -->

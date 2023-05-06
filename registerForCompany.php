@@ -32,156 +32,110 @@ session_start();
         <h4 class="mb-3">Sign Up</h4>
         <form class="needs-validation" novalidate action="registerprocessforcompany.php" method="post" enctype="multipart/form-data">
             <div class="row g-3">
+                <!--      Company Name              -->
                 <div class="col-sm-9">
-                    <label for="phone" class="form-label">Company Name</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Company Name" value="" required name="Name">
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input name="companyName" id="companyName" type="text" class="form-control"  placeholder="Company Name"  required >
                     <div class="invalid-feedback">
                         Valid Company Name is required.
                     </div>
                 </div>
-
+                <!--    Email                -->
                 <div class="col-sm-9">
-                    <label for="phone" class="form-label">Business Sector</label>
-                    <input type="text" class="form-control" id="Business Sector" placeholder="Business Sector" value="" required name="Sector">
-                    <div class="invalid-feedback">
-                        Valid Business Sector is required.
-                    </div>
-                </div>
-
-                <div class="col-sm-9">
-                    <label for="firstName" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Address" value="" required name="Address">
-                    <div class="invalid-feedback">
-                        Valid Address is required.
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Description"></textarea>                    <div class="invalid-feedback">
-                        Valid Description is required.
-                    </div>
-                </div>
-
-                <div class="col-sm-9">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">E-mail</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text">@</span>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com" name="Email" required>
+                        <input id="email" name="email" type="email" class="form-control"  placeholder="you@example.com" required>
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
                     </div>
                 </div>
-
+                <!--       Password             -->
                 <div class="col-sm-9">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group has-validation">
-                        <input type="password" class="form-control" id="password" placeholder="Password" required name="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required name="password">
                         <div class="invalid-feedback">
                             Your password is required.
                         </div>
                     </div>
                 </div>
-
+                <!--        Foundation Date            -->
                 <div class="col-sm-9">
-                    <label for="datebirth" class="form-label">Date Of Foundation</label>
+                    <label for="foundationDate" class="form-label">Date Of Foundation</label>
                     <div class="input-group has-validation">
-                        <input class="form-control" type="date" name="FoundationDate" required>
+                        <input id="foundationDate" name="foundationDate" class="form-control" type="date" required>
                         <div class="invalid-feedback">
                             Your Date Of Foundation is required.
                         </div>
                     </div>
                 </div>
-            
+                <!--       Company Size             -->
                 <div class="col-sm-9">
-
-            <label for="phone" class="form-label">Phone Number</label>
-                
-                <input type="tel" class="form-control" id="phone" placeholder="Phone Number" value="" required name="PhoneNumber">
-                
-                <div class="invalid-feedback">
-                Valid phone number is required.
-                </div>
-            </div>
-                <div class="col-sm-9">
-
-                    <label for="phone" class="form-label">Number of Employees</label>
-
-                    <input type="tel" class="form-control" id="phone" placeholder="Number of Employees" value="" required name="Size">
-
+                    <label for="size" class="form-label">Company's Size</label>
+                    <input type="number"  name="size" class="form-control" id="size" placeholder="Number of Employees" required  >
                     <div class="invalid-feedback">
                         Valid phone number is required.
                     </div>
                 </div>
+                <!--    Logo                -->
+                <div class="col-sm-9">
 
+                    <label for="logo" class="form-label">Business Logo</label>
 
-            <div class="col-sm-9">
-                
-            <label for="profile-picture" class="form-label">Business Logo</label>
-                
-                <div style="display: flex; justify-content: left; align-items: center; margin: 20px;">
+                    <div style="display: flex; justify-content: left; align-items: center; margin: 20px;">
 
-                <img id="preview"  src="assets/templates/default-profile-icon-24.jpg" alt="Preview Image"  width="200" height="200" style="border-radius: 30%; margin: auto;">
-                
-                </div>
-                
-                <input class="form-control" type="file" id="profile-picture" name="ProfilePicture" onchange="previewImage()">
+                        <img id="preview" src="assets/templates/default-company.jpg" alt="Preview Image" width="200" height="200" style="border-radius: 30%; margin: auto;">
 
-            
-            </div>
+                    </div>
 
-            
-            <script>
-                
-                function previewImage() {
-                    
-                    var preview = document.getElementById('preview');
-                    
-                    var fileInput = document.getElementById('profile-picture');
-                    
-                    var file = fileInput.files[0];
-                    
-                    if (file) {
-                        
-                        var reader = new FileReader();
-                        
-                        reader.onloadend = function() {
-                        
-                            preview.src = reader.result;
-                        
+                    <input class="form-control" type="file" id="logo" name="logo" onchange="previewImage()">
+
+                    <script>
+
+                        function previewImage() {
+
+                            var preview = document.getElementById('preview');
+
+                            var fileInput = document.getElementById('logo');
+
+                            var file = fileInput.files[0];
+
+                            if (file) {
+
+                                var reader = new FileReader();
+
+                                reader.onloadend = function() {
+
+                                    preview.src = reader.result;
+
+                                }
+
+                                reader.readAsDataURL(file);
+
+                            } else {
+
+                                preview.src = "assets/templates/default-profile-icon-24.jpg";
+
+                            }
+
                         }
-                        
-                        reader.readAsDataURL(file);
-                    
-                    } else {
-                      
-                        preview.src = "assets/templates/default-profile-icon-24.jpg";
-                    
-                    }
-                
-                }
-            
-            </script>
 
-            <div class="col-sm-9">
-                <label for="Size" class="form-label">Size</label>
-                <select class="form-select" id="Size" required name="Size">
-                    <option value="">Choose...</option>
-                    <option value="0-50">0-50</option>
-                    <option value="50-100">50-100</option>
-                    <option value="100-150">100-150</option>
-                    <option value="150-200">150-200</option>
-                    <option value="more">more</option>
-                    <!-- add more options here -->
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid state.
+                    </script>
                 </div>
-            </div>
-
+                <!--       phone number             -->
+                <div class="col-sm-9">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input name="phone" id="phone" type="tel" class="form-control"  placeholder="Phone Number" required >
+                    <div class="invalid-feedback">
+                        Valid phone number is required.
+                    </div>
+                </div>
+                <!--    Country                -->
             <div class="col-sm-9">
                 <label for="country" class="form-label">Country</label>
-                <select class="form-select" id="country" required name="Country">
+                <select name="country" class="form-select" id="country" required>
                     <option value="">Choose...</option>
                     <option value="tunisia">Tunisia</option>
                 </select>
@@ -189,9 +143,10 @@ session_start();
                     Please select a valid country.
                 </div>
             </div>
+                <!--    Region                -->
             <div class="col-sm-9">
-                <label for="state" class="form-label">State</label>
-                <select class="form-select" id="state" required name="State">
+                <label for="region" class="form-label">Region</label>
+                <select class="form-select" id="region" required name="region">
                     <option value="">Choose...</option>
                     <option value="tunis">Tunis</option>
                     <option value="zaghouane">Zaghouane</option>
@@ -203,35 +158,48 @@ session_start();
                     Please select a valid state.
                 </div>
             </div>
-
+                <!--   Address                -->
             <div class="col-sm-9">
-                    <label for="firstName" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="Address" placeholder="Address" value="" required name="Address">
+                    <label for="address" class="form-label">Address</label>
+                    <input name="address" id="address" type="text" class="form-control" placeholder="example: 676, INSAT, Centre Urbain Nord, BP"  required >
                     <div class="invalid-feedback">
                         Valid Address is required.
                     </div>
-            </div>
-
-            <div class="col-sm-9">
-                <label for="DesctionTextArea" class="form-label">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-            <!-- <div class="col-sm-7">
-                <label for="userType" class="form-label">Are you: </label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="userType" id="user" value="user">
-                    <label class="form-check-label" for="user">
-                        Job Seeker?
-                    </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="userType" id="employer" value="employer" required>
-                    <label class="form-check-label" for="employer">
-                        Employer?
-                    </label>
+                <!--   Section -->
+                <div class="col-sm-9">
+                    <label for="section" class="form-label">Experience in sector of:  </label>
+                    <select id="section" name="section" class="form-select"  required>
+                        <option value="">Choose...</option>
+                        <option value="tech">Tech</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid sector.
+                    </div>
                 </div>
-            </div> -->
+                <!--   Sub-Section -->
+                <div class="col-sm-9">
+                    <label for="subSection" class="form-label"> </label>
+                    <select class="form-select" id="subSection" name="subSection" required>
+                        <option value="">Choose...</option>
+                        <option value="cyber">Cyber Security</option>
+                        <option value="web">Web </option>
+                        <option value="mobile">Mobile</option>
+                        <option value="bigData">Big Data</option>
+                        <!-- add more options here -->
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid section.
+                    </div>
+                </div>
+                <!--     Description               -->
+                <div class="col-sm-9">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" name="description" id="description" placeholder="Describe the company's main offerings and what sets them apart from competitors, outline the company's ideal customer or audience, and its achievements" rows="5" ></textarea>
+                    <div class="invalid-feedback">
+                        Valid Description is required.
+                    </div>
+                </div>
 
             <hr class="my-4 w-75">
             <button class="w-75 btn btn-primary btn-lg" type="submit">Sign Up</button>
