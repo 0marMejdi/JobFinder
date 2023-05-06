@@ -1,6 +1,9 @@
 <?php
 include_once "allFrags.php";
 session_start();
+if (isAuthenticated()){
+    sendError("already_logged_in","homePage");
+}
 ?>
 
 

@@ -16,6 +16,7 @@
         $Errors["email_already_exists"]="E-Mail Already Exists: you can't use this one, try again";
         $Errors["unauthenticated"]="You are not Authenticated : you need to log in before accessing to the application";
         $Errors["sign_up_first"]="Sign up to a new account first to access to this page";
+        $Errors["already_logged_in"]="You are already logged in, You need to disconnect before accessing to this page";
         return $Errors;
     }
 

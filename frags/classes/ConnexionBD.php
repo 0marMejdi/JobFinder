@@ -24,25 +24,27 @@ class ConnexionBD
     }
     public static function checkTables(){
         $tableCompanies =
-            "CREATE TABLE IF NOT EXISTS companies(
-                `id` int PRIMARY KEY AUTO_INCREMENT,
-                `email` varchar(30),        
-                `name` varchar(30) ,
-                `password` varchar(50),
-                `description` varchar(100),
-                `sector` varchar(30),
-                `size` int,
-                `foundationDate` DATE,
-                `phoneNumber` varchar(15),
-                `country` varchar(20),
-                `state` varchar(20),
-                `address` varchar(50),
-                `hasLogo` BOOLEAN
-            );
+            "CREATE TABLE IF NOT EXISTS Company (
+                  companyName VARCHAR(255) ,
+                  email VARCHAR(320) ,
+                  password VARCHAR(255) ,
+                  description VARCHAR(65535),
+                  sector VARCHAR(255),
+                  subSector VARCHAR(255),
+                  size INT,
+                  foundationDate DATE,
+                  phone VARCHAR(255),
+                  country VARCHAR(255),
+                  region VARCHAR(255),
+                  address VARCHAR(255),
+                  hasLogo BOOLEAN,
+                  userType VARCHAR(255)
+                 
+                );
 ";
         $tableJobSeekers =
-            "CREATE TABLE IF NOT EXISTS jobSeeker(
-                    id INT PRIMARY KEY AUTO_INCREMENT,
+            "CREATE TABLE IF NOT EXISTS JobSeeker(
+                    
                     email VARCHAR(320),
                     firstName VARCHAR(30),
                     lastName VARCHAR(255),
@@ -50,7 +52,7 @@ class ConnexionBD
                     userType VARCHAR(255),
                     gender VARCHAR(255),
                     number VARCHAR(255),
-                    birthdate VARCHAR(255),
+                    birthdate DATE,
                     country VARCHAR(255),
                     region VARCHAR(255),
                     address VARCHAR(255),

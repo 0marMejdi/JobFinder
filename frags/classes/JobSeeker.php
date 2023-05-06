@@ -2,7 +2,7 @@
 include_once "allFrags.php";
 class JobSeeker{
     //primary and necessary attributes
-    public int $id=0,$experience;
+    public int $experience;
     public string $email, $firstName, $lastName, $password,$userType,
         $gender, $number, $birthdate, $country, $region,
         $address, $education, $section, $subSection, $bio;
@@ -65,6 +65,12 @@ class JobSeeker{
         $str .= "Has Photo: " . ($this->hasPhoto ? 'Yes' : 'No') . "<br>";
 
         return $str;
+    }
+    public function isCompany(){
+        return false;
+    }
+    public function isJobSeeker(){
+        return true;
     }
 
 

@@ -20,6 +20,7 @@ $subSection = $_POST["subSection"];
 $experience = $_POST["experience"];
 $bio = $_POST["bio"];
 
+
 $newUser = new JobSeeker( $email ,
          $password ,
          $firstName ,

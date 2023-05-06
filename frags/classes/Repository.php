@@ -3,8 +3,8 @@ include_once "allFrags.php";
 class Repository {
     public static  string $tableName="";
     public static string $className = "";
-    static function insert($user){
-        return ObjectRepository::insert(static::$tableName,$user);
+    static function insert($object){
+        return ObjectRepository::insert(static::$tableName,$object);
     }
 
     static function update($object, ... $args){
@@ -72,7 +72,7 @@ class Repository {
     }
 
     /**
-     * checks if there is a row in the database that has the given field and value
+     * checks if there is a row in the database that has the given fields and values
      * @param ...$CouplesField_Value
      * @return bool
      */
