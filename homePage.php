@@ -3,7 +3,7 @@ include_once "allFrags.php";
 includeHeader("Home");
 needsAuthentication();
 $curr  = $_SESSION["currentUser"];
-JobSeekerRepository::update($curr, "lastName","Doee");
+
 ?>
 
 <body>
@@ -11,33 +11,13 @@ JobSeekerRepository::update($curr, "lastName","Doee");
     <div class="container" >
         <?=showErrorIfExists()?>
         <?php $detail = $_SESSION["currentUser"];
-        $picDir ="";
-        if($detail->isJobSeeker()){
-            if ($detail->hasPhoto) {
-                $picDir = "assets/data/JobSeeker/" . $detail->email . "/";
-                if (findPictureWithSuffix("pdp", $picDir))
-                    $picDir = findPictureWithSuffix("pdp", $picDir);
-                else $picDir = "assets/templates/default-profile-icon-24.jpg";
-            }
-            else
-                $picDir = "assets/templates/default-profile-icon-24.jpg";
-            echo $detail;
-        }else{
-            if ($detail->hasLogo) {
-                $picDir = "assets/data/Company/" . $detail->email . "/";
-                if (findPictureWithSuffix("pdp", $picDir))
-                    $picDir = findPictureWithSuffix("pdp", $picDir);
-                else $picDir = "assets/templates/default-company.jpg";
-            }
-            else
-                $picDir = "assets/templates/default-company.jpg";
-            echo $detail;
-        }
-
+        echo $detail;
+        printPicutreForObject($detail);
         ?>
     </div>
-    <span id="firstname"> <?=$detail->firstName?> </span>
-    <button id="modify-btn">Modify</button>
+<!--    <span id="firstname"> <?php /*=$detail->firstName*/?> </span>
+    <button id="modify-btn">Modify</button>-->
+
     <div id="modify-confirm" style="display: none;">
         <input type="text" id="modify-text" />
         <button id="modify-confirm-btn">Confirm</button>
