@@ -1,8 +1,15 @@
 <?php
 include_once 'allFrags.php';
+session_start();
+if (isAuthenticated()){
+    sendError("already_logged_in","homePage");
+}
+
+
 if(!isset($_POST["email"])) {
     sendError("sign_up_first","login");
 }
+
 $companyName = $_POST['companyName'];
 $email = $_POST['email'];
 $password = $_POST['password'];

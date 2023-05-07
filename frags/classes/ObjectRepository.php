@@ -2,30 +2,37 @@
 class ObjectRepository
 {
     /**
-     * if it is empty string it will make it NULL for the database
-     *
-     * use it only when the value is going to be prepared
+     * because MySQL can't accept all types of input, they are formatted:
+     ** empty strings,  0 (integers) and false (boolean) are converted to NULL,
+     ** and adds backslashes \ to ' to prevent SQL injection
+     * 
+     * mainly it's for prepared statements with execute() method
      * @param $value
      * @return mixed
      */
     private static function nullable(&$value)
     {
+        
         if (!isset($value) or $value == "")
             $value = NULL;
         else if ($value == 0 and !is_string($value))
             $value = NULL;
         elseif(is_bool($value))
             $value = (int) $value;
+        elseif (is_string($value)) {
+//            $value = str_replace("'", "\'", $value);
+        }
         return $value;
     }
 
     /**
-     * adds quotation ' to string types
-     *
-     * make it NULL if it is empty string
+     * because MySQL can't accept all types of input, they are formatted:
+     ** adds backslashes \ to ' to prevent SQL injection
+     ** adds quotation ' around string types
+     ** converts empty strings and 0 integers to "NULL" as string too, so it can be concatenated in query
      *
      * otherwise keeps it (integers, booleans, floats...)
-     *
+     * mainly it's for non-prepared statements: 
      * use it when value is going to be inserted as it is in query and won't be prepared
      * @param $value
      * @return mixed
@@ -34,8 +41,10 @@ class ObjectRepository
     {
         if (!isset($value) or $value == "")
             $value = "NULL";
-        elseif (is_string($value))
+        elseif (is_string($value)) {
+//            $value = str_replace("'", "\'", $value);
             $value = "'$value'";
+        }
         elseif ($value == 0)
             $value = "NULL";
         return $value;
@@ -45,17 +54,12 @@ class ObjectRepository
      * loops through properties of the object, and deduces the column names from the attribute names,
      * and the column values from attribute values,
      * if an attribute is not initialized, it  inserts null instead
+     ** ['value'] contains the values to be inserted for every column
+     ** ['fields'] each filed contain column names surrounded by ``  and values are matched by index : x['values'][10] is for column = x['fields'][10]
+     ** ['placeholders'] contain ? marks as much as the number of values we have
      * @param $object
      * @return array[] : fields, placeholders, values : these 3 arrays are returned in one array
-     *
-     * fields contain column names surrounded by ``
-     *
-     * value contains the values to be inserted for every column
-     *
-     * fields and values are coincided by index : x['values'][10] is for column = x['fields'][10]
-     *
-     * placeholders contain ? marks as much as the number of values we have
-     */
+      */
 
     private static function getFieldAndValuesFromObject($object)
     {
@@ -78,7 +82,21 @@ class ObjectRepository
         return array("fields" => $fields, "placeholders" => $placeholders, "values" => $values);
     }
 
-    private static function createWhereStatement($args){
+    /** it reads args like this : each two argument is a couple of key and value, it reads the first argument and knows it's a column name, and the next arguement
+     * would be its value, so with these information it can create a where statement to use it later for a sql query and returns a string like this:
+     ** WHERE args1 = args2 AND args3 = args4 Etc...
+     * if no argument inserted or wrong number of args is inserted, then it returns null
+     * 
+     * mark that each value will be formatted:
+     ** adds backslashes \ to ' to prevent SQL injection for strings
+     ** adds quotation ' around string types
+     ** converts empty strings and 0 integers to "NULL" as string too, so it can be concatenated in query
+     * 
+     * for MySQL to accept it
+     * @param $args
+     * @return string|null
+     */
+    private static function createWhereStatement(...$args){
         if (!isset($args))
             return NULL;
         if (sizeof($args) % 2 == 1) {
@@ -101,7 +119,28 @@ class ObjectRepository
         $whereStatement = implode(" ", $whereStatement);
         return $whereStatement;
     }
-    private static function createPreparedWhereStatement($args){
+
+    /** it reads args like this : each two argument is a couple of key and value, it reads the first argument and knows it's a column name, and the next arguement
+     * would be its value, so with these information it can create a where statement to use it later for a sql query with prepare and execute logic and returns a string like this:
+     *
+     ** WHERE args1 = ? AND args3 = ? Etc...
+     * 
+     * and for example if a value of args2 has NULL, it will be like this:
+     * 
+     ** WHERE args1 is ? ...
+     * 
+     * if no argument inserted or wrong number of args is inserted, then it returns null
+     *
+     * mark that each value will be formatted:
+     ** empty strings,  0 (integers) and false (boolean) are converted to NULL,
+     ** and adds backslashes \ to ' to prevent SQL injection
+     * 
+     * then you will have to use another function to get the values alone and insert them in the query
+     * for MySQL to accept it
+     * @param $args
+     * @return string|null
+     */
+    private static function createPreparedWhereStatement(...$args){
         if (!isset($args))
             return NULL;
         $n = sizeof($args);
@@ -127,12 +166,51 @@ class ObjectRepository
         $whereStatement = implode(" ", $whereStatement);
         return $whereStatement;
     }
-    private static function getValuesForPreparedStatement($args){
+
+    private static function createPreparedSetStatement(...$args){
+        if (!isset($args))
+            return NULL;
+        $n = sizeof($args);
+
+        if ( $n % 2 == 1 ) {
+            echo "Errora: incorrect number of arguments (remember! key then value and so on)";
+            return NULL;
+        } else {
+            $setStatement = [];
+            $n = sizeof($args);
+            for ($i = 0; $i < $n ; $i+=2) {
+                $field = $args[$i];
+                $value = $args[$i + 1];
+                self::nullableAndQuotable($value);
+                if ($i == 0)
+                    $setStatement[] = "SET";
+                if ($i != 0)
+                    $setStatement[] = ",";
+
+                $setStatement[] = "`$field` = ?";
+            }
+        }
+        $setStatement = implode(" ", $setStatement);
+        return $setStatement;
+
+    }
+
+    /** it loops through the args like this: each second argument (arg2, arg4...) is the value of the first argument (arg1, arg3...) that are the columns names
+     * 
+     * so here we are going to keep only the values and return them in an array
+     * 
+     * and each element of the array is formatted like this because MySQL can't accept all types of input:
+     ** empty strings,  0 (integers) and false (boolean) are converted to NULL,
+     ** and adds backslashes \ to ' to prevent SQL injection
+     * @param $args
+     * @return array|null
+     */
+    private static function getValuesForPreparedStatement(...$args){
         if (!isset($args))
             return NULL;
         $n = sizeof($args);
         if ( $n % 2 == 1 ) {
-            echo "Errora: incorrect number of arguments (remember! key then value and so on)";
+            echo "Errora in getValuesForPreparedStatement : incorrect number of arguments $n (remember! key then value and so on)";
             return NULL;
         } else {
             $values = [];
@@ -147,6 +225,27 @@ class ObjectRepository
 
     }
 
+    /** it loops through the object properties like this: each property name is the column name and its value is the value of the column
+     *
+     * so with these information it can create a where statement to use it later for a sql query with prepare and execute logic and returns a string like this:
+     *
+     ** WHERE property1 = ? AND property2 = ? Etc...
+     *
+     * and for example if a value of property1 has NULL, it will be like this:
+     *
+     ** WHERE property1 is ? ...
+     *
+     * if no argument inserted or wrong number of args is inserted, then it returns null
+     *
+     * mark that each value will be formatted:
+     ** empty strings,  0 (integers) and false (boolean) are converted to NULL,
+     ** and adds backslashes \ to ' to prevent SQL injection
+     *
+     * then you will have to use another function to get the values alone and insert them in the query
+     * for MySQL to accept it
+     * @param $object
+     * @return string|null
+     */
     private static function createPreparedWhereStatementFromObject($object){
         if ($object==NULL)  return NULL ;
         $objectFields = self::getFieldAndValuesFromObject($object);
@@ -167,6 +266,15 @@ class ObjectRepository
         }
         return implode(" ",$placeholders);
 }
+
+    /**
+     * this function extracts values of each property from an object, and returns them in an array.
+     * the special thing that it returns the values in a way that can be used in a prepared query inside execute() function.
+     * because MySQL can't accept all types of input, they are formatted: 
+     * empty strings are converted to NULL, 0 (integers) and false (boolean)
+     * @param $object
+     * @return array|null
+     */
     private static function getValuesForPreparedStatementFromObject($object){
         if ($object==NULL)  return NULL ;
         $objectFields = self::getFieldAndValuesFromObject($object);
@@ -174,7 +282,7 @@ class ObjectRepository
         $newValues=[];
         foreach ($values as $value) {
             self::nullable($value);
-            $newValues[]=$value;
+            $newValues[] = $value;
         }
         return $newValues;
     }
@@ -211,8 +319,8 @@ class ObjectRepository
         }
         return true;
     }
-
-    static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
+    //unnecessary function
+    /*static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
     {
         $db = ConnexionBD::GetInstance();
         self::nullable($idValue);
@@ -237,56 +345,23 @@ class ObjectRepository
         $SQLQuery = $db->prepare("UPDATE $table_name SET $fieldToChange = ? $where ;" );
         $SQLQuery->execute(array_merge(array($newValue),$values));
 
-    }
+    }*/
 
     static function update($table_name, $object, ...$args)
     {
         if ($object==NULL)  return NULL ;
 
         $db = ConnexionBD::GetInstance();
-        $objectFields = self::getFieldAndValuesFromObject($object);
+        $updateValues = self::getValuesForPreparedStatement(...$args);
+        $objectValues = self::getValuesForPreparedStatementFromObject($object);
+        $setClause = self::createPreparedSetStatement(...$args);
+        $whereClause = self::createPreparedWhereStatementFromObject($object);
 
-        $values = $objectFields['values'];
-        $fields = $objectFields['fields'];
-
-        $setClause = '';
-        $whereClause = '';
-        $updateValues = [];
-        $placeholders = [];
-        $n = sizeof($values);
-        for ($i = 0; $i < $n; $i++) {
-            $field = $fields[$i];
-            $value = $values[$i];
-            self::nullableAndQuotable($value);
-            if ($i == 0)
-                $placeholders[] = "WHERE";
-            if ($i != 0)
-                $placeholders[] = "AND";
-
-            $placeholders[] = ($value == "NULL") ? "$field is $value" : "$field = $value";
-
-            $values[] = $value;
-
-//            echo "where clause " . implode (" ",$placeholders) . "<br>";
-        }
-
-        $whereClause = implode(" ", $placeholders);
-        for ($i = 0; $i < sizeof($args); $i += 2) {
-            $field = $args[$i];
-            $newValue = $args[$i + 1];
-            self::nullable($newValue);
-            $setClause .= "`$field` = ?, ";
-            $updateValues[] = $newValue;
-//            echo "set cause " . $setClause . "<br>";
-        }
-
-        $setClause = rtrim($setClause, ', ');
-        $whereClause = rtrim($whereClause, ' AND ');
-
-        $query = "UPDATE $table_name SET $setClause $whereClause";
+        $query = "UPDATE $table_name $setClause $whereClause";
 
         $SQLQuery = $db->prepare($query);
-        $SQLQuery->execute($updateValues);
+
+        $SQLQuery->execute(array_merge($updateValues,$objectValues));
     }
 
     /**
@@ -302,10 +377,10 @@ class ObjectRepository
     static function selectEqualsAnd($tableName, ...$args)
     {
         $db = ConnexionBD::GetInstance();
-        $whereStatement = self::createPreparedWhereStatement($args);
+        $whereStatement = self::createPreparedWhereStatement(...$args);
         $query = "SELECT * from `$tableName` $whereStatement ";
         $response = $db->prepare($query);
-        $response->execute(self::getValuesForPreparedStatement($args));
+        $response->execute(self::getValuesForPreparedStatement(...$args));
         $rows = $response->fetchAll(PDO::FETCH_OBJ);
         if ($rows == false)
             return NULL;
@@ -317,10 +392,10 @@ class ObjectRepository
     static function deleteWhere($tableName, ...$args)
     {
         $db = ConnexionBD::GetInstance();
-        $whereStatemnt = self::createPreparedWhereStatement($args);
+        $whereStatemnt = self::createPreparedWhereStatement(...$args);
         $query = "DELETE from `$tableName` $whereStatemnt ";
         $response = $db->prepare($query);
-        $response->execute(self::getValuesForPreparedStatement($args));
+        $response->execute(self::getValuesForPreparedStatement(...$args));
     }
 
     static function delete($tableName,$object){

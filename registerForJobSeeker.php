@@ -4,6 +4,7 @@ session_start();
 if (isAuthenticated()){
     sendError("already_logged_in","homePage");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -167,6 +168,15 @@ if (isAuthenticated()){
                         Valid address is required.
                     </div>
                 </div>
+                <!--Title-->
+                <div class="col-sm-9">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" id="title" placeholder="Your title as for your experience"   name="title">
+                    <div class="invalid-feedback">
+                        Valid title is required.
+                    </div>
+                </div>
+
                 <!--   Section -->
                 <div class="col-sm-9">
                     <label for="section" class="form-label">Experience in sector of:  </label>
