@@ -6,7 +6,10 @@ if (!isAuthenticated())
 if (!isset($_GET['email']))
     $user= $_SESSION['currentUser'];
 else {
-    $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
+    if(JobSeekerRepository::doesExist("email", $_GET['email']))
+        $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
+    else
+        sendError("request_profile_doesnt_exist", here());
 }
 //$user = new JobSeeker();
 $imgDir = addSuffixForPic("assets/data/$user->email/pdp")?
@@ -74,6 +77,7 @@ try {
 
         <br><br><br><br>
         <div class="container">
+            <?= showErrorIfExists() ?>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" <!--style="width: 18rem;"-->
@@ -100,32 +104,14 @@ try {
                         </div>
                     </div>
                     <div class="row">
+                        <!--Contact Info-->
                         <div class="col-md-6">
                             <h3>Contact Information</h3>
                             <p><i class="bi bi-telephone"></i> <?=$user->number ?></p>
                             <p><i class="bi bi-envelope"></i> <?=$user->email ?></p>
                             <p><i class="bi bi-geo-alt"></i> <?=ucwords($user->country) ?>, <?= ucwords($user->region) ?>, <?= $user->address ?></p>
                         </div>
-                        <div class="col-md-6">
-                            <h3>Skills</h3>
-                            <ul>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>JavaScript</li>
-                                <li>Python</li>
-                                <li>SQL</li>
-                                <li>Git</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>Education</h3>
-                            <!--<p><strong>Bachelor of Science in Computer Science</strong></p>
-                            <p>University of California, Los Angeles</p>
-                            <p>Graduated in 2015</p>-->
-                            <p><?= $user->education?></p>
-                        </div>
+                        <!--Experience-->
                         <div class="col-md-6">
                             <h3>Experience</h3>
                             <p><strong><?= ucwords($user->title) ?> </strong></p>
@@ -133,6 +119,29 @@ try {
                             <p>for <?=$user->experience?> years </p>
 
                         </div>
+                        <!--SKILLS -->
+<!--                        <div class="col-md-6">-->
+<!--                            <h3>Skills</h3>-->
+<!--                            <ul>-->
+<!--                                <li>HTML</li>-->
+<!--                                <li>CSS</li>-->
+<!--                                <li>JavaScript</li>-->
+<!--                                <li>Python</li>-->
+<!--                                <li>SQL</li>-->
+<!--                                <li>Git</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="row">
+                        <!--Eudcation-->
+                        <div class="col-md-6">
+                            <h3>Education</h3>
+                            <!--<p><strong>Bachelor of Science in Computer Science</strong></p>
+                            <p>University of California, Los Angeles</p>
+                            <p>Graduated in 2015</p>-->
+                            <p><?= $user->education?></p>
+                        </div>
+
                     </div>
                 </div>
             </div>
