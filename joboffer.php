@@ -41,7 +41,7 @@
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="login.php">Log in</a></li>
+                        <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
