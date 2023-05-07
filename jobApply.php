@@ -214,6 +214,11 @@
   }
   
 }
+img{
+    width: 500px;
+    height: 450px;
+    text-align: center;
+  }
 
 </style>
 </head>
