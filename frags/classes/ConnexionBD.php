@@ -203,9 +203,25 @@ class ConnexionBD
               (94, 'Artificial Intelligence / Machine Learning', 21),
               (95, 'Connected Objects', 21),
               (96, 'Robotics', 21),
-              (97, 'Blockchain', 21);
-                    
+              (97, 'Blockchain', 21);    
         ";
+        $tableJobOffers =
+            "CREATE TABLE IF NOT EXISTS joboffer(
+             id varchar(255) PRIMARY KEY ,
+            title varchar(255) ,
+            description varchar(255) ,
+            salary int ,
+            workType varchar(255),
+            publishDate date,
+            workTime varchar(255),
+            location varchar(255),
+            companyEmail varchar(255),
+            education varchar(255),
+            experience varchar(255),
+            contractType varchar(255)
+        );
+        ";
+        self::GetInstance()->query($tableJobOffers);
         self::GetInstance()->query($tableCompanies);
         self::GetInstance()->query($tableJobSeekers);
         self::GetInstance()->query($sectorTables);
