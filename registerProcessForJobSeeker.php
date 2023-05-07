@@ -1,8 +1,11 @@
 <?php
-include_once "allFrags.php";
+include_once 'allFrags.php';
 session_start();
+if (isAuthenticated()){
+    sendError("already_logged_in","homePage");
+}
 if(!isset($_POST["Email"])) {
-    sendError("sign_up_first", "login");
+    sendError("sign_up_first","login");
 }
 $email = $_POST["Email"];
 $firstName = $_POST["FirstName"];
@@ -18,6 +21,8 @@ $education = $_POST["education"];
 $section = $_POST["section"];
 $subSection = $_POST["subSection"];
 $experience = $_POST["experience"];
+$title = $_POST["title"];
+
 $bio = $_POST["bio"];
 
 
@@ -35,22 +40,27 @@ $newUser = new JobSeeker( $email ,
          $section ,
          $subSection ,
          $experience,
-         $bio
+         $bio,
+         $title
         );
+echo $newUser;
 if (JobSeekerRepository::doesExist("email",$email))
     sendError("email_already_exists","registerForJobSeeker");
+echo "beforeInsertion";
 JobSeekerRepository::insert($newUser);
+echo "afterInsertion";
+
 $newUser = JobSeekerRepository::getOneWhere("email",$newUser->email,"password",$newUser->password);
 if (isFileUploaded("ProfilePicture")){
-    $dir = "assets/data/jobSeeker/".$newUser->email;
+    $dir = "assets/data/jobSeeker/" . $newUser->email;
     if (!file_exists($dir)) mkdir($dir, 0777, true);
     moveFileTo("ProfilePicture",$dir);
     renameFile($dir . "/" . $_FILES["ProfilePicture"]["name"] ,"pdp");
-    $newUser->modify("hasPhoto",true);
+//    $newUser->modify("hasPhoto",true);
 }
 
 $_SESSION["currentUser"] = $newUser;
-header("Location: homePage.php");
+header("Location: jobseekerprofile.php");
 
 
 

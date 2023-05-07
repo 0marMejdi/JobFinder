@@ -7,7 +7,10 @@ include_once "frags/filesHandling.php";
 foreach (glob("frags/*.php") as $filename) {
     include_once $filename;
 }
-require_once("autoload.php");
+foreach (glob("frags/classes/*.php") as $filename) {
+    include_once $filename;
+}
+//require_once("autoload.php");
 // include_once "frags/classes/ConnexionBD.php";
 // include_once "frags/classes/ObjectRepository.php"
 // include_once "frags/classes/JobSeekerRepository.php";

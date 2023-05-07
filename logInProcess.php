@@ -30,5 +30,5 @@ if ($connectAs=="Company")
         JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
         CompanyRepository::getOneWhere("email", $email, "password", $password);
     unset($_SESSION['insertedEmail']);
-    header("Location: homePage.php");
+    header("Location: jobseekerprofile.php");
 }

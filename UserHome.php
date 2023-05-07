@@ -8,7 +8,7 @@
   <meta content="" name="keywords">
 
   <!-- logo -->
-  <link href="assets\img\logo.png" rel="icon">
+  <link href="assets/templates/logo.png" rel="icon">
 
   <!-- CSS -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -30,7 +30,7 @@
           <div class="container d-flex align-items-center justify-content-between">
 
               <div class="logo">
-                  <h1><a href="Userhome.php">JobFinder</a></h1>
+                  <h1><a href="UserHome.php">JobFinder</a></h1>
               </div>
 
               <nav id="navbar" class="navbar">
@@ -73,7 +73,7 @@
           <div class="card">
             <img src="assets/img/team/team-1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><a href="joboffer.html">Web Designer</a></h5>
+              <h5 class="card-title"><a href="joboffer.php">Web Designer</a></h5>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.</p>
               <div class="row">

@@ -109,7 +109,7 @@ ConnexionBD::checkTables();
               building successful teams. Whether you're searching for a job or looking to hire, JobFinder is here to
               help you achieve your goals.
             </p>
-            <a href="Register.php" class="btn-learn-more">Register Now!</a>
+            <a href="login.php" class="btn-learn-more">Register Now!</a>
           </div>
         </div>
 

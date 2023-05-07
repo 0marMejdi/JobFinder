@@ -14,7 +14,7 @@
         $Errors["wrong_password"]="Incorrect Password : check your password again ";
         $Errors["incorrect_input"]="Wrong Input : Verify your input";
         $Errors["email_already_exists"]="E-Mail Already Exists: you can't use this one, try again";
-        $Errors["unauthenticated"]="You are not Authenticated : you need to log in before accessing to the application";
+        $Errors["unauthenticated"]="You are not Authenticated : you need to log in before accessing to the requested page";
         $Errors["sign_up_first"]="Sign up to a new account first to access to this page";
         $Errors["already_logged_in"]="You are already logged in, You need to disconnect before accessing to this page";
         return $Errors;

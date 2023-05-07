@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<?php
+include_once "allFrags.php";
+if (!isAuthenticated())
+    sendError("unauthenticated", "login");
+if (!isset($_GET['email']))
+    $user= $_SESSION['currentUser'];
+else {
+    $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
+}
+//$user = new JobSeeker();
+$imgDir = addSuffixForPic("assets/data/$user->email/pdp")?
+            addSuffixForPic("assets/data/$user->email/pdp"):
+            "assets/templates/default-profile-icon-24.jpg";
+$currentDate = new DateTime();
+$age = 18;
+try {
+    $age = $currentDate->diff(new DateTime($user->birthdate))->y;
+} catch (Exception $e) {
+    echo "Invalid BirthDate";
+}
+?>
 <html lang="en">
 
 <head>
@@ -8,7 +29,7 @@
     <meta content="" name="keywords">
 
     <!-- logo -->
-    <link href="assets\img\logo.png" rel="icon">
+    <link href="assets/templates/logo.png" rel="icon">
 
     <!-- CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -41,7 +62,7 @@
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="login.php">Disconnect</a></li>
+                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -55,36 +76,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="assets/img/team/team-1.jpg" class="card-img-top" alt="Profile Picture">
+                    <div class="card" <!--style="width: 18rem;"-->
+                        <img src="<?= getPicturePathForobject($user) ?> " class="card-img-top" alt="Profile Picture">
                         <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-text">Job Seeker</p>
-                            <p class="card-text">Male, 30 years old</p>
-                            <p class="card-text">Los Angeles, California, USA</p>
+                            <h5 class="card-title"> <?= ucwords($user->firstName) ?> <?=ucwords($user->lastName)?></h5>
+                            <p class="card-text"><?= ucwords($user->title) ?> </p>
+                            <p class="card-text"><?= ucwords($user->gender) ?>, <?=$age?> years old</p>
+                            <p class="card-text"><?= ucwords($user->country) ?>, <?= ucwords($user->region) ?>, <?= $user->address ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>John Doe</h1>
-                            <p>Job Seeker</p>
+                            <h1><?= ucwords($user->firstName) ?> <?=ucwords($user->lastName)?></h1>
+                            <p><?= ucwords($user->title) ?></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <h3>About Me</h3>
-                            <p>some description  -- taw nzidou fazet fel registration form bech nhottouhom lenna and make it a bit more realistic
-                            </p>
+                            <p> <?=$user->bio ?>   </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <h3>Contact Information</h3>
-                            <p><i class="bi bi-telephone"></i> +1 123-456-7890</p>
-                            <p><i class="bi bi-envelope"></i> john.doe@example.com</p>
-                            <p><i class="bi bi-geo-alt"></i> Los Angeles, California, USA</p>
+                            <p><i class="bi bi-telephone"></i> <?=$user->number ?></p>
+                            <p><i class="bi bi-envelope"></i> <?=$user->email ?></p>
+                            <p><i class="bi bi-geo-alt"></i> <?=ucwords($user->country) ?>, <?= ucwords($user->region) ?>, <?= $user->address ?></p>
                         </div>
                         <div class="col-md-6">
                             <h3>Skills</h3>
@@ -101,15 +121,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3>Education</h3>
-                            <p><strong>Bachelor of Science in Computer Science</strong></p>
+                            <!--<p><strong>Bachelor of Science in Computer Science</strong></p>
                             <p>University of California, Los Angeles</p>
-                            <p>Graduated in 2015</p>
+                            <p>Graduated in 2015</p>-->
+                            <p><?= $user->education?></p>
                         </div>
                         <div class="col-md-6">
                             <h3>Experience</h3>
-                            <p><strong>Software Engineer</strong></p>
-                            <p>Google, Inc.</p>
-                            <p>2015 - Present</p>
+                            <p><strong><?= ucwords($user->title) ?> </strong></p>
+                            <p><?= $user->section ?>, <?= $user->subSection ?></p>
+                            <p>for <?=$user->experience?> years </p>
+
                         </div>
                     </div>
                 </div>
@@ -148,4 +170,4 @@
 
     </body>
 
-</html> 
+</html>

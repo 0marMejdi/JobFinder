@@ -8,7 +8,7 @@ class Repository {
     }
 
     static function update($object, ... $args){
-        ObjectRepository::update(static::$tableName,$object,$args);
+        ObjectRepository::update(static::$tableName,$object,...$args);
     }
 
     /**

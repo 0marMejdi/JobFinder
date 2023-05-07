@@ -2,10 +2,11 @@
 include_once "allFrags.php";
 class JobSeeker{
     //primary and necessary attributes
+//    public int $id=0;
     public int $experience;
     public string $email, $firstName, $lastName, $password,$userType,
         $gender, $number, $birthdate, $country, $region,
-        $address, $education, $section, $subSection, $bio;
+        $address, $education, $section, $subSection, $bio,$title;
     public bool $hasPhoto;
 
     public function __construct(
@@ -24,6 +25,7 @@ class JobSeeker{
         string $subSection = '',
         int $experience = 0,
         string $bio = '',
+        string $title = '',
         bool $hasPhoto = false
     ) {
         $this->email = $email;
@@ -42,6 +44,7 @@ class JobSeeker{
         $this->subSection = $subSection;
         $this->experience = $experience;
         $this->bio = $bio;
+        $this->title = $title;
         $this->hasPhoto = $hasPhoto;
     }
 
@@ -62,6 +65,7 @@ class JobSeeker{
         $str .= "Subsection: " . $this->subSection . "<br>";
         $str .= "Experience: " . $this->experience . "<br>";
         $str .= "Bio: " . $this->bio . "<br>";
+        $str .= "Title: " . $this->title . "<br>";
         $str .= "Has Photo: " . ($this->hasPhoto ? 'Yes' : 'No') . "<br>";
 
         return $str;

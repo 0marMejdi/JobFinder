@@ -59,3 +59,34 @@ function findPictureWithSuffix($nameWithoutSuffix, $directory) {
     // No file found
     return false;
 }
+function addSuffixForPic($picPathWithoutSuffix){
+    $suffixes = array(".jpg", ".jpeg", ".png", ".gif");
+    foreach ($suffixes as $suffix) {
+        $filename = $picPathWithoutSuffix . $suffix;
+        if (file_exists($filename)) {
+            return $filename; // File found
+        }
+    }
+    // No file found
+    return false;
+}
+function getPicturePath($email){
+    if (JobSeekerRepository::doesExist("email",$email)){
+        return addSuffixForPic("assets/data/jobSeeker/$email/pdp")?
+            addSuffixForPic("assets/data/jobSeeker/$email/pdp"):
+            "assets/templates/default-profile-icon-24.jpg";
+
+    }elseif(CompanyRepository::doesExist("email",$email)){
+        return addSuffixForPic("assets/data/company/company/$email/pdp")?
+            addSuffixForPic("assets/data/company/$email/pdp"):
+            "assets/templates/default-company.jpg";
+    }else{
+        return "";
+    }
+}
+function getPicturePathForobject($object):string{
+    return getPicturePath($object->email);
+}
+function printPicutre($email){
+    echo "<img src='".getPicturePath($email)."' alt='Profile Picture' class='profile-picture'>";
+}
