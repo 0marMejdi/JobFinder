@@ -319,7 +319,7 @@ class ObjectRepository
         return true;
     }
     //unnecessary function
-    /*static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
+    static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
     {
         $db = ConnexionBD::GetInstance();
         self::nullable($idValue);
@@ -344,7 +344,7 @@ class ObjectRepository
         $SQLQuery = $db->prepare("UPDATE $table_name SET $fieldToChange = ? $where ;" );
         $SQLQuery->execute(array_merge(array($newValue),$values));
 
-    }*/
+    }
 
     static function update($table_name, $object, ...$args)
     {

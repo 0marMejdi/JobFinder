@@ -79,4 +79,11 @@ class Repository {
     static function doesExist(...$CouplesField_Value):bool{
         return (static::getAllWhere(...$CouplesField_Value)!=NULL);
     }
+    //add function to get all objects
+    static function getAll():array|null{
+        $objArray = ObjectRepository::selectAll(static::$tableName);
+        if($objArray==NULL)
+            return NULL;
+        return objectToClassArray($objArray,static::$className);
+    }
 }
