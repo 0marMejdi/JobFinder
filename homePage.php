@@ -8,7 +8,7 @@ JobSeekerRepository::update($curr, "lastName","Doee");
 
 <body>
 
-    < class="container">
+    <div class="container" >
         <?=showErrorIfExists()?>
         <?php $detail = $_SESSION["currentUser"];
         $picDir ="";
@@ -35,7 +35,7 @@ JobSeekerRepository::update($curr, "lastName","Doee");
         }
 
         ?>
-
+    </div>
     <span id="firstname"> <?=$detail->firstName?> </span>
     <button id="modify-btn">Modify</button>
     <div id="modify-confirm" style="display: none;">

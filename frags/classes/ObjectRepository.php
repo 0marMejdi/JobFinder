@@ -300,9 +300,8 @@ class ObjectRepository
         if ($object==NULL)  return false ;
         try {
             $db = ConnexionBD::GetInstance();
-            ConnexionBD::checkTables();
         } catch (Exception $exception) {
-            return false;
+            sendError("cannot_connect_to_database","login");
         }
         try {
             $objectFields = self::getFieldAndValuesFromObject($object);
@@ -315,7 +314,7 @@ class ObjectRepository
             $SQLQuery->execute($values);
 
         } catch (PDOException  $exception) {
-            return $exception->getMessage();
+            return false;
         }
         return true;
     }
