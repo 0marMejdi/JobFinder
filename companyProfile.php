@@ -1,4 +1,3 @@
-
 <!-- Nitfehmou chnouwa bich n7otou fih -->
 <!DOCTYPE html>
 <html lang="en">
@@ -39,10 +38,9 @@
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">My Job Offers</a></li>
-                        <!-- well work on it ghodwa -->
+                        <li><a class="nav-link scrollto" href="userhome.php">Home</a></li>
                         <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
+                        <li><a class="nav-link scrollto" href="">My Job Offers</a></li>
                         <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -53,71 +51,51 @@
 
 
 
-        <br><br><br><br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="assets/img/team/team-1.jpg" class="card-img-top" alt="Profile Picture">
-                        <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-text">Job Seeker</p>
-                            <p class="card-text">Male, 30 years old</p>
-                            <p class="card-text">Los Angeles, California, USA</p>
+        <br><br>
+        <!-- Company Profile Section -->
+        <section id="company-profile" class="company-profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="company-img" data-aos="fade-right" data-aos-delay="100">
+                            <img src="assets\templates\default-company.jpg" alt="Company Logo">
                         </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>John Doe</h1>
-                            <p>Job Seeker</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>About Me</h3>
-                            <p>some description  -- taw nzidou fazet fel registration form bech nhottouhom lenna and make it a bit more realistic
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>Contact Information</h3>
-                            <p><i class="bi bi-telephone"></i> +1 123-456-7890</p>
-                            <p><i class="bi bi-envelope"></i> john.doe@example.com</p>
-                            <p><i class="bi bi-geo-alt"></i> Los Angeles, California, USA</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>Skills</h3>
-                            <ul>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>JavaScript</li>
-                                <li>Python</li>
-                                <li>SQL</li>
-                                <li>Git</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>Education</h3>
-                            <p><strong>Bachelor of Science in Computer Science</strong></p>
-                            <p>University of California, Los Angeles</p>
-                            <p>Graduated in 2015</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>Experience</h3>
-                            <p><strong>Software Engineer</strong></p>
-                            <p>Google, Inc.</p>
-                            <p>2015 - Present</p>
+                    <div class="col-lg-8 mt-5 mt-lg-0">
+                        <div class="company-info" data-aos="fade-left" data-aos-delay="200">
+                            <h3>XYZ Company</h3>
+                            <p><i class="bx bx-envelope"></i> info@xyzcompany.com</p>
+                            <div class="description">
+                                <h5>Description</h5>
+                                <p>XYZ Company is a leading provider of innovative solutions in the technology industry.
+                                </p>
+                            </div>
+                            <div class="sectors">
+                                <h5>Sectors</h5>
+                                <ul>
+                                    <li>Information Technology</li>
+                                    <li>Software Development</li>
+                                    <li>Data Analytics</li>
+                                </ul>
+                            </div>
+                            <div class="size">
+                                <h5>Size</h5>
+                                <p>500 employees</p>
+                            </div>
+                            <div class="founded">
+                                <h5>Founded</h5>
+                                <p>2005</p>
+                            </div>
+                            <p><i class="bx bx-phone-call"></i> +1 123 456 7890</p>
+                            <p><i class="bx bx-globe"></i> Country: USA</p>
+                            <p><i class="bx bx-map"></i> Region: California</p>
+                            <p><i class="bx bx-map"></i> Address: 123 Main St, San Francisco, CA 94111</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <br><br><br><br><br><br><br>
+        </section>
+        
 
         <!-- ======= Footer ======= -->
         <footer>
@@ -150,4 +128,4 @@
 
     </body>
 
-</html> 
+</html>
