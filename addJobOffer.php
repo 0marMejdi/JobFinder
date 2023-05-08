@@ -506,7 +506,6 @@
         </div>
       </div>
 
-
       <div class="formbold-mb-3"><label for="experience" class="formbold-form-label"> Location </label>
         <input
             type="text"
@@ -536,7 +535,7 @@
             min="0"
         />
         </div> 
-      <button type="submit" class="btn-lg btn btn-primary ">Apply Now</button>
+      <button type="submit" class="btn-lg btn btn-primary ">Add Now</button>
     </form>
   </div>
 </div>
