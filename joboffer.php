@@ -1,3 +1,11 @@
+<?php
+include "allFrags.php";
+include "autoload.php";
+session_start();
+needsAuthentication();
+$user=$_SESSION["currentUser"];
+$job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,17 +39,17 @@
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="index.html">JobFinder</a></h1>
+                    <h1><a href="index.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.html">Home Page</a></li>
+                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
                         <!-- well work on it ghodwa -->
-                        <li><a class="nav-link scrollto " href="jobseekerprofile.html">My Profile</a></li>
+                        <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-
+                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -59,8 +67,6 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <h2>Job Offer Details</h2>
-          <br><br> this is an example awka ki tenzel aala web designer tjik hedhi
-          
           <ol>
             <li><a href="UserHome.html">Home Page</a></li>
             <li>Job Offer Details</li>
@@ -68,9 +74,8 @@
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
-
-    
+    </section>
+      <!-- End Breadcrumbs -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container" data-aos="fade-up">
 
@@ -101,20 +106,19 @@
             <div class="portfolio-info">
               <h3>Job Information</h3>
               <ul>
-                <li><strong>ee</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                <li><strong>Job Title</strong>: <?= $job->title ?></li>
+                <li><strong>Client</strong>: <?= $user->name ?></li>
+                <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
               </ul>
             </div>
             <div >
               <h2>Job Description</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                <?= $job->description ?>
               </p>
             </div>
             <br>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <a href="applyingforjob.php" class="btn btn-primary">Apply Now</a>
           </div>
 
         </div>

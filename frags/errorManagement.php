@@ -14,8 +14,13 @@
         $Errors["wrong_password"]="Incorrect Password : check your password again ";
         $Errors["incorrect_input"]="Wrong Input : Verify your input";
         $Errors["email_already_exists"]="E-Mail Already Exists: you can't use this one, try again";
-        $Errors["unauthenticated"]="You are not Authenticated : you need to log in before accessing to the application";
+        $Errors["unauthenticated"]="You are not Authenticated : you need to log in before accessing to the requested page";
         $Errors["sign_up_first"]="Sign up to a new account first to access to this page";
+        $Errors["already_logged_in"]="You are already logged in, You need to disconnect before accessing to this page";
+        $Errors["request_profile_doesnt_exist"]="Requested Profile Not Found: The profile you are looking for doesn't exist";
+        $Errors["request_job_offer_doesnt_exist"]="Requested Job Offer Not Found: The job offer you are looking for doesn't exist";
+        $Errors["request_job_demand_doesnt_exist"]="Requested Job Demand Not Found: The job demand you are looking for doesn't exist";
+        $Errors["cannot_connect_to_database"]="Cannot Connect to Database: There is a problem with the server database, please try again later or contact us";
         return $Errors;
     }
 

@@ -8,26 +8,27 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $connectAs="";
 
-if (UserRepository::isExistingUserWhere("email",$email)) //if found rows at users table
-    $connectAs="user";
-elseif (EmployerRepository::isExistingEmployerWhere("email",$email)) //if found rows at emplouers table
-    $connectAs="employer";
+if (JobSeekerRepository::doesExist("email",$email)) //if found rows at users table
+    $connectAs="JobSeeker";
+elseif (CompanyRepository::doesExist("email",$email)) //if found rows at company table
+    $connectAs="Company";
 else {
-    unset($_SESSION['insertedEmail']);sendError("wrong_email", "login");
+    unset($_SESSION['insertedEmail']);
+    sendError("wrong_email", "login");
 }
 $_SESSION["insertedEmail"]=$email;
-if ($connectAs=="user")
-    if (!UserRepository::isExistingUserWhere("email",$email,"password",$password))
+if ($connectAs=="JobSeeker")
+    if (!JobSeekerRepository::doesExist("email",$email,"password",$password))
         sendError("wrong_password","login");
-if ($connectAs=="employer")
-    if(!EmployerRepository::isExistingEmployerWhere("email",$email,"password",$password))
+if ($connectAs=="Company")
+    if(!CompanyRepository::doesExist("email",$email,"password",$password))
 
         sendError("wrong_password","login");
 {
 
-    $_SESSION["currentUser"] = ($connectAs == "user") ?
-        UserRepository::getOnlyUserBy_And("email", $email, "password", $password) :
-        EmployerRepository::getOnlyEmployerBy_And("email", $email, "password", $password);
+    $_SESSION["currentUser"] = ($connectAs == "JobSeeker") ?
+        JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
+        CompanyRepository::getOneWhere("email", $email, "password", $password);
     unset($_SESSION['insertedEmail']);
-    header("Location: homePage.php");
+    header("Location: jobseekerprofile.php");
 }
