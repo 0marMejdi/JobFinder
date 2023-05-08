@@ -38,8 +38,9 @@
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home</a></li>
-                        <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
+                        <li><a class="nav-link scrollto" href="">Home</a></li>
+                        <li><a class="nav-link scrollto active" href="companyProfile.php">My Profile</a></li>
+
                         <li><a class="nav-link scrollto" href="">My Job Offers</a></li>
                         <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
