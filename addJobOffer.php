@@ -322,7 +322,7 @@
     
     <img src="assets\templates\AddJobOffer.jpg">
 
-    <form  method="POST">
+    <form action="addjobofferprocess.php"  method="POST">
       <div class="formbold-form-title">
         <h2 class="">Add Job Offer</h2>
         <p>
@@ -336,7 +336,7 @@
         </label>
         <input
           type="text"
-          name="Job Title"
+          name="JobTitle"
           id="Job Title"
           class="formbold-form-input"
         />
@@ -359,15 +359,16 @@
 
         <div class="formbold-radio-flex">
           <div class="formbold-radio-group">
-            <label class="formbold-radio-label">
+            <label class="formbold-radio-label" name="qusOne">
               <input
                 class="formbold-input-radio"
                 type="radio"
                 name="qusOne"
                 id="qusOne"
+                value="FullTime"
               />
             Full Time
-              <span class="formbold-radio-checkmark"></span>
+              <span class="formbold-radio-checkmark" value="FullTime"></span>
             </label>
           </div>
 
@@ -378,6 +379,7 @@
                 type="radio"
                 name="qusOne"
                 id="qusOne"
+                value="PartTime"
               />
               Part Time
               <span class="formbold-radio-checkmark"></span>
@@ -399,6 +401,7 @@
                 type="radio"
                 name="qusTwo"
                 id="qusTwo"
+                value="Remote"
               />
               Remote
               <span class="formbold-radio-checkmark"></span>
@@ -412,6 +415,7 @@
                 type="radio"
                 name="qusTwo"
                 id="qusTwo"
+                value="Office"
               />
               Office
               <span class="formbold-radio-checkmark"></span>
@@ -425,6 +429,7 @@
                 type="radio"
                 name="qusTwo"
                 id="qusTwo"
+                value="Both"
               />
               Both
               <span class="formbold-radio-checkmark"></span>
@@ -446,6 +451,7 @@
                 type="radio"
                 name="qusThree"
                 id="qusThree"
+                value="CDI"
               />
               CDI
               <span class="formbold-radio-checkmark"></span>
@@ -459,6 +465,7 @@
                 type="radio"
                 name="qusThree"
                 id="qusThree"
+                value="CDD"
               />
               CDD
               <span class="formbold-radio-checkmark"></span>
@@ -472,6 +479,7 @@
                 type="radio"
                 name="qusThree"
                 id="qusThree"
+                value="Freelance"
               />
               Freelance
               <span class="formbold-radio-checkmark"></span>
@@ -485,6 +493,7 @@
                 type="radio"
                 name="qusThree"
                 id="qusThree"
+                value="Internship"
               />
               Internship
               <span class="formbold-radio-checkmark"></span>
@@ -498,6 +507,7 @@
                 type="radio"
                 name="qusThree"
                 id="qusThree"
+                value="Volunteer"
               />
               Volunteer
               <span class="formbold-radio-checkmark"></span>
@@ -509,7 +519,7 @@
       <div class="formbold-mb-3"><label for="experience" class="formbold-form-label"> Location </label>
         <input
             type="text"
-            name="experience"
+            name="Location"
             id="location"
             class="formbold-form-input"
         />
@@ -528,14 +538,25 @@
         <label for="experience" class="formbold-form-label"> Experience Required </label>
         <input
             type="number"
-            name="experience"
+            name="experiencerequired"
             id="experience"
             class="formbold-form-input"
             max="40"
             min="0"
         />
-        </div> 
-      <button type="submit" class="btn-lg btn btn-primary ">Add Now</button>
+        </div>
+        <div>
+            <label for="salary" class="formbold-form-label"> Salary </label>
+            <input
+                    type="number"
+                    name="salary"
+                    id="salary"
+                    class="formbold-form-input"
+                    max="40"
+                    min="0"
+            />
+        </div>
+        <button type="submit" class="btn-lg btn btn-primary "></button>
     </form>
   </div>
 </div>

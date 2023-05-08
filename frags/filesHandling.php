@@ -77,7 +77,7 @@ function getPicturePath($email){
             "assets/templates/default-profile-icon-24.jpg";
 
     }elseif(CompanyRepository::doesExist("email",$email)){
-        return addSuffixForPic("assets/data/company/company/$email/pdp")?
+        return addSuffixForPic("assets/data/company/$email/pdp")?
             addSuffixForPic("assets/data/company/$email/pdp"):
             "assets/templates/default-company.jpg";
     }else{
@@ -88,5 +88,9 @@ function getPicturePathForobject($object):string{
     return getPicturePath($object->email);
 }
 function printPicutre($email){
-    echo "<img src='".getPicturePath($email)."' alt='Profile Picture' class='profile-picture'>";
+    echo "<img src='".getPicturePath($email)."' alt='Profile Picture' class='profile-picture' width=200 height=200>";
+}
+
+function printPicutreForObject($object){
+    printPicutre($object->email);
 }

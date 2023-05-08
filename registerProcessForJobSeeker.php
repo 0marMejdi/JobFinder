@@ -43,20 +43,18 @@ $newUser = new JobSeeker( $email ,
          $bio,
          $title
         );
-echo $newUser;
+
 if (JobSeekerRepository::doesExist("email",$email))
     sendError("email_already_exists","registerForJobSeeker");
-echo "beforeInsertion";
-JobSeekerRepository::insert($newUser);
-echo "afterInsertion";
-
-$newUser = JobSeekerRepository::getOneWhere("email",$newUser->email,"password",$newUser->password);
+if (! JobSeekerRepository::insert($newUser)) {
+    sendError("cannot_insert_into_database","registerForJobSeeker");
+}
 if (isFileUploaded("ProfilePicture")){
     $dir = "assets/data/jobSeeker/" . $newUser->email;
     if (!file_exists($dir)) mkdir($dir, 0777, true);
     moveFileTo("ProfilePicture",$dir);
     renameFile($dir . "/" . $_FILES["ProfilePicture"]["name"] ,"pdp");
-//    $newUser->modify("hasPhoto",true);
+    $newUser->modify("hasPhoto",true);
 }
 
 $_SESSION["currentUser"] = $newUser;

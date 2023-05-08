@@ -300,9 +300,8 @@ class ObjectRepository
         if ($object==NULL)  return false ;
         try {
             $db = ConnexionBD::GetInstance();
-            ConnexionBD::checkTables();
         } catch (Exception $exception) {
-            return false;
+            sendError("cannot_connect_to_database","login");
         }
         try {
             $objectFields = self::getFieldAndValuesFromObject($object);
@@ -315,12 +314,12 @@ class ObjectRepository
             $SQLQuery->execute($values);
 
         } catch (PDOException  $exception) {
-            return $exception->getMessage();
+            return false;
         }
         return true;
     }
     //unnecessary function
-    /*static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
+    static function updateIdEqual($table_name, $idFieldName, $idValue, $fieldToChange, $newValue)
     {
         $db = ConnexionBD::GetInstance();
         self::nullable($idValue);
@@ -345,7 +344,7 @@ class ObjectRepository
         $SQLQuery = $db->prepare("UPDATE $table_name SET $fieldToChange = ? $where ;" );
         $SQLQuery->execute(array_merge(array($newValue),$values));
 
-    }*/
+    }
 
     static function update($table_name, $object, ...$args)
     {
