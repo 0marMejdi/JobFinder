@@ -70,12 +70,16 @@
                                 <p>XYZ Company is a leading provider of innovative solutions in the technology industry.
                                 </p>
                             </div>
-                            <div class="sectors">
-                                <h5>Sectors</h5>
+                            <div class="sector">
+                                <h5>Sector</h5>
                                 <ul>
-                                    <li>Information Technology</li>
-                                    <li>Software Development</li>
-                                    <li>Data Analytics</li>
+                                    <li>Tech</li>
+                                </ul>
+                            </div>
+                            <div class="subsector">
+                                <h5>Subsector</h5>
+                                <ul>
+                                    <li>Big Data</li>
                                 </ul>
                             </div>
                             <div class="size">
@@ -95,7 +99,7 @@
                 </div>
             </div>
         </section>
-        
+
 
         <!-- ======= Footer ======= -->
         <footer>
