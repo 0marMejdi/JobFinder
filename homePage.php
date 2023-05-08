@@ -6,7 +6,6 @@ session_start();
 $detail = $_SESSION["currentUser"];
 echo $detail;
 ?>
-
 <body>
     <div class="container">
         <div class="alert alert-info"> Welcome to HomePage</div>

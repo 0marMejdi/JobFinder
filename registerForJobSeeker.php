@@ -1,6 +1,9 @@
 <?php
 include_once "allFrags.php";
 session_start();
+if (isset($_SESSION["currentUser"])) {
+    header("Location: homePage.php");
+}
 ?>
 
 
