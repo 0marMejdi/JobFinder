@@ -38,7 +38,7 @@
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="">Home</a></li>
+                        <li><a class="nav-link scrollto" href="companyHome.php">Home</a></li>
                         <li><a class="nav-link scrollto " href="companyProfile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto active" href="">My Job Offers</a></li>
                         <li><a class="login " href="login.php">Disconnect</a></li>
@@ -77,7 +77,7 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">View Applications</a>
+                            <a href="jobapplications.php" class="btn btn-primary">View Applications</a>
                         </div>
                     </div>
 

@@ -124,7 +124,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
         </div>
         
       </div>
-    </section><!-- End Portfolio Details Section -->
+    </section>
 
   </main><!-- End #main -->
   
