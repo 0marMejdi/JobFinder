@@ -1,5 +1,9 @@
 
 <!-- Nitfehmou chnouwa bich n7otou fih -->
+
+<?php
+include_once "allFrags.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,17 +57,15 @@
 
 
 
-        <br><br><br><br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="assets/img/team/team-1.jpg" class="card-img-top" alt="Profile Picture">
-                        <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-text">Job Seeker</p>
-                            <p class="card-text">Male, 30 years old</p>
-                            <p class="card-text">Los Angeles, California, USA</p>
+        <br><br>
+        <!-- Company Profile Section -->
+        <section id="company-profile" class="company-profile">
+            <div class="container">
+                <?= showSuccessIfExists()?>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="company-img" data-aos="fade-right" data-aos-delay="100">
+                            <img src="assets\templates\default-company.jpg" alt="Company Logo">
                         </div>
                     </div>
                 </div>

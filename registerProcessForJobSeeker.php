@@ -60,8 +60,8 @@ if (isFileUploaded("ProfilePicture")){
 }
 
 $_SESSION["currentUser"] = $newUser;
-header("Location: jobseekerprofile.php");
-
+//header("Location: jobseekerprofile.php");
+sendSuccess("register_success","jobseekerprofile");
 
 
 

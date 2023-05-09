@@ -4,19 +4,32 @@ class Sector
 {
     public int $id;
     public string $description;
-    public function __construct( $id="", $description=""  )
+
+    public function __construct( $id=0, $description=""  )
     {
         $this->id = $id;
         $this->description = $description;
     }
 
-    public function getSectors(): array{
+    public static function getSectors(): array{
         $sectorList = ObjectRepository::selectEqualsAnd("Sector");
         return objectToClassArray($sectorList, "Sector");
     }
-    public function getSubSectorsOf(int $sectorID): array{
+    public static function getSubSectorsOf(int $sectorID): array
+    {
         $sectorList = ObjectRepository::selectEqualsAnd("subSector", "sectorID", $sectorID);
-        return objectToClassArray($sectorList, "Sector");
+        $subSectorList = [];
+        foreach ($sectorList as $subSectorElement) {
+            $subSectorList[] = new Sector($subSectorElement->id, $subSectorElement->description);
+        }
+        return $subSectorList;
+//        return objectToClassArray($subSectorList, "Sector");
     }
 
+
+
 }
+?>
+<script>
+
+</script>

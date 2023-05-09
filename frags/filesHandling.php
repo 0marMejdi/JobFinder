@@ -90,3 +90,34 @@ function getPicturePathForobject($object):string{
 function printPicutre($email){
     echo "<img src='".getPicturePath($email)."' alt='Profile Picture' class='profile-picture'>";
 }
+
+function printPicutreForObject($object){
+    printPicutre($object->email);
+}
+
+/**
+ * TODO: the id needs to be modified to accept object itself
+ *
+ * just after applying for a job, this function uses the $_FILES to get the uploaded resume, and send it to assets/data/JobApplies/ under a folder named as the id of the job apply
+ * and then it will be able to be fetched next time when a company wants to view it
+ * @param string $id
+ * @return bool return true if moving uploaded resume was successful, otherwise false
+ */
+function movingResume(string $id){
+    try{
+        if (isFileUploaded("resume")){
+            $dir = "assets/data/JobApplies/" . $id;
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            moveFileTo("resume",$dir);
+            renameFile($dir . "/" . $_FILES["resume"]["name"] ,"resume");
+
+        }
+    }catch (Exception $e) {
+        return false;
+    }
+    return true;
+}
+// TODO : this needs to be redefined
+function getResumePath(JobDemand $object){
+
+}

@@ -51,6 +51,7 @@ if (isFileUploaded("logo")){
 }
 
 $_SESSION["currentUser"] = $newCompany;
-header("Location: homePage.php");
-
+//header("Location: homePage.php");
+//TODO : if there is something wrong with the redirected page fix it !!!!
+sendSuccess("register_success","companyProfile");
 
