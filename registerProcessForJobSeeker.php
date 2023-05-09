@@ -24,7 +24,8 @@ $experience = $_POST["experience"];
 $title = $_POST["title"];
 
 $bio = $_POST["bio"];
-
+if (CompanyRepository::doesExist("email",$email))
+    sendError("email_already_taken","registerForJobSeeker");
 
 $newUser = new JobSeeker( $email ,
          $password ,

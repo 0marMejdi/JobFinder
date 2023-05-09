@@ -221,9 +221,20 @@ class ConnexionBD
             contractType varchar(255)
         );
         ";
+        $tablejobapplications="
+        create table if not exists jobapplications(
+            id varchar(255) ,
+            jobOfferID varchar(255) ,
+            jobSeekerEmail varchar(255) ,
+            status varchar(255) ,
+            companyEmail varchar(255),
+            applicationdate date
+        )
+        ";
         self::GetInstance()->query($tableJobOffers);
         self::GetInstance()->query($tableCompanies);
         self::GetInstance()->query($tableJobSeekers);
+        self::GetInstance()->query($tablejobapplications);
         self::GetInstance()->query($sectorTables);
         if (!ObjectRepository::selectEqualsAnd("sector")){
             self::GetInstance()->query($fillSectors);

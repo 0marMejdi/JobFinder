@@ -1,3 +1,15 @@
+<?php
+include_once 'allFrags.php';
+session_start();
+needsAuthentication();
+$user= $_SESSION["currentUser"];
+if ($user->personType=="JobSeeker")
+    header("Location: jobseekerprofile.php");
+if (CompanyRepository::doesExist("email",$user->email))
+    $user=CompanyRepository::getOneWhere("email",$user->email);
+else
+    sendError("user_not_found","login");
+?>
 <!-- Nitfehmou chnouwa bich n7otou fih -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +21,7 @@
     <meta content="" name="keywords">
 
     <!-- logo -->
-    <link href="assets\img\logo.png" rel="icon">
+    <link href="assets/templates/logo.png" rel="icon">
 
     <!-- CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -23,16 +35,13 @@
 
 </head>
 
-<body>
-
     <body>
-
         <!-- ======= Header ======= -->
         <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
-
+                <?= showErrorIfExists() ?>
                 <div class="logo">
-                    <h1><a href="companyProfile.php">JobFinder</a></h1>
+                    <h1><a href="UserHome.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
@@ -42,7 +51,7 @@
                         <li><a class="nav-link scrollto active" href="companyProfile.php">My Profile</a></li>
 
                         <li><a class="nav-link scrollto" href="">My Job Offers</a></li>
-                        <li><a class="login " href="login.php">Disconnect</a></li>
+                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -59,42 +68,55 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="company-img" data-aos="fade-right" data-aos-delay="100">
-                            <img src="assets\templates\default-company.jpg" alt="Company Logo">
+                            <img src="assets/templates/default-company.jpg" alt="Company Logo">
                         </div>
                     </div>
                     <div class="col-lg-8 mt-5 mt-lg-0">
                         <div class="company-info" data-aos="fade-left" data-aos-delay="200">
-                            <h3>XYZ Company</h3>
-                            <p><i class="bx bx-envelope"></i> info@xyzcompany.com</p>
+                            <h3> <?= $user->companyName ?> Company </h3>
+                            <p><i class="bx bx-envelope"></i> <?= $user->email ?> </p>
                             <div class="description">
                                 <h5>Description</h5>
-                                <p>XYZ Company is a leading provider of innovative solutions in the technology industry.
+                                <p>
+                                    <?= $user->description ?>
                                 </p>
                             </div>
                             <div class="sector">
                                 <h5>Sector</h5>
                                 <ul>
-                                    <li>Tech</li>
+                                    <li>
+                                        <?= $user->sector ?>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="subsector">
                                 <h5>Subsector</h5>
                                 <ul>
-                                    <li>Big Data</li>
+                                    <li> <?= $user->subSector ?> </li>
                                 </ul>
                             </div>
                             <div class="size">
                                 <h5>Size</h5>
-                                <p>500 employees</p>
+                                <?php
+                                if ($user->size==1)
+                                    echo "<p>1 Employee</p>";
+                                else
+                                    echo"<p>{$user->size} Employees</p>";
+                                ?>
                             </div>
                             <div class="founded">
                                 <h5>Founded</h5>
-                                <p>2005</p>
+                                <p><?php
+                                    $date = date_create($user->foundationDate);
+                                    echo date_format($date, 'jS \of F, Y');
+                                    ?>
+                                </p>
+                                </p>
                             </div>
-                            <p><i class="bx bx-phone-call"></i> +1 123 456 7890</p>
-                            <p><i class="bx bx-globe"></i> Country: USA</p>
-                            <p><i class="bx bx-map"></i> Region: California</p>
-                            <p><i class="bx bx-map"></i> Address: 123 Main St, San Francisco, CA 94111</p>
+                            <p><i class="bx bx-phone-call"></i> <?= $user->phone ?> </p>
+                            <p><i class="bx bx-globe"></i> Country: <?= $user->country ?></p>
+                            <p><i class="bx bx-map"></i> Region: <?= $user->region ?> </p>
+                            <p><i class="bx bx-map"></i> Address: <?= $user->address ?></p>
                         </div>
                     </div>
                 </div>

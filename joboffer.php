@@ -5,6 +5,8 @@ session_start();
 needsAuthentication();
 $user=$_SESSION["currentUser"];
 $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+$client=CompanyRepository::getOneWhere("email",$job->companyEmail);
+$clientName=$client->companyName;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +109,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
               <h3>Job Information</h3>
               <ul>
                 <li><strong>Job Title</strong>: <?= $job->title ?></li>
-                <li><strong>Client</strong>: <?= $user->name ?></li>
+                <li><strong>Client</strong>: <?= $clientName ?></li>
                 <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
               </ul>
             </div>
@@ -118,7 +120,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
               </p>
             </div>
             <br>
-            <a href="applyingforjob.php" class="btn btn-primary">Apply Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now</a>
           </div>
 
         </div>

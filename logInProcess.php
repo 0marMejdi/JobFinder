@@ -7,9 +7,8 @@ $email = $_POST['email'];
 
 $password = $_POST['password'];
 $connectAs="";
-
 if (JobSeekerRepository::doesExist("email",$email)) //if found rows at users table
-    $connectAs="JobSeeker";
+        $connectAs="JobSeeker";
 elseif (CompanyRepository::doesExist("email",$email)) //if found rows at company table
     $connectAs="Company";
 else {
@@ -30,5 +29,8 @@ if ($connectAs=="Company")
         JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
         CompanyRepository::getOneWhere("email", $email, "password", $password);
     unset($_SESSION['insertedEmail']);
+    if ($_SESSION["currentUser"]->personType=="JobSeeker")
     header("Location: jobseekerprofile.php");
+    else
+        header("Location: companyprofile.php");
 }

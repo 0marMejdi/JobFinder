@@ -73,7 +73,8 @@ class Company {
     public function isCompany(){
         return true;
     }
-    public function isJobSeeker(){
+    public function isJobSeeker() : bool
+    {
         return false;
     }
 

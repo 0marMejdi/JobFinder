@@ -23,6 +23,8 @@ $country = $_POST['country'];
 $region = $_POST['region'];
 $address = $_POST['address'];
 //create a new company
+if (JobSeekerRepository::doesExist("email",$email))
+    sendError("email_already_taken","registerForCompany");
 $newCompany = new Company(
     $companyName,
     $email,
@@ -38,7 +40,6 @@ $newCompany = new Company(
     $address
 );
 //check if the email is already used
-
 if (CompanyRepository::doesExist("email",$email))
     sendError("email_already_exists","registerForCompany");
 CompanyRepository::insert($newCompany);

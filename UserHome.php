@@ -63,13 +63,13 @@ $alljobs=JobOfferRepository::getAllWhere();
         <div class="d-flex justify-content-between align-items-center">
             <h2>Job Listings</h2>
 
-
         </div>
 </section>
 
 <!-- ======= Recent Job Offers Section ======= -->
 <section id="job-offers" class="job-offers">
     <div class="container" data-aos="fade-up">
+        <h2><?= showErrorIfExists() ?></h2>
 
         <div class="section-title">
             <h2>Recent Job Offers</h2>
