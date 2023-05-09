@@ -1,24 +1,83 @@
 <?php
-include_once "Person.php";
-class JobSeeker extends Person{
-    public bool $hasResume;
-    public string $idealJob;
-    public string $bio;
-    public function __construct($name = "",  $lastName = "", $email = "", $password = "", $gender = "", $number = "", $birthdate = "", $country = "", $state = "", $hasResume = false, $idealJob = "", $bio = "") {
-        parent::__construct($name, $lastName, $email, $password, $gender, $number, $birthdate, $country, $state);
-        $this->hasResume = $hasResume;
-        $this->idealJob = $idealJob;
-        $this->personType="JobSeeker";
+include_once "allFrags.php";
+class JobSeeker{
+    //primary and necessary attributes
+//    public int $id=0;
+    public int $experience;
+    public string $email, $firstName, $lastName, $password,$userType,
+        $gender, $number, $birthdate, $country, $region,
+        $address, $education, $section, $subSection, $bio,$title;
+    public bool $hasPhoto;
+
+    public function __construct(
+        string $email = '',
+        string $password = '',
+        string $firstName = '',
+        string $lastName = '',
+        string $gender = '',
+        string $number = '',
+        string $birthdate = '',
+        string $country = '',
+        string $region = '',
+        string $address = '',
+        string $education = '',
+        string $section = '',
+        string $subSection = '',
+        int $experience = 0,
+        string $bio = '',
+        string $title = '',
+        bool $hasPhoto = false
+    ) {
+        $this->email = $email;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->password = $password;
+        $this->userType = "JobSeeker";
+        $this->gender = $gender;
+        $this->number = $number;
+        $this->birthdate = $birthdate;
+        $this->country = $country;
+        $this->region = $region;
+        $this->address = $address;
+        $this->education = $education;
+        $this->section = $section;
+        $this->subSection = $subSection;
+        $this->experience = $experience;
         $this->bio = $bio;
+        $this->title = $title;
+        $this->hasPhoto = $hasPhoto;
     }
+
     public function __toString(): string
     {
-        $str= parent::__toString();
-        $str .= "Has Resume: " .  ($this->hasResume ? "Yes" : "No") . "<br>";
-        $str .= "Ideal Job: " . $this->idealJob . "<br>";
+        $str = "Name: " . $this->firstName . " " . $this->lastName . "<br>";
+        $str .= "Email: " . $this->email . "<br>";
+        $str .= "Password: " . $this->password . "<br>";
+        $str .= "User Type: " . $this->userType . "<br>";
+        $str .= "Gender: " . $this->gender . "<br>";
+        $str .= "Number: " . $this->number . "<br>";
+        $str .= "Birthdate: " . $this->birthdate . "<br>";
+        $str .= "Country: " . $this->country . "<br>";
+        $str .= "Region: " . $this->region . "<br>";
+        $str .= "Address: " . $this->address . "<br>";
+        $str .= "Education: " . $this->education . "<br>";
+        $str .= "Section: " . $this->section . "<br>";
+        $str .= "Subsection: " . $this->subSection . "<br>";
+        $str .= "Experience: " . $this->experience . "<br>";
         $str .= "Bio: " . $this->bio . "<br>";
+        $str .= "Title: " . $this->title . "<br>";
+        $str .= "Has Photo: " . ($this->hasPhoto ? 'Yes' : 'No') . "<br>";
+
         return $str;
     }
+    public function isCompany(){
+        return false;
+    }
+    public function isJobSeeker(){
+        return true;
+    }
+
+
 
     /**
      * modifies attribute and database of the current object
@@ -29,7 +88,7 @@ class JobSeeker extends Person{
      * it's false when attribute name is wrong
      */
     public function modify(string $attributeName, $newValue){
-        return parent::modifyAttributeAndDatabase( "Users",  $attributeName, $newValue);
+        return ObjectRepository::modifyAttributeAndDatabase( "JobSeeker", $this , $attributeName, $newValue);
     }
 }
 

@@ -1,5 +1,5 @@
 <?php include_once "allFrags.php";
-includeHeader("Authentification");
+includeHeader("Authentication");
 session_start();
 needsNOAuthentication();
 function getPerviousInsertedEmail()
@@ -25,15 +25,7 @@ function getPerviousInsertedEmail()
         <form action="logInProcess.php" method="post">
           <img class="logo" src="assets/templates/logo.png" alt="" srcset="">
           <h1 class="h3 ">Please sign in</h1>
-          <?php
-//            if (isset($_GET['error'])) {
-//                if ($_GET['error'] == 1) {
-//                    echo '<div class="alert alert-danger" role="alert">
-//                    Please check your email and password combination !
-//                    </div>';
-//                }
-//            }
-//        ?>
+
           <div class="form-floating">
             <input
                     name="email"

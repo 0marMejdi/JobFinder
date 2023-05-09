@@ -1,33 +1,66 @@
 <?php
-include_once "allFrags.php";
+include_once 'allFrags.php';
+session_start();
+if (isAuthenticated()){
+    sendError("already_logged_in","homePage");
+}
 if(!isset($_POST["Email"])) {
     sendError("sign_up_first","login");
 }
-$Password = $_POST["Password"];
-$FirstName = $_POST["FirstName"];
-$LastName = $_POST["LastName"];
-$Email = $_POST["Email"];
-$Date = $_POST["Date"];
-$PhoneNumber = $_POST["PhoneNumber"];
+$email = $_POST["Email"];
+$firstName = $_POST["FirstName"];
+$lastName = $_POST["LastName"];
+$password = $_POST["Password"];
 $gender = $_POST["gender"];
-$Country   = $_POST["Country"];
-$State= $_POST["State"];
+$number = $_POST["phone"];
+$birthdate = $_POST["birthdate"];
+$country = $_POST["Country"];
+$region = $_POST["region"];
+$address = $_POST["address"];
+$education = $_POST["education"];
+$section = $_POST["section"];
+$subSection = $_POST["subSection"];
+$experience = $_POST["experience"];
+$title = $_POST["title"];
+
 $bio = $_POST["bio"];
-//$ProfilePicture = $_FILES["ProfilePicture"];
-$newUser = new JobSeeker($FirstName,$LastName,$Email,$Password,$gender,$PhoneNumber,$Date,$Country,$State,false,"",$bio."");
-ConnexionBD::checkTables();
-JobSeekerRepository::insertUser($newUser);
-//$newUser = JobSeekerRepository::getOnlyUserBy_And("email",$newUser->email,"password",$newUser->password);
+if (CompanyRepository::doesExist("email",$email))
+    sendError("email_already_taken","registerForJobSeeker");
+
+$newUser = new JobSeeker( $email ,
+         $password ,
+         $firstName ,
+         $lastName ,
+         $gender ,
+         $number ,
+         $birthdate ,
+         $country ,
+         $region ,
+         $address ,
+         $education ,
+         $section ,
+         $subSection ,
+         $experience,
+         $bio,
+         $title
+        );
+
+if (JobSeekerRepository::doesExist("email",$email))
+    sendError("email_already_exists","registerForJobSeeker");
+if (! JobSeekerRepository::insert($newUser)) {
+    sendError("cannot_insert_into_database","registerForJobSeeker");
+}
 if (isFileUploaded("ProfilePicture")){
-    $dir = "assets/data/jobSeekers/".$newUser->id;
+    $dir = "assets/data/jobSeeker/" . $newUser->email;
     if (!file_exists($dir)) mkdir($dir, 0777, true);
     moveFileTo("ProfilePicture",$dir);
     renameFile($dir . "/" . $_FILES["ProfilePicture"]["name"] ,"pdp");
     $newUser->modify("hasPhoto",true);
 }
-session_start();
+
 $_SESSION["currentUser"] = $newUser;
-header("Location: profile.php");
+header("Location: jobseekerprofile.php");
+
 
 
 

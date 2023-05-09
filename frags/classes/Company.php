@@ -1,51 +1,83 @@
 <?php
-class Company
-{
-// attributes are Description (string), Sector (string), Size (int), HasLogo (boolean) , Email (string) , Password (string), Name (string), FoundationDate (string), PhoneNumber (string), Country (string), State (string), Address (string)
-    public string $email, $name, $password, $personType, $description, $sector, $foundationDate, $country, $state, $address,$phoneNumber;
-    public bool $hasLogo;
+class Company {
+    public string $companyName;
+    public string $email;
+    public string $password;
+    public string $description;
+    public string $sector;
+    public string $subSector;
     public int $size;
-
-    public function __construct(string $name = "", string $email = "", string $password = "", string $description = "", string $sector = "", int $size = 1 , string $foundationDate = "", string $phoneNumber = "", string $country = "", string $state = "", string $address = "")
-    {
-        $this->name = $name;
+    public string $foundationDate;
+    public string $phone;
+    public string $country;
+    public string $region;
+    public string $address;
+    public bool $hasLogo;
+    public string $userType = "Company";
+    public function __construct(
+        string $companyName = "",
+        string $email = "",
+        string $password = "",
+        string $description = "",
+        string $sector = "",
+        string $subSector = "",
+        int $size = 0,
+        string $foundationDate = "",
+        string $phone = "",
+        string $country = "",
+        string $region = "",
+        string $address = "",
+        bool $hasLogo = false
+    ) {
+        $this->companyName = $companyName;
         $this->email = $email;
         $this->password = $password;
-        $this->hasLogo = false;
         $this->description = $description;
         $this->sector = $sector;
+        $this->subSector = $subSector;
         $this->size = $size;
         $this->foundationDate = $foundationDate;
-        $this->phoneNumber = $phoneNumber;
+        $this->phone = $phone;
         $this->country = $country;
-        $this->state = $state;
+        $this->region = $region;
         $this->address = $address;
-        $this->personType = "Company";
+        $this->hasLogo = $hasLogo;
     }
-
     public function __toString(): string
     {
-        $str  = "Name: " . $this->name . "<br>";
+        $str = "Company Name: " . $this->companyName . "<br>";
         $str .= "Email: " . $this->email . "<br>";
-        $str .= "Password: " . $this->password . "<br>";
-        $str .= "Person Type: " . $this->personType . "<br>";
-        $str .= "Has Logo: " . ($this->hasLogo ? "Yes" : "No") . "<br>";
         $str .= "Description: " . $this->description . "<br>";
         $str .= "Sector: " . $this->sector . "<br>";
+        $str .= "Sub Sector: " . $this->subSector . "<br>";
         $str .= "Size: " . $this->size . "<br>";
         $str .= "Foundation Date: " . $this->foundationDate . "<br>";
-        $str .= "Phone Number: " . $this->phoneNumber . "<br>";
+        $str .= "Phone: " . $this->phone . "<br>";
         $str .= "Country: " . $this->country . "<br>";
-        $str .= "State: " . $this->state . "<br>";
+        $str .= "Region: " . $this->region . "<br>";
         $str .= "Address: " . $this->address . "<br>";
-
+        $str .= "Has Logo: " . ($this->hasLogo)? "Yes" : "No" . "<br>";
         return $str;
     }
-    public function SetHasLogo()
-    {
-        $this->hasLogo = true;
-    }
     /**
-     * }
+     * modifies attribute and database of the current object
+     * @param string $attributeName
+     * @param $newValue
+     * @return bool if it has been modified or no
+     *
+     * it's false when attribute name is wrong
      */
+    public function modify(string $attributeName, $newValue){
+        return ObjectRepository::modifyAttributeAndDatabase( "Company", $this , $attributeName, $newValue);
+    }
+    public function isCompany(){
+        return true;
+    }
+    public function isJobSeeker() : bool
+    {
+        return false;
+    }
+
+
+
 }

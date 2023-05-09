@@ -1,5 +1,7 @@
 <?php
-//     include_once "allFrags.php";
+include_once "allFrags.php";
+
+ConnexionBD::checkTables();
 //     session_start();
 // //    sendError("wrong_password","login");
 //     header("Location: login.php");
@@ -34,7 +36,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">JobFinder</a></h1>
+        <h1><a href="index.php">JobFinder</a></h1>
 
       </div>
 
@@ -107,7 +109,7 @@
               building successful teams. Whether you're searching for a job or looking to hire, JobFinder is here to
               help you achieve your goals.
             </p>
-            <a href="Register.php" class="btn-learn-more">Register Now!</a>
+            <a href="login.php" class="btn-learn-more">Register Now!</a>
           </div>
         </div>
 
@@ -139,7 +141,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="112" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="1102" data-purecounter-duration="1"
                       class="purecounter"></span>
                     <p>Explore thousands of job opportunities across various industries and locations, all in one place
                       on JobFinder</p>
