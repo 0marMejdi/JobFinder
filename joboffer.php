@@ -1,10 +1,10 @@
 <?php
-include "allFrags.php";
-include "autoload.php";
-session_start();
-needsAuthentication();
-$user=$_SESSION["currentUser"];
-$job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+ include "allFrags.php";
+ include "autoload.php";
+ session_start();
+ needsAuthentication();
+ $user=$_SESSION["currentUser"];
+ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,16 +39,16 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="index.php">JobFinder</a></h1>
+                    <h1><a href="UserHome.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
+                        <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
+                        <li><a class="nav-link scrollto" href=" jobseekerjobapplications.php">My Job Applications</a></li>
                         <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -68,7 +68,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
         <div class="d-flex justify-content-between align-items-center">
           <h2>Job Offer Details</h2>
           <ol>
-            <li><a href="UserHome.html">Home Page</a></li>
+            <li><a href="UserHome.html">Home </a></li>
             <li>Job Offer Details</li>
           </ol>
         </div>

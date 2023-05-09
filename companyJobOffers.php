@@ -32,7 +32,7 @@
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="companyProfile.php">JobFinder</a></h1>
+                    <h1><a href="companyHome.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">

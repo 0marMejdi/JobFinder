@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <?php
-include_once "allFrags.php";
-if (!isAuthenticated())
-    sendError("unauthenticated", "login");
-if (!isset($_GET['email']))
-    $user= $_SESSION['currentUser'];
-else {
-    if(JobSeekerRepository::doesExist("email", $_GET['email']))
-        $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
-    else
-        sendError("request_profile_doesnt_exist", here());
-}
-//$user = new JobSeeker();
-$imgDir = addSuffixForPic("assets/data/$user->email/pdp")?
-            addSuffixForPic("assets/data/$user->email/pdp"):
-            "assets/templates/default-profile-icon-24.jpg";
-$currentDate = new DateTime();
-$age = 18;
-try {
-    $age = $currentDate->diff(new DateTime($user->birthdate))->y;
-} catch (Exception $e) {
-    echo "Invalid BirthDate";
-}
+ include_once "allFrags.php";
+ if (!isAuthenticated())
+     sendError("unauthenticated", "login");
+ if (!isset($_GET['email']))
+     $user= $_SESSION['currentUser'];
+ else {
+     if(JobSeekerRepository::doesExist("email", $_GET['email']))
+         $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
+     else
+         sendError("request_profile_doesnt_exist", here());
+ }
+ $user = new JobSeeker();
+ $imgDir = addSuffixForPic("assets/data/$user->email/pdp")?
+             addSuffixForPic("assets/data/$user->email/pdp"):
+             "assets/templates/default-profile-icon-24.jpg";
+ $currentDate = new DateTime();
+ $age = 18;
+ try {
+     $age = $currentDate->diff(new DateTime($user->birthdate))->y;
+ } catch (Exception $e) {
+     echo "Invalid BirthDate";
+ }
 ?>
 <html lang="en">
 
@@ -55,16 +55,16 @@ try {
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="jobseekerprofile.php">JobFinder</a></h1>
+                    <h1><a href="userHo.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
+                        <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
+                        <li><a class="nav-link scrollto" href="jobseekerjobapplications.php">My Job Applications</a></li>
                         <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>

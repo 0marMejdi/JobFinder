@@ -31,7 +31,7 @@
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="companyProfile.php">JobFinder</a></h1>
+                    <h1><a href="companyHome.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
@@ -72,7 +72,7 @@
                                     <li><strong>Company: </strong>XYZ Company </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -82,38 +82,16 @@
                 <div class="container" data-aos="fade-up">
                     <div class="section-title">
                         <h2>Create a Job Offer</h2>
-                        <p>Fill out the form below to create a new job offer.</p>
+                        <p>Click the button below to create a new job offer.</p>
                     </div>
-
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="job-title">Job Title</label>
-                                    <input type="text" class="form-control" id="job-title" name="job-title" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="salary-range">Salary Range</label>
-                                    <input type="text" class="form-control" id="salary-range" name="salary-range"
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="job-description">Job Description</label>
-                            <textarea class="form-control" id="job-description" name="job-description" rows="5"
-                                required></textarea>
-                        </div>
-
-
-
-                        <button type="submit" class="btn btn-primary">Create Job Offer</button>
-                    </form>
+                    <center>
+                    <a href="addjoboffer.php" class="btn btn-primary">Create Job Offer</a>
+                    </center>
                 </div>
             </section>
+
+
+
         </main>
 
 

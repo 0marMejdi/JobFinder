@@ -1,17 +1,19 @@
 <?php
 include "autoload.php";
-include "allFrags.php";
-session_start();
-needsAuthentication();
+ include "allFrags.php";
+ session_start();
+ needsAuthentication();
+
 $alljobs=JobOfferRepository::getAllWhere();
-//var_dump($test);
+
+ var_dump($test);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <title>Home Page</title>
+    <title>Home </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -44,10 +46,10 @@ $alljobs=JobOfferRepository::getAllWhere();
         <nav id="navbar" class="navbar">
 
             <ul>
-                <li><a class="nav-link scrollto active" href="userhome.php">Home Page</a></li>
+                <li><a class="nav-link scrollto active" href="userhome.php">Home </a></li>
                 <!-- well work on it ghodwa -->
                 <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
-                <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
+                <li><a class="nav-link scrollto" href="jobseekerjobapplications.php">My Job Applications</a></li>
                 <li><a class="login " href="login.php">Disconnect</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
