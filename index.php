@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +100,8 @@
               building successful teams. Whether you're searching for a job or looking to hire, JobFinder is here to
               help you achieve your goals.
             </p>
-            <a href="login.php" class="btn-learn-more">Register Now!</a>
+            <a href="registerforcompany.php" class="btn-learn-more">Company Register!</a>
+            <a href="registerforjobseeker.php" class="btn-learn-more">JobSeeker Register!</a>
           </div>
         </div>
 
