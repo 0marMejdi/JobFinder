@@ -1,3 +1,60 @@
+<?php
+include_once 'allFrags.php';
+session_start();
+needsAuthentication();
+$user= $_SESSION["currentUser"];
+if ($user->personType=="JobSeeker")
+    header("Location: jobseekerprofile.php");
+if (CompanyRepository::doesExist("email",$user->email))
+    $user=CompanyRepository::getOneWhere("email",$user->email);
+else
+    sendError("current_user_not_found","login");
+// make salary from 1 format to $1,000 format
+function formatSalary($salary)
+{
+    $salary = strrev($salary);
+    $salary = chunk_split($salary, 3, ',');
+    $salary = strrev($salary);
+    $salary = substr($salary, 1);
+    return $salary;
+}
+function printOffer($joboffer){
+    $formattedSalary = "$".$joboffer->salary." per month";
+    echo "
+        <div class='card'>
+            <div class='card-header'>
+                <h4><a href='joboffer.php?id={$joboffer->id}' >{$joboffer->title} </a></h4>
+                <div class='job-post-date'>Posted on: <span>{$joboffer->publishDate}</span></div>
+            </div>
+        <div class='card-body'>
+            <p>{$joboffer->description}</p>
+            <ul>
+                <li><strong>Salary:</strong> {$formattedSalary} </li>
+            </ul>
+        </div>
+        <div class='card-footer'>
+            <a href='#' class='btn btn-primary'>View Applications</a>
+        </div>
+    </div>
+    <br>
+    ";
+}
+function printAllJobOffers(){
+    $user= $_SESSION["currentUser"];
+    if (! JobOfferRepository::doesExist("companyEmail", $user->email))
+    {
+        echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
+    }else{
+        $jobOffersList = JobOfferRepository::getAllWhere("companyEmail", $user->email);
+
+        foreach ($jobOffersList as $joboffer)
+        {
+            printOffer($joboffer);
+        }
+    }
+
+}
+?>
 <!-- Nitfehmou chnouwa bich n7otou fih -->
 <!DOCTYPE html>
 <html lang="en">
@@ -27,27 +84,7 @@
 
     <body>
 
-        <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-
-                <div class="logo">
-                    <h1><a href="companyHome.php">JobFinder</a></h1>
-                </div>
-
-                <nav id="navbar" class="navbar">
-
-                    <ul>
-                        <li><a class="nav-link scrollto" href="companyHome.php">Home</a></li>
-                        <li><a class="nav-link scrollto " href="companyProfile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto active" href="">My Job Offers</a></li>
-                        <li><a class="login " href="login.php">Disconnect</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        </header><!-- End Header -->
+        <?php includeNavBarCompany(here()) ?>
 
 
         <br> <br>
@@ -64,75 +101,15 @@
 
 
                 <div class="align-items-stretch">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Job Title</h4>
-                            <div class="job-post-date">Posted on: <span>June 1, 2023</span></div>
-                        </div>
-                        <div class="card-body">
-                            <p>Job Description</p>
-                            <ul>
-                                <li><strong>Salary:</strong> $60,000 - $80,000</li>
-                                
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <a href="jobapplications.php" class="btn btn-primary">View Applications</a>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Job Title2</h4>
-                            <div class="job-post-date">Posted on: <span>June 1, 2023</span></div>
-                        </div>
-                        <div class="card-body">
-                            <p>Job Description</p>
-                            <ul>
-                                <li><strong>Salary:</strong> $60,000 - $80,000</li>
-                                
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary">View Applications</a>
-                        </div>
-                    </div>
-
-                    <br>
-                
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Job Title3</h4>
-                            <div class="job-post-date">Posted on: <span>June 3, 2023</span></div>
-                        </div>
-                        <div class="card-body">
-                            <p>Job Description</p>
-                            <ul>
-                                <li><strong>Salary:</strong> $70,000 - $90,000</li>
-                               
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary">View Applications</a>
-                        </div>
-                    </div>
-
-
-
+                    <?php
+                        printAllJobOffers()
+                    ?>
                 </div>
-
-
-
             </div>
         </section>
 
         <br> <br>
         <br> <br>
-
-
-
 
         <!-- ======= Footer ======= -->
         <footer>

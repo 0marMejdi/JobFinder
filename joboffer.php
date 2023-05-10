@@ -1,10 +1,12 @@
 <?php
- include "allFrags.php";
- include "autoload.php";
- session_start();
- needsAuthentication();
- $user=$_SESSION["currentUser"];
- $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+include "allFrags.php";
+include "autoload.php";
+session_start();
+needsAuthentication();
+$user=$_SESSION["currentUser"];
+$job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+$client=CompanyRepository::getOneWhere("email",$job->companyEmail);
+$clientName=$client->companyName;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,6 @@
     <meta content="" name="keywords">
 
     <!-- logo -->
-    <link href="assets\img\logo.png" rel="icon">
 
     <!-- CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -48,8 +49,8 @@
                         <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href=" jobseekerjobapplications.php">My Job Applications</a></li>
-                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
+                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
+                        <li><a class="login " href="processess/disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -107,7 +108,7 @@
               <h3>Job Information</h3>
               <ul>
                 <li><strong>Job Title</strong>: <?= $job->title ?></li>
-                <li><strong>Client</strong>: <?= $user->name ?></li>
+                <li><strong>Client</strong>: <?= $clientName ?></li>
                 <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
               </ul>
             </div>
@@ -118,7 +119,7 @@
               </p>
             </div>
             <br>
-            <a href="applyingforjob.php" class="btn btn-primary">Apply Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now</a>
           </div>
 
         </div>
