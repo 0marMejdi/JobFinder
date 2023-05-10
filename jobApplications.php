@@ -26,6 +26,14 @@
             justify-content: center;
             gap: 7px;
         }
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;}
+        .aboutus{
+            text-align: left;
+        }
     </style>
 
 </head>
@@ -59,14 +67,14 @@
                                     <th>Email</th>
                                     <th>Tell Us Why You Want to Join Us</th>
                                     <th>CV</th>
-                                    <th>Accept/Decline</th>
+                                    <th>Decision</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>johndoe@example.com</td>
-                                    <td>I am passionate about developing innovative software solutions and would love to
+                                    <td class="aboutus">I am passionate about developing innovative software solutions and would love to
                                         work with a team that values creativity and collaboration.</td>
                                     <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
                                     <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
@@ -75,7 +83,7 @@
                                 <tr>
                                     <td>Jane Smith</td>
                                     <td>janesmith@example.com</td>
-                                    <td>I am excited about the opportunity to work with a dynamic team and help drive
+                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
                                         the success of your company's marketing initiatives.</td>
                                     <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
                                     <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
@@ -84,7 +92,7 @@
                                 <tr>
                                     <td>Jane Smith</td>
                                     <td>janesmith@example.com</td>
-                                    <td>I am excited about the opportunity to work with a dynamic team and help drive
+                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
                                         the success of your company's marketing initiatives.</td>
                                     <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
                                     <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
