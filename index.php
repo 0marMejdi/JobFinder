@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php include_once "allFrags.php";
+ConnexionBD::checkTables();?>
 <html lang="en">
 
 <head>

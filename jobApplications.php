@@ -1,5 +1,32 @@
 <!DOCTYPE html>
-<?php include_once 'allFrags.php'?>
+<?php include_once 'allFrags.php';
+session_start();
+needsAuthentication();
+function printTableData($jobApplication){
+    $jobSeeker = JobSeekerRepository::getOneWhere("email",$jobApplication->jobSeekerEmail);
+    ?>
+    <tr>
+        <td><?= $jobSeeker->firstName?> <?= $jobSeeker->lastName?></td>
+        <td><a href = "jobseekerprofile.php?email=<?=$jobSeeker->email?>"><?= $jobSeeker->email?> </a></td>
+        <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
+    <!-- TODO :: change path later -->
+        <td><a href="#" target="_blank">Download</a></td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
+    </tr>
+<?php
+}
+function printAllData(){
+    $user = $_SESSION["currentUser"];
+    $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    if ($allapps==NULL){
+        echo "";
+    }else{
+        foreach ($allapps as $app){
+            printTableData($app);
+        }
+    }
+}
+?>
 
 <html lang="en">
 
@@ -71,32 +98,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>johndoe@example.com</td>
-                                    <td class="aboutus">I am passionate about developing innovative software solutions and would love to
-                                        work with a team that values creativity and collaboration.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>Jane Smith</td>
-                                    <td>janesmith@example.com</td>
-                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
-                                        the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Jane Smith</td>
-                                    <td>janesmith@example.com</td>
-                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
-                                        the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
+                                <?php printAllData();
+                                ?>
                             </tbody>
                         </table>
                     </div>

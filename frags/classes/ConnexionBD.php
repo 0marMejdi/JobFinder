@@ -228,7 +228,8 @@ class ConnexionBD
             jobSeekerEmail varchar(255) ,
             status varchar(255) ,
             companyEmail varchar(255),
-            applicationdate date
+            applicationdate date,
+            aboutMe varchar(255)
         )
         ";
         self::GetInstance()->query($tableJobOffers);
