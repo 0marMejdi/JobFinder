@@ -56,6 +56,7 @@ $jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEm
 
 if (! JobApplicationRepository::insert($jobapplication))
     sendError('cannot_add_job_apply', "jobseekerjobapplications");
-
-sendSuccess("send_apply_success","jobseekerjobapplications");
+movingResume($jobapplication);
+// TODO :: get this back later
+//sendSuccess("send_apply_success","jobseekerjobapplications");
 //header("Location: userhome.php");

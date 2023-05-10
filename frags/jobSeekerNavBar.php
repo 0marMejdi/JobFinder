@@ -6,7 +6,7 @@ function includeNavBarJobSeeker($whoIsActive){
     <div class="container d-flex align-items-center justify-content-between">
 
         <div class="logo">
-            <h1><a href="UserHome.php">JobFinder</a></h1>
+            <h1><a href="index.php">JobFinder</a></h1>
         </div>
 
         <nav id="navbar" class="navbar">

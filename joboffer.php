@@ -94,7 +94,7 @@ $clientName=$client->companyName;
           <?php
           if ($user->isJobSeeker())
               echo"
-        <a href='jobApply.php?id=<?= $job->id ?>' class='btn btn-primary'>Apply Now!</a>";
+        <a href='jobApply.php?id={$job->id}' class='btn btn-primary'>Apply Now!</a>";
         ?>
       </div>
 
