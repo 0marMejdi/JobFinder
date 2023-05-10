@@ -255,7 +255,7 @@ img{
 
 </style>
 </head>
-<?php includeNavBarJobSeeker(); ?>
+<?php includeNavBarJobSeeker(here()); ?>
 <body>
 <div class="formbold-main-wrapper">
   <!-- Author: FormBold Team -->

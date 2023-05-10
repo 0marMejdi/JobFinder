@@ -65,7 +65,7 @@ try {
             <?= showErrorIfExists() ?>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" <!--style="width: 18rem;"--> >
+                    <div class="card" <!--style="width: 18rem;"-->
                         <img src="<?= getPicturePathForobject($user) ?> " class="card-img-top" alt="Profile Picture">
                         <div class="card-body">
                             <h5 class="card-title"> <?= ucwords($user->firstName) ?> <?=ucwords($user->lastName)?></h5>

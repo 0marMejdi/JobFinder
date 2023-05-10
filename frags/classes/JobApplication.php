@@ -91,7 +91,8 @@ class JobApplication
         $joboffer=JobOfferRepository::getOneWhere("id",$application->jobOfferID);
         $company=CompanyRepository::getOneWhere("email",$joboffer->companyEmail);
         echo"
-                        <div>
+
+                        <div class='card'>
                          <div class='card-header'>
                              <h4>{$joboffer->title}</h4>
                              <div class='job-post-date'>Posted on: <span>{$joboffer->publishDate}</span></div>
@@ -107,8 +108,9 @@ class JobApplication
                          <div class='card-footer'>
                              <a href='joboffer.php?id={$joboffer->id}' class='btn btn-primary'>View Details</a>
                          </div>
-                     </div>
-    ";
+                        </div>
+                        <br>
+                         ";
     }
 
 }
