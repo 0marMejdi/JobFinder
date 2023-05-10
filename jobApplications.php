@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php include_once 'allFrags.php'?>
+
 <html lang="en">
 
 <head>
@@ -27,26 +29,7 @@
 
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center justify-content-between">
-
-            <div class="logo">
-                <h1><a href="companyHome.php">JobFinder</a></h1>
-            </div>
-
-            <nav id="navbar" class="navbar">
-
-                <ul>
-                    <li><a class="nav-link scrollto" href="">Home</a></li>
-                    <li><a class="nav-link scrollto " href="companyProfile.php">My Profile</a></li>
-                    <li><a class="nav-link scrollto active" href="companyjoboffers.php">My Job Offers</a></li>
-                    <li><a class="login " href="login.php">Disconnect</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-
-        </div>
-    </header><!-- End Header -->
+    <?php includeNavBarCompany(here()); ?>
 
 
     <br><br>

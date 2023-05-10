@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include_once 'allFrags.php';
+?>
 <html lang="en">
 
 <head>

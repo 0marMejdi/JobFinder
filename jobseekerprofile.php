@@ -5,8 +5,11 @@ include_once "allFrags.php";
 if (!isAuthenticated())
     sendError("unauthenticated", "login");
 // if no email is specified, then requested profile is the current user's profile
-if (!isset($_GET['email']))
-    $user= $_SESSION['currentUser'];
+if (!isset($_GET['email'])) {
+    $user = $_SESSION['currentUser'];
+    if($user->isCompany())
+        header("Location: companyProfile.php");
+}
 else {
     // if email is specified in url, then requested profile is the user with that email
     // if no user with that email exists, then send error and go back to current user's profile page
