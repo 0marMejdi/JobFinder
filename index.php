@@ -3,6 +3,7 @@ include_once "allFrags.php";
 session_start();
 $totalseekers=JobSeekerRepository::getAllWhere();
 $totalseekers=count($totalseekers);
+
 $totalcompanies=CompanyRepository::getAllWhere();
 $totalcompanies=count($totalcompanies);
 $totaljoboffers=JobOfferRepository::getAllWhere();

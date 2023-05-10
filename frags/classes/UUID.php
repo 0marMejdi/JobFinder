@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * for unique universal identifier
+ */
 class UUID{
     public static function gen_uuid() : string
     {

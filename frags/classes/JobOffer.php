@@ -27,7 +27,8 @@ class JobOffer
         $location="",
         $education="",
         $experience="",
-        $salary=0.0
+        $salary=0.0,
+        $companyEmail=""
     )
     {
         $this->id = UUID::gen_uuid();
@@ -40,7 +41,7 @@ class JobOffer
         $this->education = $education;
         $this->experience = $experience;
         $this->salary = $salary;
-        $this->companyEmail = $_SESSION["currentUser"]->email;
+        $this->companyEmail = $companyEmail;
         $this->publishDate = date("Y-m-d");
     }
 

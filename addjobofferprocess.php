@@ -32,7 +32,7 @@ echo"Salary : $salary <br>";
 
 //testing if
 //create a new job offer object using the conctructor in the JobOffer class
-$joboffer=new JobOffer($jobTitle,$jobDescription,$WorkTime,$WorkType,$ContractType,$Location,$Education,$Experience,$salary);
+$joboffer=new JobOffer($jobTitle,$jobDescription,$WorkTime,$WorkType,$ContractType,$Location,$Education,$Experience,$salary,$_SESSION["currentUser"]->email);
 //insert the job offer object into the database
 if (!JobOfferRepository::insert($joboffer)){
     sendError("cannot_add_job_offer","addJobOffer");

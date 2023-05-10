@@ -235,13 +235,12 @@ $jsonObj= json_encode(Sector::getSectors());
 <script>
     let data = <?= $jsonObj ?>;
     const select = document.getElementById('section');
-    len
-    let only = data[0];
-    const option = document.createElement('option');
-
-    option.value = data[i]['id'];
-    option.text = data[i]['description'];
-    select.add(option);
+    let n = data.length
+    data.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.description;
+        optionElement.textContent = option.description;
+        select.appendChild(optionElement);});
 
 </script>
 
