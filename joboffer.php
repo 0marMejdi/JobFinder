@@ -47,10 +47,6 @@ $clientName=$client->companyName;
 
         <div class="d-flex justify-content-between align-items-center">
           <h2>Job Offer Details</h2>
-          <ol>
-            <li><a href="UserHome.html">Home </a></li>
-            <li>Job Offer Details</li>
-          </ol>
         </div>
 
       </div>
