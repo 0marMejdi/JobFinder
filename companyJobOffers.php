@@ -3,7 +3,7 @@ include_once 'allFrags.php';
 session_start();
 needsAuthentication();
 $user= $_SESSION["currentUser"];
-if ($user->personType=="JobSeeker")
+if ($user->isJobSeeker())
     header("Location: jobseekerprofile.php");
 if (CompanyRepository::doesExist("email",$user->email))
     $user=CompanyRepository::getOneWhere("email",$user->email);
@@ -33,7 +33,8 @@ function printOffer($joboffer){
             </ul>
         </div>
         <div class='card-footer'>
-            <a href='#' class='btn btn-primary'>View Applications</a>
+        <!-- TODO :: change refrence later -->
+            <a href='jobApplications.php?id={$joboffer->id}' class='btn btn-primary'>View Applications</a>
         </div>
     </div>
     <br>
@@ -55,7 +56,7 @@ function printAllJobOffers(){
 
 }
 ?>
-<!-- Nitfehmou chnouwa bich n7otou fih -->
+
 <!DOCTYPE html>
 <html lang="en">
 

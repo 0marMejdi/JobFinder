@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * generates an errors list, each error is defined by error code as the key, and the error message as the value of  the array
  *
@@ -20,6 +18,8 @@
         $Errors["request_profile_doesnt_exist"]="Requested Profile Not Found: The profile you are looking for doesn't exist";
         $Errors["request_job_offer_doesnt_exist"]="Requested Job Offer Not Found: The job offer you are looking for doesn't exist";
         $Errors["request_job_demand_doesnt_exist"]="Requested Job Demand Not Found: The job demand you are looking for doesn't exist";
+        $Errors["cannot_connect_to_database"]="Cannot Connect to Database: There is a problem with the server database, please try again later or contact us";
+        $Errors["cannot_insert_into_database"]="Cannot Register your Account: Something went wrong with database when trying to insert your information, contact us if this persists";
         $Errors['current_user_not_found'] = "Something went wrong : Current user is not found in database, please reconnect or contact us if this does persist";
         $Errors["cannot_connect_to_database"]="Cannot Connect to Database: There is a problem with the server database, please try again later or contact us";
         $Errors['already_applied']= "You cannot apply twice to the same job offer ! " ;
@@ -28,7 +28,16 @@
         $Errors['cannot_add_job_offer'] ="Error while adding your Job Offer : something went wrong" ;
         return $Errors;
     }
+    //TODO: Rediger Doc
+    function getSuccesses() : array
+    {
+        $Successes = [];
+        $Successes["register_success"]="Your account has been registered successfully";
+        $Successes["send_apply_success"] = "Your job application has been sent successfully to the company manager, he will get it soon";
+        $Successes["create_job_offer_success"]="Your job offer has been saved and published successfully";
+        return $Successes;
 
+    }
 /**
  * it checks the current session, if there is any error value in there it return the error message as alert
  *
@@ -53,7 +62,22 @@
         unset($_SESSION['errorCode']);
         return $str;
     }
-
+    //TODO: Rediger Doc
+    function showSuccessIfExists() : string {
+    session_start_once();
+    $successes = getSuccesses();
+    if (!isset($_SESSION['successCode'])) return "";
+    $successCode = $_SESSION['successCode'];
+    $str = '<div class="alert alert-success" role="alert">';
+    if (array_key_exists($successCode, $successes)){
+        $str.= $successes[$successCode];
+    }else{
+        $str.= "Success Code: " .$successCode;
+    }
+    $str.= '</div>';
+    unset($_SESSION['successCode']);
+    return $str;
+}
 /**
  * when you detect error that happened and needs to be shown,
  * you use this function to send the error code to the desired page, and it will be shown if it has showErrorIfExists() function
@@ -69,12 +93,24 @@
     }
 
 /**
+ *  * when an operation succeeded and  needs to be shown,
+ * you use this function to send the success code to the desired page, and it will be shown if it has showSuccessIfExists() function
+ * @param string $successCode string of the success code that has been detected
+ * @param $to string the name of the page to send the error (without .php suffix)
+ * @return void
+ */
+    function sendSuccess(string $successCode, string $to): void {
+    session_start_once();
+    $_SESSION['successCode']=$successCode;
+    header("Location: $to.php");
+    exit;
+}
+
+/**
  * gets the current page name
- *
  *
  * @return string current page name
  */
     function here():string{
-        $filename = basename($_SERVER['PHP_SELF'], '.php');
-        return $filename;
+        return basename($_SERVER['PHP_SELF'], '.php');
     }

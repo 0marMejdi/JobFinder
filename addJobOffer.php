@@ -171,10 +171,6 @@ else
     height: 400px;
     text-align: center;
   }
-  button{
-    margin-top: 20px;
-    margin-left: 170px;
-  }
   [type="file"] {
   height: 0;
   overflow: hidden;
@@ -327,6 +323,10 @@ else
     height: 450px;
     text-align: center;
   }
+  button{
+    margin-top: 20px;
+    margin-left: 170px;
+  }
 </style>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -352,7 +352,7 @@ else
     
     <img src="assets\templates\AddJobOffer.jpg">
 
-    <form action="processess/addjobofferprocess.php" method="POST">
+    <form action="addjobofferprocess.php" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Add Job Offer</h2>
         <p>
@@ -546,7 +546,6 @@ else
         </div>
       </div>
 
-
       <div class="formbold-mb-3"><label for="experience" class="formbold-form-label"> Location </label>
         <input
             type="text"
@@ -587,7 +586,7 @@ else
                     min="0"
             />
         </div>
-        <button type="submit" class="btn-lg btn btn-primary ">Apply Now</button>
+        <button type="submit" class="btn-lg btn btn-primary" style="margin-left: 170px; margin-top:25px;">Add Job Now</button>
     </form>
   </div>
 </div>

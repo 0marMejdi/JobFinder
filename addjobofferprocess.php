@@ -1,14 +1,14 @@
 <?php
 //get all the inputs from the form in addJobOffer.php
-include 'allFrags.php';
+include_once 'allFrags.php';
 ConnexionBD::checkTables();
 session_start();
 // should be authenticated and cant access directly
 if (!isAuthenticated()){
-    sendError("unauthenticated","../login");
+    sendError("unauthenticated","login");
 }
 if(!isset($_POST["JobTitle"])) {
-    sendError("cannot_access_directly","../companyProfile.php");
+    sendError("cannot_access_directly","companyProfile.php");
 }
 
 $jobTitle = $_POST["JobTitle"];
@@ -35,11 +35,12 @@ echo"Salary : $salary <br>";
 $joboffer=new JobOffer($jobTitle,$jobDescription,$WorkTime,$WorkType,$ContractType,$Location,$Education,$Experience,$salary);
 //insert the job offer object into the database
 if (!JobOfferRepository::insert($joboffer)){
-    sendError("cannot_add_job_offer","../addJobOffer");
+    sendError("cannot_add_job_offer","addJobOffer");
 }
 echo $joboffer->id;
 $test=JobOfferRepository::getOneWhere("id",$joboffer->id);
 echo $test->id;
 //redirect to the job offers page
-header("Location: ../companyJobOffers.php");
+//header("Location: companyJobOffers.php");
+sendSuccess("create_job_offer_success","companyJobOffers");
 //TODO :: send success to company JobOffers.php

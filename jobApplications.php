@@ -16,19 +16,19 @@ else
     sendError("'current_user_not_found", "login");
 }
 $jobOfferId = "";
-if (isset($_GET['id'])) {
-    if (!JobOfferRepository::doesExist("id", $_GET['id'])) {
-        sendError("job_offer_not_found", "companyprofile");
-    } else {
-        $jobOfferId = $_GET['id'];
-        $applications = JobApplicationRepository::getAllWhere("JobOfferID",$jobOfferId);
-        $jobOffer=JobOfferRepository::getOneWhere("id",$jobOfferId);
-    }
+if (isset($_GET['jobOfferId']))
+{
+    $jobOfferId = $_GET['jobOfferId'];
 }
 else
 {
-    $applications = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    sendError("job_offer_not_found", "companyprofile");
 }
+if (!JobSeekerRepository::doesExist("id",$jobOfferId))
+{
+    sendError("job_offer_not_found", "companyprofile");
+}
+$jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
 ?>
 
 <html lang="en">
@@ -119,7 +119,7 @@ else
                         </table>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>

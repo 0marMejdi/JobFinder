@@ -1,9 +1,11 @@
 <?php
 include_once "allFrags.php";
+ConnexionBD::checkTables();
 session_start();
 if (isAuthenticated()){
     sendError("already_logged_in","homePage");
 }
+$jsonObj= json_encode(Sector::getSectors());
 
 ?>
 
@@ -33,7 +35,7 @@ if (isAuthenticated()){
         </div>
         <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
-        <form class="needs-validation" novalidate action="processess/registerProcessForJobSeeker.php" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="registerProcessForJobSeeker.php" method="post" enctype="multipart/form-data">
 
             <div class="row g-3">
                 <!--Frist Name-->
@@ -231,5 +233,18 @@ if (isAuthenticated()){
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script src="checkout.js"></script>
 <script src="registration.js"></script>
+<script>
+    let data = <?= $jsonObj ?>;
+    const select = document.getElementById('section');
+    len
+    let only = data[0];
+    const option = document.createElement('option');
+
+    option.value = data[i]['id'];
+    option.text = data[i]['description'];
+    select.add(option);
+
+</script>
+
 </body>
 </html>

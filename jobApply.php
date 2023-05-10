@@ -3,7 +3,7 @@ include_once 'allFrags.php';
 session_start();
 needsAuthentication();
 $user= $_SESSION["currentUser"];
-if ($user->personType=="Company")
+if ($user->isCompany())
     header("Location: companyProfile.php");
 if (JobSeekerRepository::doesExist("email",$user->email))
     $user=JobSeekerRepository::getOneWhere("email",$user->email);
@@ -19,7 +19,6 @@ if (!JobOfferRepository::doesExist("id",$_GET["id"]))
  sendError("job_offer_not_found","userhome");
 }
 $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
-$jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +28,17 @@ $jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Ajw4zgXkH0hFZsBm/yCpQD+3TYT15E0lqj6H+8DD4VWZ6jmkI9Brcd9zArOo/Y0aivCzeZdGbTjf+3XdgMgPRQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- logo -->
+    <link href="assets/templates/logo.png" rel="icon">
 
+    <!-- CSS -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <title>Document</title>
     <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -205,16 +214,16 @@ $jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
   position: relative;
   transition: all 0.3s;
   vertical-align: middle;
-  
+
   &:hover {
     background-color: darken(#f15d22, 10%);
   }
-  
+
   &.btn-2 {
     background-color: #99c793;
     border-radius: 50px;
     overflow: hidden;
-    
+
     &::before {
       color: #fff;
       font-family: "Font Awesome 5 Pro";
@@ -229,13 +238,13 @@ $jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
 
     &:hover {
       background-color: darken(#99c793, 30%);
-        
+
       &::before {
         right: 75%;
       }
     }
   }
-  
+
 }
 img{
     width: 500px;
@@ -245,15 +254,16 @@ img{
 
 </style>
 </head>
+<?php includeNavBarJobSeeker(here()); ?>
 <body>
 <div class="formbold-main-wrapper">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="formbold-form-wrapper">
-    
+
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
-    <form action="processess/jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
+    <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Apply Now</h2>
         <p>
@@ -340,7 +350,7 @@ img{
         />
       </div>
 
-    
+
         <div>
             <label for="education" class="formbold-form-label"> Education </label>
             <input
@@ -375,7 +385,7 @@ img{
             <label for="aboutme" class="formbold-form-label">  Upload your CV </label>
             <input type="file" id="file" />
             <label for="file" class="btn-2">Upload a File</label>
-        </div>  
+        </div>
       <button class="btn-lg btn btn-primary ">Apply Now</button>
     </form>
   </div>

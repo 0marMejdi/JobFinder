@@ -18,6 +18,10 @@ else {
 
 ?>
 <!-- Nitfehmou chnouwa bich n7otou fih -->
+
+<?php
+include_once "allFrags.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

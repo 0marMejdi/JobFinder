@@ -23,7 +23,7 @@ function needsAuthentication():void
 function needsNOAuthentication():void
 {
     if (isAuthenticated())
-        header("Location: homePage.php");
+        header("Location: jobseekerprofile.php");
 }
 
 function CompanyExclusive(){

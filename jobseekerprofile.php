@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <?php
 include_once "allFrags.php";
-needsAuthentication();
-if (!isset($_GET['email']))
-    $user= $_SESSION['currentUser'];
+// user must be authenticated to access this page
+if (!isAuthenticated())
+    sendError("unauthenticated", "login");
+// if no email is specified, then requested profile is the current user's profile
+if (!isset($_GET['email'])) {
+    $user = $_SESSION['currentUser'];
+    if($user->isCompany())
+        header("Location: companyProfile.php");
+}
 else {
+    // if email is specified in url, then requested profile is the user with that email
+    // if no user with that email exists, then send error and go back to current user's profile page
     if(JobSeekerRepository::doesExist("email", $_GET['email']))
         $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
     else
         sendError("request_profile_doesnt_exist", here());
 }
 
-
+// calculating user's age
 $currentDate = new DateTime();
 $age = 18;
 try {
@@ -48,7 +56,7 @@ try {
     <body>
 
         <!-- ======= Header ======= -->
-        <?php includeNavBarJobSeeker() ?>
+        <?php includeNavBarJobSeeker(here()) ?>
 
 
 
