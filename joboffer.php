@@ -52,46 +52,52 @@ $clientName=$client->companyName;
       </div>
     </section>
       <!-- End Breadcrumbs -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container" data-aos="fade-up">
+      <section id="portfolio-details" class="portfolio-details">
+  <div class="container" data-aos="fade-up">
 
-        <div class="row gy-4">
+    <div class="row gy-4">
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider ">
-              
-
-                <div class="swiper-slide">
-                  <img src="assets\img\jobs\job.jpg" alt="">
-                </div>
-
-                
-            </div>
+      <div class="col-lg-4">
+        <div class="portfolio-details-slider text-center">
+          <div class="swiper-slide">
+            <img src="assets\img\jobs\job.jpg" alt="" style="width: 300px; margin: auto;">
           </div>
-
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Job Information</h3>
-              <ul>
-                <li><strong>Job Title</strong>: <?= $job->title ?></li>
-                <li><strong>Client</strong>: <?= $clientName ?></li>
-                <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
-              </ul>
-            </div>
-            <div >
-              <h2>Job Description</h2>
-              <p>
-                <?= $job->description ?>
-              </p>
-            </div>
-            <br>
-            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now !</a>
-          </div>
-
         </div>
-        
       </div>
-    </section>
+
+      <div class="col-lg-4">
+        <div class="portfolio-info">
+          <h3>Job Information</h3>
+          <ul>
+            <li><strong>Job Title</strong>: <?= $job->title ?></li>
+            <li><strong>Salary</strong>: <?= $clientName ?></li>
+            <li><strong>Work Time</strong>: <?= $job->publishDate ?></li>
+            <li><strong>Work Type</strong>: <?= $job->publishDate ?></li>
+            <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
+            <li><strong>location</strong>: <?= $job->publishDate ?></li>
+            <li><strong>Required Experience</strong>: <?= $job->publishDate ?></li>
+            <li><strong>Company Name</strong>: <?= $job->publishDate ?></li>
+            <li><strong>Contract Type</strong>: <?= $job->publishDate ?></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div>
+          <h2>Job Description</h2>
+          <p>
+            <?= $job->description ?>
+          </p>
+        </div>
+        <br>
+        <a href="jobApply.php?id=<?= $job->id ?>" class="btn btn-primary">Apply Now!</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 
   </main><!-- End #main -->
   
