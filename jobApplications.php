@@ -54,7 +54,7 @@
         <div class="container" data-aos="fade-up">
             <div class="section-title">
                 <h2>Applications for Job Title</h2>
-                <p>View the applications submitted for this <a href="joboffer.html">job offer</a> below.</p>
+                <p>View the applications submitted for this job offer below.</p>
             </div>
 
             <div class="row">
