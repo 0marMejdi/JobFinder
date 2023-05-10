@@ -86,5 +86,29 @@ class JobApplication
     {
         $this->id=$id;
     }*/
+    public static function printjobapplication($application)
+    {
+        $joboffer=JobOfferRepository::getOneWhere("id",$application->jobOfferID);
+        $company=CompanyRepository::getOneWhere("email",$joboffer->companyEmail);
+        echo"
+                        <div>
+                         <div class='card-header'>
+                             <h4>{$joboffer->title}</h4>
+                             <div class='job-post-date'>Posted on: <span>{$joboffer->publishDate}</span></div>
+                         </div>
+                         <div class='card-body'>
+                             <p>{$joboffer->description}</p>
+                             <ul>
+                                 <li><strong>Company:</strong> {$company->companyName}</li>
+                                 <li><strong>Salary:</strong> {$joboffer->salary}</li>
+                                 <li><strong>Status:</strong> {$application->status}</li>
+                             </ul>
+                         </div>
+                         <div class='card-footer'>
+                             <a href='joboffer.php?id={$joboffer->id}' class='btn btn-primary'>View Details</a>
+                         </div>
+                     </div>
+    ";
+    }
 
 }

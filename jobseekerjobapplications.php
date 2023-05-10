@@ -1,3 +1,19 @@
+<?php
+include "allFrags.php";
+session_start();
+needsAuthentication();
+ConnexionBD::checkTables();
+$user=$_SESSION["currentUser"];
+if ($user->personType=="Company")
+    header("Location: userhome.php");
+if (JobSeekerRepository::doesExist("email",$user->email))
+    $user=JobSeekerRepository::getOneWhere("email",$user->email);
+else {
+    unset($_SESSION["currentUser"]);
+    sendError("current_user_not_found", "login");
+}
+$jobapplications=JobApplicationRepository::getAllWhere("jobSeekerEmail",$user->email);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,53 +75,21 @@
                 <h2>My Job Applications</h2>
                 <p>View the job applications you've submitted below.</p>
             </div>
-
             <div class="align-items-stretch">
-            <div class="card">
-                    <div class="card-header">
-                        <h4>Job Title</h4>
-                        <div class="job-post-date">Posted on: <span>June 1, 2023</span></div>
-                    </div>
-                    <div class="card-body">
-                        <p>Job Description</p>
-                        <ul>
-                            <li><strong>Company:</strong> ABC Company</li>
-                            <li><strong>Salary:</strong> $60,000 - $80,000</li>
-                            <li><strong>Status:</strong> In Review</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="joboffer.php" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
+                 <div class="card">
+                     <?php
+                     foreach ($jobapplications as $jobapplication)
+                     {
+                         JobApplication::printJobApplication($jobapplication);
+                     }
+                        ?>
+                             <br>
+                             <br>
 
-                <br>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Job Title</h4>
-                        <div class="job-post-date">Posted on: <span>June 1, 2023</span></div>
-                    </div>
-                    <div class="card-body">
-                        <p>Job Description</p>
-                        <ul>
-                            <li><strong>Company:</strong> ABC Company</li>
-                            <li><strong>Salary:</strong> $60,000 - $80,000</li>
-                            <li><strong>Status:</strong> In Review</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="joboffer.php" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
 
-                <br>
-
+                 </div>
 
             </div>
-
-            
-        </div>
     </section>
 
 
