@@ -119,7 +119,7 @@ $clientName=$client->companyName;
               </p>
             </div>
             <br>
-            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Add Job Now</a>
           </div>
 
         </div>
