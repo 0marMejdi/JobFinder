@@ -1,3 +1,18 @@
+<?php
+
+include_once 'allFrags.php';
+session_start();
+needsAuthentication();
+$user= $_SESSION["currentUser"];
+if ($user->isJobSeeker())
+    header("Location: jobseekerprofile.php");
+if (CompanyRepository::doesExist("email",$user->email))
+    $user=CompanyRepository::getOneWhere("email",$user->email);
+else
+    sendError("current_user_not_found","login");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -313,7 +328,22 @@
     text-align: center;
   }
 </style>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- logo -->
+    <link href="assets/templates/logo.png" rel="icon">
+
+    <!-- CSS -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
+<?= includeNavBarCompany(here()) ?>
 <body>
 <div class="formbold-main-wrapper">
   <!-- Author: FormBold Team -->
@@ -322,7 +352,7 @@
     
     <img src="assets\templates\AddJobOffer.jpg">
 
-    <form action="addjobofferprocess.php"  method="POST">
+    <form action="processess/addjobofferprocess.php" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Add Job Offer</h2>
         <p>
@@ -542,7 +572,7 @@
             name="experiencerequired"
             id="experience"
             class="formbold-form-input"
-            max="40"
+
             min="0"
         />
         </div>
@@ -553,7 +583,7 @@
                     name="salary"
                     id="salary"
                     class="formbold-form-input"
-                    max="40"
+
                     min="0"
             />
         </div>

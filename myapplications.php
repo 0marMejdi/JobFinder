@@ -6,10 +6,14 @@ ConnexionBD::checkTables();
 
 needsAuthentication();
 $user=$_SESSION["currentUser"];
-if ($user->userType=="Company")
-    header("Location: Companyprofile.php");
+// Redirecting companies to their profile as they don't have the right to see this page
+if ($user->isCompany())
+    header("Location: CompanyProfile.php");
 if (JobSeekerRepository::doesExist("email",$user->email))
     $user=JobSeekerRepository::getOneWhere("email",$user->email);
-else
-    sendError("user_not_found","login");
+else {
+    unset($_SESSION["currentUser"]);
+    sendError("current_user_not_found", "login");
+
+}
 $jobapplications=JobApplicationRepository::getAllWhere("jobSeekerEmail",$user->email);

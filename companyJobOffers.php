@@ -8,7 +8,7 @@ if ($user->personType=="JobSeeker")
 if (CompanyRepository::doesExist("email",$user->email))
     $user=CompanyRepository::getOneWhere("email",$user->email);
 else
-    sendError("user_not_found","login");
+    sendError("current_user_not_found","login");
 // make salary from 1 format to $1,000 format
 function formatSalary($salary)
 {
@@ -17,6 +17,42 @@ function formatSalary($salary)
     $salary = strrev($salary);
     $salary = substr($salary, 1);
     return $salary;
+}
+function printOffer($joboffer){
+    $formattedSalary = "$".$joboffer->salary." per month";
+    echo "
+        <div class='card'>
+            <div class='card-header'>
+                <h4><a href='joboffer.php?id={$joboffer->id}' >{$joboffer->title} </a></h4>
+                <div class='job-post-date'>Posted on: <span>{$joboffer->publishDate}</span></div>
+            </div>
+        <div class='card-body'>
+            <p>{$joboffer->description}</p>
+            <ul>
+                <li><strong>Salary:</strong> {$formattedSalary} </li>
+            </ul>
+        </div>
+        <div class='card-footer'>
+            <a href='#' class='btn btn-primary'>View Applications</a>
+        </div>
+    </div>
+    <br>
+    ";
+}
+function printAllJobOffers(){
+    $user= $_SESSION["currentUser"];
+    if (! JobOfferRepository::doesExist("companyEmail", $user->email))
+    {
+        echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
+    }else{
+        $jobOffersList = JobOfferRepository::getAllWhere("companyEmail", $user->email);
+
+        foreach ($jobOffersList as $joboffer)
+        {
+            printOffer($joboffer);
+        }
+    }
+
 }
 ?>
 <!-- Nitfehmou chnouwa bich n7otou fih -->
@@ -48,27 +84,7 @@ function formatSalary($salary)
 
     <body>
 
-        <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-
-                <div class="logo">
-                    <h1><a href="companyProfile.php">JobFinder</a></h1>
-                </div>
-
-                <nav id="navbar" class="navbar">
-
-                    <ul>
-                        <li><a class="nav-link scrollto" href="">Home</a></li>
-                        <li><a class="nav-link scrollto " href="companyProfile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto active" href="">My Job Offers</a></li>
-                        <li><a class="login " href="login.php">Disconnect</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        </header><!-- End Header -->
+        <?php includeNavBarCompany(here()) ?>
 
 
         <br> <br>
@@ -85,32 +101,8 @@ function formatSalary($salary)
 
 
                 <div class="align-items-stretch">
-
                     <?php
-                    $alloffersofme=JobOfferRepository::getAllWhere("companyEmail",$user->email);
-                        foreach ($alloffersofme as $joboffer)
-                        {
-                            $salary = "$".$joboffer->salary." per month";
-                         echo "
-                         <div class='card'>
-     <div class='card-header'>
-                            <h4><a href='joboffer.php?id={$joboffer->id}' >{$joboffer->title} </a></h4>
-                            <div class='job-post-date'>Posted on: <span>{$joboffer->publishDate}</span></div>
-                        </div>
-                        <div class='card-body'>
-                            <p>{$joboffer->description}</p>
-                            <ul>
-                                <li><strong>Salary:</strong> {$salary} </li>
-                                
-                            </ul>
-                        </div>
-                        <div class='card-footer'>
-                            <a href='#' class='btn btn-primary'>View Applications</a>
-                        </div>
-                    </div>
-                    <br>
-                         ";
-                        }
+                        printAllJobOffers()
                     ?>
                 </div>
             </div>
@@ -118,9 +110,6 @@ function formatSalary($salary)
 
         <br> <br>
         <br> <br>
-
-
-
 
         <!-- ======= Footer ======= -->
         <footer>

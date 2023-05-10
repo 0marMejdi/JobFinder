@@ -1,13 +1,14 @@
 <?php
 include_once 'allFrags.php';
 session_start();
+
+//needs to be unauthenticated and cannot access directly
+
 if (isAuthenticated()){
-    sendError("already_logged_in","homePage");
+    sendError("already_logged_in","../homePage");
 }
-
-
 if(!isset($_POST["email"])) {
-    sendError("sign_up_first","login");
+    sendError("cannot_access_directly","../login");
 }
 
 $companyName = $_POST['companyName'];
@@ -41,17 +42,11 @@ $newCompany = new Company(
 );
 //check if the email is already used
 if (CompanyRepository::doesExist("email",$email))
-    sendError("email_already_exists","registerForCompany");
+    sendError("email_already_exists","../registerForCompany");
 CompanyRepository::insert($newCompany);
-if (isFileUploaded("logo")){
-    $dir = "assets/data/Company/".$newCompany->email;
-    if (!file_exists($dir)) mkdir($dir, 0777, true);
-    moveFileTo("logo",$dir);
-    renameFile($dir . "/" . $_FILES["logo"]["name"] ,"pdp");
-    $newCompany->modify("hasLogo",true);
-}
+uploadPictureCompany($newCompany);
 
 $_SESSION["currentUser"] = $newCompany;
-header("Location: homePage.php");
+header("Location: ../homePage.php");
 
 

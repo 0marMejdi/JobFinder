@@ -4,7 +4,8 @@ class Sector
 {
     public int $id;
     public string $description;
-    public function __construct( $id="", $description=""  )
+    public object $subSectors;
+    public function __construct( $id=0, $description=""  )
     {
         $this->id = $id;
         $this->description = $description;
@@ -19,4 +20,9 @@ class Sector
         return objectToClassArray($sectorList, "Sector");
     }
 
+}
+class SubSector
+{
+    public int $id;
+    public string $description;
 }

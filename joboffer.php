@@ -18,7 +18,6 @@ $clientName=$client->companyName;
     <meta content="" name="keywords">
 
     <!-- logo -->
-    <link href="assets\img\logo.png" rel="icon">
 
     <!-- CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -51,7 +50,7 @@ $clientName=$client->companyName;
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
+                        <li><a class="login " href="processess/disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->

@@ -32,7 +32,7 @@ class JobSeeker{
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->password = $password;
-        $this->userType = "JobSeeker";
+        $this->userType = "JobSeeker"; // TODO :: redondant
         $this->gender = $gender;
         $this->number = $number;
         $this->birthdate = $birthdate;
@@ -45,7 +45,7 @@ class JobSeeker{
         $this->experience = $experience;
         $this->bio = $bio;
         $this->title = $title;
-        $this->hasPhoto = $hasPhoto;
+        $this->hasPhoto = $hasPhoto; // TODO :: redondant
     }
 
     public function __toString(): string

@@ -253,7 +253,7 @@ img{
     
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
-    <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
+    <form action="processess/jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Apply Now</h2>
         <p>

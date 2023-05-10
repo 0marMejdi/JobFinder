@@ -2,13 +2,20 @@
 include_once 'allFrags.php';
 session_start();
 needsAuthentication();
-$user= $_SESSION["currentUser"];
-if ($user->personType=="JobSeeker")
-    header("Location: jobseekerprofile.php");
-if (CompanyRepository::doesExist("email",$user->email))
-    $user=CompanyRepository::getOneWhere("email",$user->email);
-else
-    sendError("user_not_found","login");
+
+if (!isset($_GET['email'])) {
+    $user = $_SESSION['currentUser'];
+    if ($user->isJobSeeker()){
+        header("Location: jobSeekerProfile.php");
+    }
+}
+else {
+    if(CompanyRepository::doesExist("email", $_GET['email']))
+        $user = CompanyRepository::getOneWhere("email", $_GET['email']);
+    else
+        sendError("request_profile_doesnt_exist", here());
+}
+
 ?>
 <!-- Nitfehmou chnouwa bich n7otou fih -->
 <!DOCTYPE html>
@@ -36,39 +43,18 @@ else
 </head>
 
     <body>
-        <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-                <?= showErrorIfExists() ?>
-                <div class="logo">
-                    <h1><a href="UserHome.php">JobFinder</a></h1>
-                </div>
-
-                <nav id="navbar" class="navbar">
-
-                    <ul>
-                        <li><a class="nav-link scrollto" href="">Home</a></li>
-                        <li><a class="nav-link scrollto active" href="companyProfile.php">My Profile</a></li>
-
-                        <li><a class="nav-link scrollto" href="">My Job Offers</a></li>
-                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        </header><!-- End Header -->
-
+        <?php includeNavBarCompany(here()) ?>
 
 
         <br><br>
         <!-- Company Profile Section -->
         <section id="company-profile" class="company-profile">
             <div class="container">
+                <?= showErrorIfExists() ?>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="company-img" data-aos="fade-right" data-aos-delay="100">
-                            <img src="assets/templates/default-company.jpg" alt="Company Logo">
+                            <img src="<?= getPicturePathForobject($user) ?>" alt="Company Logo" width="300" height="300">
                         </div>
                     </div>
                     <div class="col-lg-8 mt-5 mt-lg-0">

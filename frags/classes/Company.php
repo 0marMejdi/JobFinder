@@ -12,8 +12,8 @@ class Company {
     public string $country;
     public string $region;
     public string $address;
-    public bool $hasLogo;
-    public string $userType = "Company";
+    public bool $hasLogo; // TODO :: remove : Uselless And redondant
+    public string $userType = "Company"; // TODO :: remove : Uselless And redondant
     public function __construct(
         string $companyName = "",
         string $email = "",
@@ -70,7 +70,7 @@ class Company {
     public function modify(string $attributeName, $newValue){
         return ObjectRepository::modifyAttributeAndDatabase( "Company", $this , $attributeName, $newValue);
     }
-    public function isCompany(){
+    public function isCompany(): bool{
         return true;
     }
     public function isJobSeeker() : bool
