@@ -1,6 +1,5 @@
 <?php
 include_once "allFrags.php";
-ConnexionBD::checkTables();
 session_start();
 if (isAuthenticated()){
     sendError("already_logged_in","homePage");

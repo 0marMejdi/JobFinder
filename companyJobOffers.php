@@ -34,7 +34,7 @@ function printOffer($joboffer){
         </div>
         <div class='card-footer'>
         <!-- TODO :: change refrence later -->
-            <a href='jobApplications.php?id={$joboffer->id}' class='btn btn-primary'>View Applications</a>
+            <a href='#' class='btn btn-primary'>View Applications</a>
         </div>
     </div>
     <br>

@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <?php include_once 'allFrags.php';
+session_start();
 needsAuthentication();
-ConnexionBD::checkTables();
-$user = $_SESSION["currentUser"];
-if ($user->isJobSeeker())
-{
-    header("Location: userhome.php");
+function printTableData($jobApplication){
+    $jobSeeker = JobSeekerRepository::getOneWhere("email",$jobApplication->jobSeekerEmail);
+    ?>
+    <tr>
+        <td><?= $jobSeeker->firstName?> <?= $jobSeeker->lastName?></td>
+        <td><a href = "jobseekerprofile.php?email=<?=$jobSeeker->email?>"><?= $jobSeeker->email?> </a></td>
+        <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
+    <!-- TODO :: change path later -->
+        <td><a href="#" target="_blank">Download</a></td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
+    </tr>
+<?php
 }
-if (CompanyRepository::doesExist("email", $user->email))
-{
-    $user = CompanyRepository::getOneWhere("email", $user->email);
+function printAllData(){
+    $user = $_SESSION["currentUser"];
+    $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    if ($allapps==NULL){
+        echo "";
+    }else{
+        foreach ($allapps as $app){
+            printTableData($app);
+        }
+    }
 }
-else
-{
-    sendError("'current_user_not_found", "login");
-}
-$jobOfferId = "";
-if (isset($_GET['jobOfferId']))
-{
-    $jobOfferId = $_GET['jobOfferId'];
-}
-else
-{
-    sendError("job_offer_not_found", "companyprofile");
-}
-if (!JobSeekerRepository::doesExist("id",$jobOfferId))
-{
-    sendError("job_offer_not_found", "companyprofile");
-}
-$jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
 ?>
 
 <html lang="en">
@@ -95,31 +92,19 @@ $jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <?php
-                                    if ($jobOfferId=="")
-                                        echo"<th>Job Title</th>";
-                                    ?>
                                     <th>Tell Us Why You Want to Join Us</th>
                                     <th>CV</th>
                                     <th>Decision</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if (!$applications==null)
-                            {
-                                foreach ($applications as $application) {
-                                    $jobseeker=JobSeekerRepository::getOneWhere("email",$application->jobSeekerEmail);
-                                    JobApplication::printJobApplication2($application,$jobseeker,$jobOfferId);
-                                }
-                            }
-                            ?>
-
+                                <?php printAllData();
+                                ?>
                             </tbody>
                         </table>
                     </div>
 
-
+                   
                 </div>
             </div>
         </div>
