@@ -58,23 +58,14 @@ $clientName=$client->companyName;
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+            <div class="portfolio-details-slider ">
+              
 
                 <div class="swiper-slide">
-                  <img src="assets/img/team/team-1.jpg" alt="">
+                  <img src="assets\img\jobs\job.jpg" alt="">
                 </div>
 
-                <div class="swiper-slide">
-                  <img src="assets/img/team/team-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/team/team-3.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
+                
             </div>
           </div>
 
@@ -94,7 +85,7 @@ $clientName=$client->companyName;
               </p>
             </div>
             <br>
-            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Add Job Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now !</a>
           </div>
 
         </div>

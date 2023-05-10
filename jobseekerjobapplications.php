@@ -4,7 +4,7 @@ session_start();
 needsAuthentication();
 ConnexionBD::checkTables();
 $user=$_SESSION["currentUser"];
-if ($user->personType=="Company")
+if ($user->isCompany())
     header("Location: userhome.php");
 if (JobSeekerRepository::doesExist("email",$user->email))
     $user=JobSeekerRepository::getOneWhere("email",$user->email);
@@ -76,21 +76,30 @@ $jobapplications=JobApplicationRepository::getAllWhere("jobSeekerEmail",$user->e
                 <p>View the job applications you've submitted below.</p>
             </div>
             <div class="align-items-stretch">
-                 <div class="card">
+
                      <?php
+                     if ($jobapplications == NULL){
+
+                     }else
                      foreach ($jobapplications as $jobapplication)
                      {
                          JobApplication::printJobApplication($jobapplication);
                      }
                         ?>
-                             <br>
-                             <br>
+                     <br>
+
 
 
                  </div>
-
+                <br>
             </div>
+            <br>
+        </div>
+        <br>
+
     </section>
+    <br>
+
 
 
 

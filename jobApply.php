@@ -214,16 +214,16 @@ $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
   position: relative;
   transition: all 0.3s;
   vertical-align: middle;
-  
+
   &:hover {
     background-color: darken(#f15d22, 10%);
   }
-  
+
   &.btn-2 {
     background-color: #99c793;
     border-radius: 50px;
     overflow: hidden;
-    
+
     &::before {
       color: #fff;
       font-family: "Font Awesome 5 Pro";
@@ -238,13 +238,13 @@ $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
 
     &:hover {
       background-color: darken(#99c793, 30%);
-        
+
       &::before {
         right: 75%;
       }
     }
   }
-  
+
 }
 img{
     width: 500px;
@@ -254,12 +254,13 @@ img{
 
 </style>
 </head>
+<?php includeNavBarJobSeeker(here()); ?>
 <body>
 <div class="formbold-main-wrapper">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="formbold-form-wrapper">
-    
+
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
     <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
@@ -349,7 +350,7 @@ img{
         />
       </div>
 
-    
+
         <div>
             <label for="education" class="formbold-form-label"> Education </label>
             <input
@@ -384,7 +385,7 @@ img{
             <label for="aboutme" class="formbold-form-label">  Upload your CV </label>
             <input type="file" id="file" />
             <label for="file" class="btn-2">Upload a File</label>
-        </div>  
+        </div>
       <button class="btn-lg btn btn-primary ">Apply Now</button>
     </form>
   </div>
