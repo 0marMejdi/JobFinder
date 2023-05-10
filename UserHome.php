@@ -3,6 +3,7 @@
 include "allFrags.php";
 session_start();
 needsAuthentication();
+$user = $_SESSION['currentUser'];
 function printJobOffer($job){
     $company = CompanyRepository::getOneWhere("email",$job->companyEmail);
     if ($company==NULL) return;
@@ -77,7 +78,13 @@ else
 
 
   <!-- ======= Header ======= -->
-  <?php includeNavBarJobSeeker(here()); ?>
+
+  <?php
+  if($user->isJobSeeker())
+      includeNavBarJobSeeker(here());
+  else
+      includeNavBarJobSeeker(here());
+  ?>
   <br>
 
   <section id="breadcrumbs" class="breadcrumbs">
