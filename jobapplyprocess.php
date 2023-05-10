@@ -44,11 +44,18 @@ if (!JobOfferRepository::doesExist("id",$jobofferid))
 $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
 if (JobApplicationRepository::doesExist("jobOfferID",$jobofferid,"jobSeekerEmail",$user->email))
 {
-    sendError("already_applied","jobseekerprofile");
+    sendError("already_applied","jobseekerjobapplications");
 }
-$tellusmore=$_POST["aboutme"];
-$jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEmail,"pending",date("Y-m-d"),$tellusmore);
+
+
+
+$aboutMe = $_POST['aboutme'];
+
+$jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEmail,"pending",date("Y-m-d"),$aboutMe);
+//print all jobapplication attributes
+
 if (! JobApplicationRepository::insert($jobapplication))
-    sendError('cannot_add_job_apply', "index"); // TODO :: change index
-//TODO :: send success to userhome
+    sendError('cannot_add_job_apply', "jobseekerjobapplications");
+
+sendSuccess("send_apply_success","jobseekerjobapplications");
 //header("Location: userhome.php");

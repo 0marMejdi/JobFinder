@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659b7631-e045-4217-9a26-4f41fabcb12f" name="Changes" comment="" />
+    <list default="true" id="2f92fd62-5826-4807-8bb5-258d44ea2f78" name="Changes" comment="&quot;no idea&quot;">
+      <change afterPath="$PROJECT_DIR$/Presentation.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filterprocess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserHome.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserHome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/team-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/team-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/team-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/team-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyHome.php" beforeDir="false" afterPath="$PROJECT_DIR$/companyHome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyJobOffers.php" beforeDir="false" afterPath="$PROJECT_DIR$/companyJobOffers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frags/classes/ConnexionBD.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/classes/ConnexionBD.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frags/classes/JobApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/classes/JobApplication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobApplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApplications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobApply.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApply.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joboffer.php" beforeDir="false" afterPath="$PROJECT_DIR$/joboffer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobseekerjobapplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobseekerjobapplications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registerForJobSeeker.php" beforeDir="false" afterPath="$PROJECT_DIR$/registerForJobSeeker.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,14 +68,6 @@
       <updated>1683716678018</updated>
       <workItem from="1683716678998" duration="2274000" />
     </task>
-    <task id="LOCAL-00001" summary="&quot;Working on filters and debugging&quot;">
-      <created>1683734721721</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683734721721</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,9 +83,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;Working on filters and debugging&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Working on filters and debugging&quot;" />
   </component>
 </project>

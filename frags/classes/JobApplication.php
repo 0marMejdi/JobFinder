@@ -10,7 +10,7 @@ class JobApplication
     public string $status;
 
     public string $applicationdate;
-    public string $tellusmore;
+    public string $aboutMe;
    // make contructor but all attributes are optional with default values being empty strings
     public function __construct(
         string $jobOfferId = "",
@@ -18,7 +18,7 @@ class JobApplication
         string $companyEmail = "",
         string $status = "",
         string $applicationdate = "",
-        string $tellusmore = ""
+        string $aboutme = ""
     ) {
         $this->id = UUID::gen_uuid();
         $this->jobOfferID = $jobOfferId;
@@ -26,75 +26,14 @@ class JobApplication
         $this->companyEmail = $companyEmail;
         $this->status = $status;
         $this->applicationdate = $applicationdate;
-        $this->tellusmore = $tellusmore;
+        $this->aboutMe = $aboutme;
     }
-    //TODO  :: These function are redondant and useless, everything is public, and we have our Repository
-    /*public function getJobOffer()
-    {
-        return JobOfferRepository::getOneWhere("id",$this->jobOfferId);
-    }
-    public function getJobSeeker()
-    {
-        return JobSeekerRepository::getOneWhere("email",$this->jobSeekerEmail);
-    }
-    public function getCompany()
-    {
-        return CompanyRepository::getOneWhere("email",$this->companyEmail);
-    }
-    public function getApplicationDate()
-    {
-        return $this->applicationdate;
-    }
-    public function getApplicationStatus()
-    {
-        return $this->status;
-    }
-    public function setApplicationStatus($status)
-    {
-        $this->status=$status;
-    }
-    public function getApplicationId()
-    {
-        return $this->id;
-    }
-    public function getJobOfferId()
-    {
-        return $this->jobOfferId;
-    }
-    public function getJobSeekerEmail()
-    {
-        return $this->jobSeekerEmail;
-    }
-    public function getCompanyEmail()
-    {
-        return $this->companyEmail;
-    }
-    public function setJobOfferId($jobOfferId)
-    {
-        $this->jobOfferId=$jobOfferId;
-    }
-    public function setJobSeekerEmail($jobseekerEmail)
-    {
-        $this->jobSeekerEmail=$jobseekerEmail;
-    }
-    public function setCompanyEmail($companyEmail)
-    {
-        $this->companyEmail=$companyEmail;
-    }
-    public function setApplicationDate($applicationdate)
-    {
-        $this->applicationdate=$applicationdate;
-    }
-    public function setApplicationId($id)
-    {
-        $this->id=$id;
-    }*/
+
     public static function printjobapplication($application)
     {
         $joboffer=JobOfferRepository::getOneWhere("id",$application->jobOfferID);
         $company=CompanyRepository::getOneWhere("email",$joboffer->companyEmail);
         echo"
-
                         <div class='card'>
                          <div class='card-header'>
                              <h4>{$joboffer->title}</h4>
@@ -115,5 +54,21 @@ class JobApplication
                         <br>
                          ";
     }
-
+    public static function printJobApplication2($application , $jobseeker ,$jobofferid): void
+    {
+        $add="";
+        if ($jobofferid=="") {
+            $joboffer=JobOfferRepository::getOneWhere("companyEmail",$application->companyEmail);
+            $add = "<td class='joboffer'> <a href='joboffer.php?id={$joboffer->id}'> {$joboffer->title}.</a></td>";
+        }
+        echo "
+                                <tr>
+                                    <td>{$jobseeker->firstName} {$jobseeker->lastName}</td>
+                                    <td><a href='jobseekerprofile.php?email={$jobseeker->email}'> {$jobseeker->email}</a></td>".$add."
+                                    <td class='aboutus'>{$application->aboutme}.</td>
+                                    <td><a href='/path/to/cv.pdf' target='_blank'>Download</a></td>
+                                    <td><button type='button' class='btn btn-success'>Accept</button> <button type='button' class='btn btn-danger'>Decline</button></td>
+                                </tr>
+        ";
+    }
 }

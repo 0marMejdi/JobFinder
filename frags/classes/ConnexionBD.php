@@ -229,7 +229,7 @@ class ConnexionBD
             status varchar(255) ,
             companyEmail varchar(255),
             applicationdate date,
-            aboutme varchar(255)
+            aboutMe varchar(255)
         )
         ";
         self::GetInstance()->query($tableJobOffers);

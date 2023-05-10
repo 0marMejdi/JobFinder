@@ -71,6 +71,8 @@ $jobapplications=JobApplicationRepository::getAllWhere("jobSeekerEmail",$user->e
 
     <section id="job-applications" class="job-applications">
         <div class="container" data-aos="fade-up">
+            <?=showSuccessIfExists()?>
+            <?=showErrorIfExists()?>
             <div class="section-title">
                 <h2>My Job Applications</h2>
                 <p>View the job applications you've submitted below.</p>

@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <?php include_once 'allFrags.php';
+session_start();
 needsAuthentication();
-ConnexionBD::checkTables();
-$user = $_SESSION["currentUser"];
-if ($user->isJobSeeker())
-{
-    header("Location: userhome.php");
+function printTableData($jobApplication){
+    $jobSeeker = JobSeekerRepository::getOneWhere("email",$jobApplication->jobSeekerEmail);
+    ?>
+    <tr>
+        <td><?= $jobSeeker->firstName?> <?= $jobSeeker->lastName?></td>
+        <td><a href = "jobseekerprofile.php?email=<?=$jobSeeker->email?>"><?= $jobSeeker->email?> </a></td>
+        <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
+    <!-- TODO :: change path later -->
+        <td><a href="#" target="_blank">Download</a></td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
+    </tr>
+<?php
 }
-if (CompanyRepository::doesExist("email", $user->email))
-{
-    $user = CompanyRepository::getOneWhere("email", $user->email);
+function printAllData(){
+    $user = $_SESSION["currentUser"];
+    $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    if ($allapps==NULL){
+        echo "";
+    }else{
+        foreach ($allapps as $app){
+            printTableData($app);
+        }
+    }
 }
-else
-{
-    sendError("'current_user_not_found", "login");
-}
-$jobOfferId = "";
-if (isset($_GET['jobOfferId']))
-{
-    $jobOfferId = $_GET['jobOfferId'];
-}
-else
-{
-    sendError("job_offer_not_found", "companyprofile");
-}
-if (!JobSeekerRepository::doesExist("id",$jobOfferId))
-{
-    sendError("job_offer_not_found", "companyprofile");
-}
-$jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
 ?>
 
 <html lang="en">
@@ -101,16 +98,9 @@ $jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
                                 </tr>
                             </thead>
                             <tbody>
-                                HERE
-
-                                <tr>
-                                    <td>Jane Smith</td>
-                                    <td>janesmith@example.com</td>
-                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
-                                        the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
+                                <?php
+                                printAllData();
+                                ?>
                             </tbody>
                         </table>
                     </div>
