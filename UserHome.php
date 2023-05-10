@@ -58,6 +58,8 @@ $alljobs = JobOfferRepository::getAllWhere();
         <p>Check out our recent job listings</p>
       </div>
 
+
+      <!-- Search bar -->
       <div class='row'>
         <div class='col-md-12 justify-content-center'>
           <form class='form-inline mb-3 d-flex'>
@@ -66,6 +68,8 @@ $alljobs = JobOfferRepository::getAllWhere();
           </form>
         </div>
       </div>
+
+      <!-- Filter  -->
 
       <?php
 
