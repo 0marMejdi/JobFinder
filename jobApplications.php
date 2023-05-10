@@ -20,7 +20,13 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
+    <style>
+        .table tbody td:last-child {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+        }
+    </style>
 
 </head>
 
@@ -51,53 +57,37 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>Street Address</th>
-                                    <th>Profile Headline</th>
-                                    <th>Education</th>
-                                    <th>Experience</th>
                                     <th>Tell Us Why You Want to Join Us</th>
                                     <th>CV</th>
+                                    <th>Accept/Decline</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>John Doe</td>
                                     <td>johndoe@example.com</td>
-                                    <td>123-456-7890</td>
-                                    <td>123 Main St</td>
-                                    <td>Experienced Software Developer</td>
-                                    <td>Bachelor's in Computer Science</td>
-                                    <td>5 years of experience in software development</td>
                                     <td>I am passionate about developing innovative software solutions and would love to
                                         work with a team that values creativity and collaboration.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download CV</a></td>
+                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
+                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 
                                 <tr>
                                     <td>Jane Smith</td>
                                     <td>janesmith@example.com</td>
-                                    <td>555-123-4567</td>
-                                    <td>456 Elm St</td>
-                                    <td>Marketing Professional</td>
-                                    <td>Bachelor's in Marketing</td>
-                                    <td>10 years of experience in digital marketing</td>
                                     <td>I am excited about the opportunity to work with a dynamic team and help drive
                                         the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download CV</a></td>
+                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
+                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
 
                                 <tr>
                                     <td>Jane Smith</td>
                                     <td>janesmith@example.com</td>
-                                    <td>555-123-4567</td>
-                                    <td>456 Elm St</td>
-                                    <td>Marketing Professional</td>
-                                    <td>Bachelor's in Marketing</td>
-                                    <td>10 years of experience in digital marketing</td>
                                     <td>I am excited about the opportunity to work with a dynamic team and help drive
                                         the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download CV</a></td>
+                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
+                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                             </tbody>
                         </table>
