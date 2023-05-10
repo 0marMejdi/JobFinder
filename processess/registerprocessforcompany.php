@@ -1,7 +1,13 @@
 <?php
 include_once 'allFrags.php';
 session_start();
+<<<<<<< Updated upstream:processess/registerprocessforcompany.php
 
+=======
+ConnexionBD::checkTables();
+
+ConnexionBD::checktables();
+>>>>>>> Stashed changes:registerprocessforcompany.php
 //needs to be unauthenticated and cannot access directly
 
 if (isAuthenticated()){
@@ -45,8 +51,12 @@ if (CompanyRepository::doesExist("email",$email))
     sendError("email_already_exists","../registerForCompany");
 CompanyRepository::insert($newCompany);
 uploadPictureCompany($newCompany);
-
 $_SESSION["currentUser"] = $newCompany;
+<<<<<<< Updated upstream:processess/registerprocessforcompany.php
 header("Location: ../homePage.php");
 
 
+=======
+//header("Location: homePage.php");
+sendSuccess("register_success","companyprofile");
+>>>>>>> Stashed changes:registerprocessforcompany.php

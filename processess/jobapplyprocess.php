@@ -41,6 +41,7 @@ if (!JobOfferRepository::doesExist("id",$jobofferid))
 $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
 if (JobApplicationRepository::doesExist("jobOfferID",$jobofferid,"jobSeekerEmail",$user->email))
 {
+<<<<<<< Updated upstream:processess/jobapplyprocess.php
     sendError("already_applied","../jobseekerprofile");
 }
 $jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEmail,"pending",date("Y-m-d"));
@@ -51,7 +52,20 @@ echo $jobapplication->companyEmail."<br>";
 echo $jobapplication->status."<br>";
 echo $jobapplication->applicationdate."<br>";
 echo $jobapplication->id."<br>";
+=======
+    sendError("already_applied","userhome");
+}
+$aboutme=$_POST["aboutme"];
+echo $aboutme;
+$jobapplication=new JobApplication($jobofferid."",$user->email."",$joboffer->companyEmail."","pending",date("Y-m-d"),$aboutme."");
+>>>>>>> Stashed changes:jobapplyprocess.php
 if (! JobApplicationRepository::insert($jobapplication))
     sendError('cannot_add_job_apply', "../index"); // TODO :: change index
 //TODO :: send success to userhome
+<<<<<<< Updated upstream:processess/jobapplyprocess.php
 //header("Location: ../userhome.php");
+=======
+header("Location: userhome.php");
+
+
+>>>>>>> Stashed changes:jobapplyprocess.php
