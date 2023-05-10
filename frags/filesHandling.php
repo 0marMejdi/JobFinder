@@ -103,3 +103,19 @@ function uploadPictureCompany($newCompany){
         $newCompany->modify("hasLogo",true);
     }
 }
+function movingResume(object $jobApplication){
+    try{
+        if (isFileUploaded("resume")){
+
+            $dir = "assets/data/JobApplies/" . $jobApplication->id;
+            echo $dir;
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            moveFileTo("resume",$dir);
+            renameFile($dir . "/" . $_FILES["resume"]["name"] ,"resume");
+
+        }
+    }catch (Exception $e) {
+        return false;
+    }
+    return true;
+}

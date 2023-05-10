@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/Presentation.pptx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/filterprocess.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/UserHome.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserHome.php" afterDir="false" />
@@ -27,6 +28,12 @@
       <change beforePath="$PROJECT_DIR$/jobApplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApplications.php" afterDir="false" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/companyJobOffers.php" beforeDir="false" afterPath="$PROJECT_DIR$/companyJobOffers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frags/filesHandling.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/filesHandling.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frags/jobSeekerNavBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/jobSeekerNavBar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobApplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApplications.php" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/jobApply.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApply.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joboffer.php" beforeDir="false" afterPath="$PROJECT_DIR$/joboffer.php" afterDir="false" />

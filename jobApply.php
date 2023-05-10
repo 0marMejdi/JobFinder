@@ -384,7 +384,7 @@ img{
         </div>
         <div class="formbold-mb-3">
             <label for="aboutme" class="formbold-form-label">  Upload your CV </label>
-            <input type="file" id="file" />
+            <input type="file" id="file" name="resume" />
             <label for="file" class="btn-2">Upload a File</label>
         </div>  
       <button class="btn-lg btn btn-primary ">Apply Now</button>

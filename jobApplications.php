@@ -2,12 +2,34 @@
 <?php include_once 'allFrags.php';
 session_start();
 needsAuthentication();
-function printTableData($jobApplication){
+function printTableHeaders(bool $withName){
+    $NameCol = "<th>Title</th>";
+    if(!$withName)
+        $NameCol="";
+    ?>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <?=$NameCol?>
+        <th>Tell Us Why You Want to Join Us</th>
+        <th>CV</th>
+        <th>Decision</th>
+    </tr>
+<?php }
+function printTableData($jobApplication, bool $withName){
     $jobSeeker = JobSeekerRepository::getOneWhere("email",$jobApplication->jobSeekerEmail);
+    $jobOffer = JobOfferRepository::getOneWhere("id",$jobApplication->jobOfferID);
+    $JobOfferRef="joboffer.php?id=".$jobOffer->id;
+    $JobOfferName=$jobOffer->title;
+    $nameData = "<td><a href='".$JobOfferRef. "'>".$JobOfferName ."</a> </td>";
+    if (!$withName){
+        $nameData="";
+    }
     ?>
     <tr>
         <td><?= $jobSeeker->firstName?> <?= $jobSeeker->lastName?></td>
         <td><a href = "jobseekerprofile.php?email=<?=$jobSeeker->email?>"><?= $jobSeeker->email?> </a></td>
+        <?= $nameData?>
         <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
     <!-- TODO :: change path later -->
         <td><a href="#" target="_blank">Download</a></td>
@@ -15,14 +37,33 @@ function printTableData($jobApplication){
     </tr>
 <?php
 }
+
+$withName=false;
+//if id JobOffer Id is passed and valid then show without name,
+// if id Joboffer is not set, then show with name because we are going to show all so we need to know each ones job offer
+if (!isset($_GET['id']) || !JobOfferRepository::doesExist('id',$_GET['id'])){
+    $withName=true;
+}else{
+    $withName=false;
+}
 function printAllData(){
     $user = $_SESSION["currentUser"];
-    $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    $withName=false;
+    //if id JobOffer Id is passed and valid then show without name,
+    // if id Joboffer is not set, then show with name
+    if (!isset($_GET['id']) || !JobOfferRepository::doesExist('id',$_GET['id'])){
+        $withName=true;
+        $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email);
+    }else{
+        $withName=false;
+        $allapps = JobApplicationRepository::getAllWhere("companyEmail",$user->email,"jobOfferID",$_GET['id']);
+    }
+
     if ($allapps==NULL){
         echo "";
     }else{
         foreach ($allapps as $app){
-            printTableData($app);
+            printTableData($app,$withName);
         }
     }
 }
@@ -89,13 +130,9 @@ function printAllData(){
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Tell Us Why You Want to Join Us</th>
-                                    <th>CV</th>
-                                    <th>Decision</th>
-                                </tr>
+                            <?php
+                                printTableHeaders($withName);
+                            ?>
                             </thead>
                             <tbody>
                                 <?php
@@ -105,8 +142,6 @@ function printAllData(){
                             </tbody>
                         </table>
                     </div>
-
-                   
                 </div>
             </div>
         </div>
