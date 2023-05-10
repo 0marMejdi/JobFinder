@@ -4,7 +4,7 @@ include "allFrags.php";
 $title=$_POST["title"];
 $worktime=$_POST["worktime"];
 $worktype=$_POST["worktype"];
-$contractype=$_POST["contractype"];
+$contractype=$_POST["contracttype"];
 $experience=$_POST["experience"];
 $salarymin=$_POST["salarymin"];
 $salarymax=$_POST["salarymax"];
