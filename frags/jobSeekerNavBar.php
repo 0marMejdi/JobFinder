@@ -1,6 +1,7 @@
 <?php
-function includeNavBarJobSeeker(){
-    echo '
+function includeNavBarJobSeeker($whoIsActive){
+    $whoIsActive.=".php";
+    ?>
     <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -11,7 +12,7 @@ function includeNavBarJobSeeker(){
         <nav id="navbar" class="navbar">
 
             <ul>
-                <li><a class="nav-link scrollto active" href="userhome.php">Home </a></li>
+                <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
                 <!-- well work on it ghodwa -->
                 <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                 <li><a class="nav-link scrollto" href="jobseekerjobapplications.php">My Job Applications</a></li>
@@ -22,5 +23,14 @@ function includeNavBarJobSeeker(){
 
     </div>
 </header><!-- End Header -->
+<script>
+    let activeBar = document.querySelector('a[href="<?=$whoIsActive?>"]');
+
+    activeBar.classList.add("active");
+
+</script>
+
     ';
-}
+
+<?php
+}?>

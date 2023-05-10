@@ -27,7 +27,7 @@
     <body>
 
         <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
+<!--        <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
@@ -43,7 +43,9 @@
                         <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
+                </nav>-->
+        <?php includeNavBarCompany(here());?>
+                <!-- .navbar -->
 
             </div>
         </header><!-- End Header -->

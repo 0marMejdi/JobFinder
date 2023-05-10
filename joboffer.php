@@ -35,7 +35,7 @@ $clientName=$client->companyName;
 
     <body>
 
-    <?php includeNavBarJobSeeker(); ?>
+    <?php includeNavBarJobSeeker(here()); ?>
 
 
         <br><br><br>

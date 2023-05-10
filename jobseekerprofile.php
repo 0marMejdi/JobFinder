@@ -53,7 +53,7 @@ try {
     <body>
 
         <!-- ======= Header ======= -->
-        <?php includeNavBarJobSeeker() ?>
+        <?php includeNavBarJobSeeker(here()) ?>
 
 
 

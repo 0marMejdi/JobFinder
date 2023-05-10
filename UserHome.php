@@ -5,8 +5,6 @@
  needsAuthentication();
 
 $alljobs=JobOfferRepository::getAllWhere();
-
- var_dump($test);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +34,7 @@ $alljobs=JobOfferRepository::getAllWhere();
 
 
 <!-- ======= Header ======= -->
-<?php includeNavBarJobSeeker(); ?>
+<?php includeNavBarJobSeeker(here()); ?>
 <br>
 
 <section id="breadcrumbs" class="breadcrumbs">
