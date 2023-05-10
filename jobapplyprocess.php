@@ -46,14 +46,8 @@ if (JobApplicationRepository::doesExist("jobOfferID",$jobofferid,"jobSeekerEmail
 {
     sendError("already_applied","jobseekerprofile");
 }
-$jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEmail,"pending",date("Y-m-d"));
-//print all jobapplication attributes
-echo $jobapplication->jobOfferID."<br>";
-echo $jobapplication->jobSeekerEmail."<br>";
-echo $jobapplication->companyEmail."<br>";
-echo $jobapplication->status."<br>";
-echo $jobapplication->applicationdate."<br>";
-echo $jobapplication->id."<br>";
+$tellusmore=$_POST["aboutme"];
+$jobapplication=new JobApplication($jobofferid,$user->email,$joboffer->companyEmail,"pending",date("Y-m-d"),$tellusmore);
 if (! JobApplicationRepository::insert($jobapplication))
     sendError('cannot_add_job_apply', "index"); // TODO :: change index
 //TODO :: send success to userhome

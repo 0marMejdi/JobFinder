@@ -10,13 +10,15 @@ class JobApplication
     public string $status;
 
     public string $applicationdate;
+    public string $tellusmore;
    // make contructor but all attributes are optional with default values being empty strings
     public function __construct(
         string $jobOfferId = "",
         string $jobseekerEmail = "",
         string $companyEmail = "",
         string $status = "",
-        string $applicationdate = ""
+        string $applicationdate = "",
+        string $tellusmore = ""
     ) {
         $this->id = UUID::gen_uuid();
         $this->jobOfferID = $jobOfferId;
@@ -24,6 +26,7 @@ class JobApplication
         $this->companyEmail = $companyEmail;
         $this->status = $status;
         $this->applicationdate = $applicationdate;
+        $this->tellusmore = $tellusmore;
     }
     //TODO  :: These function are redondant and useless, everything is public, and we have our Repository
     /*public function getJobOffer()

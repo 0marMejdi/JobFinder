@@ -1,5 +1,35 @@
 <!DOCTYPE html>
-<?php include_once 'allFrags.php'?>
+<?php include_once 'allFrags.php';
+needsAuthentication();
+ConnexionBD::checkTables();
+$user = $_SESSION["currentUser"];
+if ($user->isJobSeeker())
+{
+    header("Location: userhome.php");
+}
+if (CompanyRepository::doesExist("email", $user->email))
+{
+    $user = CompanyRepository::getOneWhere("email", $user->email);
+}
+else
+{
+    sendError("'current_user_not_found", "login");
+}
+$jobOfferId = "";
+if (isset($_GET['jobOfferId']))
+{
+    $jobOfferId = $_GET['jobOfferId'];
+}
+else
+{
+    sendError("job_offer_not_found", "companyprofile");
+}
+if (!JobSeekerRepository::doesExist("id",$jobOfferId))
+{
+    sendError("job_offer_not_found", "companyprofile");
+}
+$jobOffer = JobOfferRepository::getAllWhere("id", $jobOfferId);
+?>
 
 <html lang="en">
 
@@ -71,23 +101,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>johndoe@example.com</td>
-                                    <td class="aboutus">I am passionate about developing innovative software solutions and would love to
-                                        work with a team that values creativity and collaboration.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>Jane Smith</td>
-                                    <td>janesmith@example.com</td>
-                                    <td class="aboutus">I am excited about the opportunity to work with a dynamic team and help drive
-                                        the success of your company's marketing initiatives.</td>
-                                    <td><a href="/path/to/cv.pdf" target="_blank">Download</a></td>
-                                    <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
-                                </tr>
+                                HERE
 
                                 <tr>
                                     <td>Jane Smith</td>

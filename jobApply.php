@@ -19,7 +19,6 @@ if (!JobOfferRepository::doesExist("id",$_GET["id"]))
  sendError("job_offer_not_found","userhome");
 }
 $joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
-$jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -255,7 +254,6 @@ img{
 
 </style>
 </head>
-<?php includeNavBarJobSeeker(); ?>
 <body>
 <div class="formbold-main-wrapper">
   <!-- Author: FormBold Team -->
