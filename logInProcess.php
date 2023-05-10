@@ -23,13 +23,10 @@ if ($connectAs=="JobSeeker")
         sendError("wrong_password","login");
 if ($connectAs=="Company")
     if(!CompanyRepository::doesExist("email",$email,"password",$password))
+    sendError("wrong_password","login");
 
-        sendError("wrong_password","login");
-{
-
-    $_SESSION["currentUser"] = ($connectAs == "JobSeeker") ?
-        JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
-        CompanyRepository::getOneWhere("email", $email, "password", $password);
-    unset($_SESSION['insertedEmail']);
-    header("Location: UserHome.php");
-}
+$_SESSION["currentUser"] = ($connectAs == "JobSeeker") ?
+    JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
+    CompanyRepository::getOneWhere("email", $email, "password", $password);
+unset($_SESSION['insertedEmail']);
+sendSuccess("welcome","userHome");

@@ -15,7 +15,7 @@ function includeNavBarCompany($whoIsActive){
         <nav id="navbar" class="navbar">
 
             <ul>
-                <li><a class="nav-link scrollto" href="CompanyHome.php">Home</a></li>
+                <li><a class="nav-link scrollto" href="UserHome.php">Home</a></li>
                 <li><a  class="nav-link scrollto " href="companyProfile.php">My Profile</a></li>
                 <li><a  class="nav-link scrollto" href="companyJobOffers.php">My Job Offers</a></li>
                 <li><a  class="nav-link scrollto" href="jobApplications.php">Received Applications</a></li>

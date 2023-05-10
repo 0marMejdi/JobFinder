@@ -1,12 +1,8 @@
 <?php
 include_once 'allFrags.php';
 session_start();
-<<<<<<< HEAD
-ConnexionBD::checkTables();
 
-=======
 ConnexionBD::checktables();
->>>>>>> d49cfd120176f1cfe4e73e9b5dc1d0bb72f69d0b
 //needs to be unauthenticated and cannot access directly
 
 if (isAuthenticated()){
@@ -52,7 +48,7 @@ CompanyRepository::insert($newCompany);
 uploadPictureCompany($newCompany);
 
 $_SESSION["currentUser"] = $newCompany;
-//header("Location: homePage.php");
-sendSuccess("register_success","companyprofile");
+sendSuccess("register_success","UserHome");
+
 
 

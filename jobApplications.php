@@ -33,7 +33,15 @@ function printTableData($jobApplication, bool $withName){
         <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
 
         <td><a href="assets/data/JobApplies/<?=$jobApplication->id?>/resume.pdf" target="_blank">Download</a></td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
+        <?php if ($jobApplication->status=="pending"){?>
+        <td><a href="decisionProcess.php?id=<?=$jobApplication->id ?>&status=accept"> <button type="button"  class="btn btn-success">Accept</button></a>
+            <a href="decisionProcess.php?id=<?=$jobApplication->id ?>&status=refuse"><button type="button" class="btn btn-danger">Decline</button></td>
+        <?php }elseif($jobApplication->status=="accept"){?>
+            <td><button type="button"  class="btn btn-success" disabled>Accepted</button></td>
+        <?php }else{ ?>
+        <td> <button type="button"  class="btn btn-danger" disabled>Refused</button></td>
+        <?php
+        }?>
     </tr>
 <?php
 }

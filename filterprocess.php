@@ -27,7 +27,7 @@ if ($contractype!="")
 }
 if ($experience!="")
 {
-    $wherestatement.="AND experience='$experience'  ";
+    $wherestatement.="AND experience<='$experience'  ";
 }
 if ($salarymin!="")
 {

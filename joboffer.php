@@ -60,6 +60,9 @@ $clientName=$client->companyName;
       <!-- End Breadcrumbs -->
       <section id="portfolio-details" class="portfolio-details">
   <div class="container" data-aos="fade-up">
+    <?php
+    echo ($job->salary==-1)?"<div class='alert alert-danger align-self-center'>This job offer is closed</div>":"";
+    ?>
 
     <div class="row gy-4">
 
@@ -77,7 +80,7 @@ $clientName=$client->companyName;
           <h3>Job Information</h3>
           <ul>
             <li><strong>Job Title</strong>: <?= $job->title ?></li>
-            <li><strong>Salary</strong>: <?= $job->salary?></li>
+            <li><strong>Salary</strong>: $<?php echo ($job->salary==-1)?"" :$job->salary ?> </li>
             <li><strong>Work Time</strong>: <?= $job->workTime ?></li>
             <li><strong>Work Type</strong>: <?= $job->workType ?></li>
             <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
@@ -99,9 +102,16 @@ $clientName=$client->companyName;
         </div>
         <br>
           <?php
-          if ($user->isJobSeeker())
+          if ($user->isJobSeeker() && $job->salary!=-1 )
               echo"
-        <a href='jobApply.php?id={$job->id}' class='btn btn-primary'>Apply Now!</a>";
+        <a href='jobApply.php?id={$job->id}' ><button class='btn btn-primary' >Apply Now! </button></a>";
+          elseif ($user->isJobSeeker() && $job->salary==-1 )
+              echo"";
+          elseif($user->isCompany() && $job->salary!=-1 && ($job->companyEmail==$user->email))
+              echo "
+        <a href='closingOffer.php?id={$job->id}' class='btn btn-danger'>Close Offer!</a>";
+          elseif($user->isCompany() && $job->salary==-1 )
+              echo "";
         ?>
       </div>
 

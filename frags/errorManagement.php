@@ -33,6 +33,7 @@
     {
         $Successes = [];
         $Successes["register_success"]="Your account has been registered successfully";
+        $Successes["welcome"]="Welcome";
         $Successes["send_apply_success"] = "Your job application has been sent successfully to the company manager, he will get it soon";
         $Successes["create_job_offer_success"]="Your job offer has been saved and published successfully";
         return $Successes;
@@ -52,7 +53,7 @@
         $errors = getErrors();
         if (!isset($_SESSION['errorCode'])) return "";
         $errorCode = $_SESSION['errorCode'];
-        $str = '<div class="alert alert-danger" role="alert">';
+        $str = '<div class="alert alert-danger align-content-center" role="alert">';
         if (array_key_exists($errorCode, $errors)){
             $str.= $errors[$errorCode];
         }else{
@@ -68,7 +69,7 @@
     $successes = getSuccesses();
     if (!isset($_SESSION['successCode'])) return "";
     $successCode = $_SESSION['successCode'];
-    $str = '<div class="alert alert-success" role="alert">';
+    $str = '<div class="alert alert-success align-content-center" role="alert">';
     if (array_key_exists($successCode, $successes)){
         $str.= $successes[$successCode];
     }else{

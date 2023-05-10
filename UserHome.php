@@ -38,11 +38,14 @@ function printAllJobOffers($alljobs)
     if ($alljobs == NULL)
         echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
     else {
-        usort($alljobs, function($a, $b) {
+       /* usort($alljobs, function($a, $b) {
             return $a->publishDate < $b->publishDate;
-        });
-        foreach ($alljobs as $job)
-            printJobOffer($job);
+        });*/
+        foreach ($alljobs as $job) {
+            if ($job->salary!=-1)
+             printJobOffer($job);
+        }
+
     }
 }
 if (!isset($_SESSION["filter"]))
@@ -88,7 +91,7 @@ else
   if($user->isJobSeeker())
       includeNavBarJobSeeker(here());
   else
-      includeNavBarJobSeeker(here());
+      includeNavBarCompany(here());
   ?>
   <br>
 
@@ -106,6 +109,7 @@ else
     <div class="container" data-aos="fade-up">
       <h2>
         <?= showErrorIfExists() ?>
+          <?= showSuccessIfExists()?>
       </h2>
 
       <div class="section-title">
