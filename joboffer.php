@@ -1,6 +1,6 @@
 <?php
 include "allFrags.php";
-include "autoload.php";
+//include "autoload.php";
 session_start();
 needsAuthentication();
 $user=$_SESSION["currentUser"];
@@ -50,7 +50,7 @@ $clientName=$client->companyName;
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="processess/disconnect.php">Disconnect</a></li>
+                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->

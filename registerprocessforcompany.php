@@ -5,10 +5,10 @@ session_start();
 //needs to be unauthenticated and cannot access directly
 
 if (isAuthenticated()){
-    sendError("already_logged_in","../homePage");
+    sendError("already_logged_in","homePage");
 }
 if(!isset($_POST["email"])) {
-    sendError("cannot_access_directly","../login");
+    sendError("cannot_access_directly","login");
 }
 
 $companyName = $_POST['companyName'];
@@ -42,11 +42,12 @@ $newCompany = new Company(
 );
 //check if the email is already used
 if (CompanyRepository::doesExist("email",$email))
-    sendError("email_already_exists","../registerForCompany");
+    sendError("email_already_exists","registerForCompany");
 CompanyRepository::insert($newCompany);
 uploadPictureCompany($newCompany);
 
 $_SESSION["currentUser"] = $newCompany;
-header("Location: ../homePage.php");
+//header("Location: homePage.php");
+sendSuccess("register_success","companyprofile");
 
 

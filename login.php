@@ -22,7 +22,7 @@ function getPerviousInsertedEmail()
         <p id="registernow">Don't you have an account? Register Now <a href="registerForJobSeeker.php">as Employee</a> or <a href="registerForCompany.php">as Company</a></p>
       </div>
       <div class="col-5 text-center">
-        <form action="processess/logInProcess.php" method="post">
+        <form action="logInProcess.php" method="post">
           <img class="logo" src="assets/templates/logo.png" alt="" srcset="">
           <h1 class="h3 ">Please sign in</h1>
 

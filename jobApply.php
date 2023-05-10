@@ -3,7 +3,7 @@ include_once 'allFrags.php';
 session_start();
 needsAuthentication();
 $user= $_SESSION["currentUser"];
-if ($user->personType=="Company")
+if ($user->isCompany())
     header("Location: companyProfile.php");
 if (JobSeekerRepository::doesExist("email",$user->email))
     $user=JobSeekerRepository::getOneWhere("email",$user->email);
@@ -253,7 +253,7 @@ img{
     
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
-    <form action="processess/jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
+    <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Apply Now</h2>
         <p>

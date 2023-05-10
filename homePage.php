@@ -82,7 +82,7 @@ $curr  = $_SESSION["currentUser"];
     </script>
 
         <div class="alert alert-info"> Welcome to HomePage</div>
-        <form action="processess/disconnect.php" method="post">
+        <form action="disconnect.php" method="post">
         <p> </p>
 
             <button class="w-100 btn btn-light btn btn-outline-success btn-success" type="submit">Disconnect</button>

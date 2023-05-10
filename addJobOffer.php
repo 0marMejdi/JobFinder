@@ -352,7 +352,7 @@ else
     
     <img src="assets\templates\AddJobOffer.jpg">
 
-    <form action="processess/addjobofferprocess.php" method="POST">
+    <form action="addjobofferprocess.php" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Add Job Offer</h2>
         <p>

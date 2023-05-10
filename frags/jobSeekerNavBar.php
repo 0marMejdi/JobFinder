@@ -1,6 +1,6 @@
 <?php
 function includeNavBarJobSeeker(){
-    echo'
+    echo '
     <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
 
@@ -15,7 +15,7 @@ function includeNavBarJobSeeker(){
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="processess/disconnect.php">Disconnect</a></li>
+                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->

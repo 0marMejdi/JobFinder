@@ -96,7 +96,7 @@ function printPicutreForObject($object){
 }
 function uploadPictureCompany($newCompany){
     if (isFileUploaded("logo")){
-        $dir = "../assets/data/Company/".$newCompany->email;
+        $dir = "assets/data/Company/".$newCompany->email;
         if (!file_exists($dir)) mkdir($dir, 0777, true);
         moveFileTo("logo",$dir);
         renameFile($dir . "/" . $_FILES["logo"]["name"] ,"pdp");
