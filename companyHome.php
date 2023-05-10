@@ -83,23 +83,13 @@ include_once 'allFrags.php';
                     </div>
             </section>
 
-            <section id="create-job-offer" class="create-job-offer">
-                <div class="container" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>Create a Job Offer</h2>
-                        <p>Click the button below to create a new job offer.</p>
-                    </div>
-                    <center>
-                    <a href="addjoboffer.php" class="btn btn-primary">Create Job Offer</a>
-                    </center>
-                </div>
-            </section>
-
 
 
         </main>
 
 
+        <br><br>
+        <br><br>
 
         <!-- ======= Footer ======= -->
         <footer>
