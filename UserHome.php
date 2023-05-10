@@ -59,17 +59,95 @@ $alljobs = JobOfferRepository::getAllWhere();
       </div>
 
 
-      <!-- Search bar -->
-      <div class='row'>
-        <div class='col-md-12 justify-content-center'>
-          <form class='form-inline mb-3 d-flex'>
-            <input class='form-control mr-sm-2' type='text' placeholder='Search by job title' aria-label='Search'>
-            <button class='btn btn-outline-primary my-2 my-sm-0' type='submit'>Search</button>
-          </form>
-        </div>
-      </div>
+
+
 
       <!-- Filter  -->
+
+
+
+      <section id="job-offer-filters" class="job-offer-filters">
+        <div class="container" data-aos="fade-up">
+          
+          <div class='row'>
+            <div class='col-md-12 justify-content-center'>
+              <form class='form-inline mb-3 d-flex'>
+                <input class='form-control mr-sm-2' type='text' placeholder='Search by job title' aria-label='Search'>
+                <button class='btn btn-outline-primary my-2 my-sm-0' type='submit'>Search</button>
+              </form>
+            </div>
+          </div>
+
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="work-time">Work Time</label>
+                  <select class="form-control" id="work-time" name="work-time">
+                    <option value="">-- Select --</option>
+                    <option value="full-time">Full Time</option>
+                    <option value="part-time">Part Time</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="work-type">Work Type</label>
+                  <select class="form-control" id="work-type" name="work-type">
+                    <option value="">-- Select --</option>
+                    <option value="office">Office</option>
+                    <option value="remote">Remote</option>
+                    <option value="hybrid">Hybrid</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="contract-type">Contract Type</label>
+                  <select class="form-control" id="contract-type" name="contract-type">
+                    <option value="">-- Select --</option>
+                    <option value="permanent">Permanent</option>
+                    <option value="temporary">Temporary</option>
+                    <option value="freelance">Freelance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="experience">Experience Required (in years)</label>
+                  <input type="number" class="form-control" id="experience" name="experience" min="0">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="salary-min">Minimum Salary ($)</label>
+                  <input type="number" class="form-control" id="salary-min" name="salary-min" min="0">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="salary-max">Maximum Salary ($)</label>
+                  <input type="number" class="form-control" id="salary-max" name="salary-max" min="0">
+                </div>
+              </div>
+            </div>
+            <br>
+            <center>
+              <button type="submit" class="btn btn-primary">Filter Job Offers</button>
+            </center>
+          </form>
+        </div>
+      </section>
+
+
+
 
       <?php
 
