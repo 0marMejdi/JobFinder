@@ -1,6 +1,14 @@
+<?php
+include_once "allFrags.php";
+session_start();
+$totalseekers=JobSeekerRepository::getAllWhere();
+$totalseekers=count($totalseekers);
+$totalcompanies=CompanyRepository::getAllWhere();
+$totalcompanies=count($totalcompanies);
+$totaljoboffers=JobOfferRepository::getAllWhere();
+$totaljoboffers=count($totaljoboffers);
+?>
 <!DOCTYPE html>
-<?php include_once "allFrags.php";
-ConnexionBD::checkTables();?>
 <html lang="en">
 
 <head>
@@ -126,16 +134,16 @@ ConnexionBD::checkTables();?>
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="5611" data-purecounter-duration="1"
+                      <span data-purecounter-start="0" data-purecounter-end="<?= $totalseekers+$totalcompanies ?>" data-purecounter-duration="1"
                       class="purecounter"></span>
-                    <p>Over 5k job seekers and employers have already connected on JobFinder</p>
+                    <p>Over <?= $totalseekers+$totalcompanies ?> job seekers and employers have already connected on JobFinder</p>
                   </div>
                 </div>
 
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="1102" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="<?= $totaljoboffers ?>" data-purecounter-duration="1"
                       class="purecounter"></span>
                     <p>Explore thousands of job opportunities across various industries and locations, all in one place
                       on JobFinder</p>
@@ -145,7 +153,7 @@ ConnexionBD::checkTables();?>
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="<?= $totalcompanies ?>" data-purecounter-duration="1"
                       class="purecounter"></span>
                     <p>JobFinder has been connecting professionals with the right opportunities for 2 years. </p>
                   </div>
@@ -182,7 +190,7 @@ ConnexionBD::checkTables();?>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Post a Job</a></h4>
+              <h4 class="title"><a href="addJobOffer.php">Post a Job</a></h4>
               <p class="description">Hire the best talent with JobFinder. Post your job today and connect with qualified
                 candidates</p>
             </div>
@@ -191,7 +199,7 @@ ConnexionBD::checkTables();?>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Find a Job Opportunity Online </a></h4>
+              <h4 class="title"><a href="UserHome.php">Find a Job Opportunity Online </a></h4>
               <p class="description">Discover your next career move with JobFinder - search thousands of job
                 opportunities from top employers</p>
             </div>
@@ -216,7 +224,7 @@ ConnexionBD::checkTables();?>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/1.jpg" class="testimonial-img" alt="">
                   <h3>Saadi Khalil</h3>
                   <h4>Human Resources Manager</h4>
                   <p>
@@ -233,7 +241,7 @@ ConnexionBD::checkTables();?>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/2.jpg" class="testimonial-img" alt="">
                   <h3>Ali Jemai </h3>
                   <h4>Job Seeker</h4>
                   <p>
@@ -249,7 +257,7 @@ ConnexionBD::checkTables();?>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/3.jpg" class="testimonial-img" alt="">
                   <h3>Oussama Said</h3>
                   <h4>IT Specialist</h4>
                   <p>
@@ -267,7 +275,7 @@ ConnexionBD::checkTables();?>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/4.jpg" class="testimonial-img" alt="">
                   <h3>Farouk Hamza</h3>
                   <h4>Employment Recruiter
                   </h4>
