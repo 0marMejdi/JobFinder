@@ -1,10 +1,11 @@
 <?php
 include "allFrags.php";
-//include "autoload.php";
+
 session_start();
 needsAuthentication();
 $user=$_SESSION["currentUser"];
 $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+
 $client=CompanyRepository::getOneWhere("email",$job->companyEmail);
 $clientName=$client->companyName;
 ?>
@@ -35,7 +36,12 @@ $clientName=$client->companyName;
 
     <body>
 
-    <?php includeNavBarJobSeeker(here()); ?>
+    <?php
+    if($user->isJobSeeker())
+        includeNavBarJobSeeker(here());
+    else
+        includeNavBarCompany(here());
+    ?>
 
 
         <br><br><br>
@@ -60,13 +66,14 @@ $clientName=$client->companyName;
       <div class="col-lg-4">
         <div class="portfolio-details-slider text-center">
           <div class="swiper-slide">
-            <img src="assets\img\jobs\job.jpg" alt="" style="width: 300px; margin: auto;">
+            <img src="<?=getPicturePathForobject($client)?>" alt="" style="width: 300px; margin: auto;">
           </div>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="portfolio-info">
+            <h4><a href="companyProfile.php?email=<?=$client->email?>"> <?= $clientName ?></a></h4>
           <h3>Job Information</h3>
           <ul>
             <li><strong>Job Title</strong>: <?= $job->title ?></li>
@@ -76,7 +83,7 @@ $clientName=$client->companyName;
             <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
             <li><strong>location</strong>: <?= $job->location ?></li>
             <li><strong>Required Experience</strong>: <?= $job->experience ?></li>
-            <li><strong>Company Name</strong>: <?= $clientName ?></li>
+
             <li><strong>Contract Type</strong>: <?= $job->contractType ?></li>
 
           </ul>

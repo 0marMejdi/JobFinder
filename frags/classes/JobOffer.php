@@ -27,7 +27,8 @@ class JobOffer
         $location="",
         $education="",
         $experience="",
-        $salary=0.0)
+        $salary=0.0
+    )
     {
         $this->id = UUID::gen_uuid();
         $this->title = $title;
@@ -47,7 +48,6 @@ class JobOffer
 
     public function __toString(): string
     {
-        //make \n between each attribute
         return "id : {$this->id}" . "<br>" . "title : {$this->title}" . "<br>" . "description : {$this->description}" . "<br>" . "publishDate : {$this->publishDate}" . "<br>" . "contractType : {$this->contractType}" . "<br>" . "workTime : {$this->workTime}" . "<br>" . "workType : {$this->workType}" . "<br>" . "location : {$this->location}" . "<br>" . "education : {$this->education}" . "<br>" . "experience : {$this->experience}" . "<br>" . "salary : {$this->salary}" . "<br>" . "companyEmail : {$this->companyEmail}" . "<br>
     ";
     }

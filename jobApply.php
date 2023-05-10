@@ -264,7 +264,7 @@ img{
     
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
-    <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
+    <form action="jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST" enctype="multipart/form-data">
       <div class="formbold-form-title">
         <h2 class="">Apply Now</h2>
         <p>
@@ -384,7 +384,7 @@ img{
         </div>
         <div class="formbold-mb-3">
             <label for="aboutme" class="formbold-form-label">  Upload your CV </label>
-            <input type="file" id="file" name="resume" />
+            <input type="file" id="file" name="resume" required/>
             <label for="file" class="btn-2">Upload a File</label>
         </div>  
       <button class="btn-lg btn btn-primary ">Apply Now</button>

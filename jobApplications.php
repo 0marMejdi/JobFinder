@@ -31,8 +31,8 @@ function printTableData($jobApplication, bool $withName){
         <td><a href = "jobseekerprofile.php?email=<?=$jobSeeker->email?>"><?= $jobSeeker->email?> </a></td>
         <?= $nameData?>
         <td class="aboutus"> <?= $jobApplication->aboutMe ?></td>
-    <!-- TODO :: change path later -->
-        <td><a href="#" target="_blank">Download</a></td>
+
+        <td><a href="assets/data/JobApplies/<?=$jobApplication->id?>/resume.pdf" target="_blank">Download</a></td>
         <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Decline</button></td>
     </tr>
 <?php
