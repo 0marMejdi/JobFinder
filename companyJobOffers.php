@@ -55,7 +55,7 @@ function printAllJobOffers(){
 
 }
 ?>
-<!-- Nitfehmou chnouwa bich n7otou fih -->
+
 <!DOCTYPE html>
 <html lang="en">
 
