@@ -29,8 +29,10 @@ function printJobOffer($job){
         </div>
     </div>
     <br>
-<?php }
+<?php
+}
 function printAllJobOffers($alljobs){
+
     if ($alljobs==NULL)
         echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
     else
