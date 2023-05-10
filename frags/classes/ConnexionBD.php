@@ -67,12 +67,12 @@ class ConnexionBD
             
             ";
         $sectorTables =
-            "CREATE TABLE Sector (
+            "CREATE TABLE IF NOT EXISTS Sector  (
                   id INT PRIMARY KEY,
                   description VARCHAR(255)
             );
                 
-            CREATE TABLE SubSector (
+            CREATE TABLE IF NOT EXISTS SubSector  (
                   id INT NOT NULL AUTO_INCREMENT,
                   description VARCHAR(255) NOT NULL,
                   sectorID INT NOT NULL,
@@ -203,13 +203,43 @@ class ConnexionBD
               (94, 'Artificial Intelligence / Machine Learning', 21),
               (95, 'Connected Objects', 21),
               (96, 'Robotics', 21),
-              (97, 'Blockchain', 21);
-                    
+              (97, 'Blockchain', 21);    
         ";
+        $tableJobOffers =
+            "CREATE TABLE IF NOT EXISTS joboffer(
+             id varchar(255) PRIMARY KEY ,
+            title varchar(255) ,
+            description varchar(255) ,
+            salary int ,
+            workType varchar(255),
+            publishDate date,
+            workTime varchar(255),
+            location varchar(255),
+            companyEmail varchar(255),
+            education varchar(255),
+            experience varchar(255),
+            contractType varchar(255)
+        );
+        ";
+        $tablejobapplications="
+        create table if not exists jobapplications(
+            id varchar(255) ,
+            jobOfferID varchar(255) ,
+            jobSeekerEmail varchar(255) ,
+            status varchar(255) ,
+            companyEmail varchar(255),
+            applicationdate date
+        )
+        ";
+        self::GetInstance()->query($tableJobOffers);
         self::GetInstance()->query($tableCompanies);
         self::GetInstance()->query($tableJobSeekers);
+        self::GetInstance()->query($tablejobapplications);
         self::GetInstance()->query($sectorTables);
-        self::GetInstance()->query($fillSectors);
+        if (!ObjectRepository::selectEqualsAnd("sector")){
+            self::GetInstance()->query($fillSectors);
+        }
+
     }
 }
 ?>

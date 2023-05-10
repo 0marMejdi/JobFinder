@@ -33,7 +33,7 @@ if (isAuthenticated()){
         </div>
         <?= showErrorIfExists() ?>
         <h4 class="mb-3">Sign Up</h4>
-        <form class="needs-validation" novalidate action="registerProcessForJobSeeker.php" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="processess/registerProcessForJobSeeker.php" method="post" enctype="multipart/form-data">
 
             <div class="row g-3">
                 <!--Frist Name-->

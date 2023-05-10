@@ -1,11 +1,14 @@
 <?php
 include_once 'allFrags.php';
 session_start();
+
+//needs to be unauthenticated and cannot access directly
+
 if (isAuthenticated()){
-    sendError("already_logged_in","homePage");
+    sendError("already_logged_in","../homePage");
 }
 if(!isset($_POST["Email"])) {
-    sendError("sign_up_first","login");
+    sendError("cannot_access_directly","../login");
 }
 $email = $_POST["Email"];
 $firstName = $_POST["FirstName"];
@@ -24,7 +27,8 @@ $experience = $_POST["experience"];
 $title = $_POST["title"];
 
 $bio = $_POST["bio"];
-
+if (CompanyRepository::doesExist("email",$email))
+    sendError("email_already_taken","../registerForJobSeeker");
 
 $newUser = new JobSeeker( $email ,
          $password ,
@@ -43,25 +47,23 @@ $newUser = new JobSeeker( $email ,
          $bio,
          $title
         );
-echo $newUser;
-if (JobSeekerRepository::doesExist("email",$email))
-    sendError("email_already_exists","registerForJobSeeker");
-echo "beforeInsertion";
-JobSeekerRepository::insert($newUser);
-echo "afterInsertion";
 
-$newUser = JobSeekerRepository::getOneWhere("email",$newUser->email,"password",$newUser->password);
+if (JobSeekerRepository::doesExist("email",$email))
+    sendError("email_already_exists","../registerForJobSeeker");
+if (! JobSeekerRepository::insert($newUser)) {
+    sendError("cannot_insert_into_database","../registerForJobSeeker");
+}
 if (isFileUploaded("ProfilePicture")){
-    $dir = "assets/data/jobSeeker/" . $newUser->email;
+    $dir = "../assets/data/jobSeeker/" . $newUser->email;
     if (!file_exists($dir)) mkdir($dir, 0777, true);
     moveFileTo("ProfilePicture",$dir);
     renameFile($dir . "/" . $_FILES["ProfilePicture"]["name"] ,"pdp");
-//    $newUser->modify("hasPhoto",true);
+    $newUser->modify("hasPhoto",true);
 }
 
 $_SESSION["currentUser"] = $newUser;
-//header("Location: jobseekerprofile.php");
-sendSuccess("register_success","jobseekerprofile");
+header("Location: ../jobseekerprofile.php");
+
 
 
 

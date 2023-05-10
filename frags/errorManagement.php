@@ -20,6 +20,12 @@
         $Errors["request_job_demand_doesnt_exist"]="Requested Job Demand Not Found: The job demand you are looking for doesn't exist";
         $Errors["cannot_connect_to_database"]="Cannot Connect to Database: There is a problem with the server database, please try again later or contact us";
         $Errors["cannot_insert_into_database"]="Cannot Register your Account: Something went wrong with database when trying to insert your information, contact us if this persists";
+        $Errors['current_user_not_found'] = "Something went wrong : Current user is not found in database, please reconnect or contact us if this does persist";
+        $Errors["cannot_connect_to_database"]="Cannot Connect to Database: There is a problem with the server database, please try again later or contact us";
+        $Errors['already_applied']= "You cannot apply twice to the same job offer ! " ;
+        $Errors['cannot_add_job_apply'] ="Error while adding your Job application : something went wrong" ;
+        $Errors['cannot_access_directly']="Cannot access to this page directly !!";
+        $Errors['cannot_add_job_offer'] ="Error while adding your Job Offer : something went wrong" ;
         return $Errors;
     }
     //TODO: Rediger Doc

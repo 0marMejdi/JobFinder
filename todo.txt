@@ -1,6 +1,9 @@
-*when  someone enters empty email OR password, the button is disabled
-*navigation bar contains some of the use cases. 
-*when uploading pic, make it only upload image types not anything else
-*TODO ::omar:: check if email is already taken or naaah
-*TODO ::omar:: you should concider image type when uploading (png, jpeg) in case if you wanted to upload it. maybe change "hasPhoto" with the directory of the image, or just with  the extension of image. 
-*TODO ::omar:: concider the new fields of user (title, about me, section and experience) tp put in database, change the constructor, change the extends constructor maybe, add has picture to constructor, and change the table query for if no table exists. 
+• when  someone enters empty email OR password, the button is disabled
+• navigation bar contains some of the use cases. 
+• when uploading pic, make it only upload image types not anything else
+• TODO ::omar:: you should concider image type when uploading (png, jpeg) in case if you wanted to upload it. maybe change "hasPhoto" with the directory of the image, or just with  the extension of image. 
+• TODO ::omar:: concider the new fields of user (title, about me, section and experience) tp put in database, change the constructor, change the extends constructor maybe, add has picture to constructor, and change the table query for if no table exists.
+• TODO :: job apply fields are completely wrong, needs to be changed 
+• TODO :: add countries data base and attach them
+• TODO :: get sectors from database and attach them
+• TODO :: add an select from where order by statement in object repository

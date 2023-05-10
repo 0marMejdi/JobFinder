@@ -1,9 +1,9 @@
 <?php
-include_once "frags/classConverter.php";
-include_once "frags/header.php";
-include_once "frags/authenticationManagement.php";
-include_once "frags/errorManagement.php";
-include_once "frags/filesHandling.php";
+//include_once "frags/classConverter.php";
+//include_once "frags/header.php";
+//include_once "frags/authenticationManagement.php";
+//include_once "frags/errorManagement.php";
+//include_once "frags/filesHandling.php";
 foreach (glob("frags/*.php") as $filename) {
     include_once $filename;
 }

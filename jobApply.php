@@ -1,3 +1,26 @@
+<?php
+include_once 'allFrags.php';
+session_start();
+needsAuthentication();
+$user= $_SESSION["currentUser"];
+if ($user->personType=="Company")
+    header("Location: companyProfile.php");
+if (JobSeekerRepository::doesExist("email",$user->email))
+    $user=JobSeekerRepository::getOneWhere("email",$user->email);
+else
+    sendError("user_not_found","login");
+if (!isset($_GET["id"]))
+{
+    sendError("job_offer_not_found","userhome");
+}
+$jobofferid=$_GET["id"];
+if (!JobOfferRepository::doesExist("id",$_GET["id"]))
+{
+ sendError("job_offer_not_found","userhome");
+}
+$joboffer=JobOfferRepository::getOneWhere("id",$jobofferid);
+$jobOffers=JobOfferRepository::getOneWhere("id",$jobofferid);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,6 +237,11 @@
   }
   
 }
+img{
+    width: 500px;
+    height: 450px;
+    text-align: center;
+  }
 
 </style>
 </head>
@@ -225,7 +253,7 @@
     
     <img src="assets\templates\apply.jpg" syle="width:400px ">
 
-    <form action="https://formbold.com/s/FORM_ID" method="POST">
+    <form action="processess/jobapplyprocess.php?id=<?= $jobofferid ?>" method="POST">
       <div class="formbold-form-title">
         <h2 class="">Apply Now</h2>
         <p>
@@ -243,6 +271,8 @@
             name="firstname"
             id="firstname"
             class="formbold-form-input"
+            placeholder="<?= $user->firstName ?>"
+            disabled
           />
         </div>
         <div>
@@ -252,6 +282,8 @@
             name="lastname"
             id="lastname"
             class="formbold-form-input"
+            placeholder="<?= $user->lastName ?>"
+            disabled
           />
         </div>
       </div>
@@ -264,6 +296,8 @@
             name="email"
             id="email"
             class="formbold-form-input"
+            placeholder="<?= $user->email ?>"
+            disabled
           />
         </div>
         <div>
@@ -273,6 +307,8 @@
             name="phone"
             id="phone"
             class="formbold-form-input"
+            placeholder="<?= $user->number ?>"
+            disabled
           />
         </div>
       </div>
@@ -286,6 +322,8 @@
           name="address"
           id="address"
           class="formbold-form-input"
+            placeholder="<?= $user->address ?>"
+            disabled
         />
       </div>
 
@@ -298,6 +336,7 @@
           name="profileheadline"
           id="profileheadline"
           class="formbold-form-input"
+
         />
       </div>
 
@@ -309,6 +348,7 @@
                 name="education"
                 id="education"
                 class="formbold-form-input"
+
             />
         </div>
         <div>

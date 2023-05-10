@@ -4,7 +4,7 @@ class Sector
 {
     public int $id;
     public string $description;
-
+    public object $subSectors;
     public function __construct( $id=0, $description=""  )
     {
         $this->id = $id;
@@ -33,3 +33,9 @@ class Sector
 <script>
 
 </script>
+}
+class SubSector
+{
+    public int $id;
+    public string $description;
+}
