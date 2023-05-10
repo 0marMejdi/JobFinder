@@ -1,15 +1,16 @@
 <?php
 include_once 'allFrags.php';
 session_start();
-
+if (!isset($_POST['email']) ){
+    sendError("cannot_access_directly","login");
+}
 
 $email = $_POST['email'];
-
 $password = $_POST['password'];
-$connectAs="";
 
+$connectAs="";
 if (JobSeekerRepository::doesExist("email",$email)) //if found rows at users table
-    $connectAs="JobSeeker";
+        $connectAs="JobSeeker";
 elseif (CompanyRepository::doesExist("email",$email)) //if found rows at company table
     $connectAs="Company";
 else {
@@ -30,5 +31,8 @@ if ($connectAs=="Company")
         JobSeekerRepository::getOneWhere("email", $email, "password", $password) :
         CompanyRepository::getOneWhere("email", $email, "password", $password);
     unset($_SESSION['insertedEmail']);
-    header("Location: jobseekerprofile.php");
+    if ($_SESSION["currentUser"]->isJobSeeker())
+        header("Location: jobseekerprofile.php");
+    else
+        header("Location: companyprofile.php");
 }

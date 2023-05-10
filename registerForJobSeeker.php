@@ -4,7 +4,21 @@ session_start();
 if (isAuthenticated()){
     sendError("already_logged_in","homePage");
 }
+$jsonObj= json_encode(Sector::getSectors());
 
+?>
+<script>
+    let data = <?= $jsonObj ?>;
+    const select = document.getElementById('section');
+
+    data[0].forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.text = item.description;
+        select.add(option);
+    });
+
+</script>
 ?>
 
 <!DOCTYPE html>

@@ -1,11 +1,14 @@
 <?php
 include_once 'allFrags.php';
 session_start();
+
+//needs to be unauthenticated and cannot access directly
+
 if (isAuthenticated()){
     sendError("already_logged_in","homePage");
 }
 if(!isset($_POST["Email"])) {
-    sendError("sign_up_first","login");
+    sendError("cannot_access_directly","login");
 }
 $email = $_POST["Email"];
 $firstName = $_POST["FirstName"];
@@ -24,7 +27,8 @@ $experience = $_POST["experience"];
 $title = $_POST["title"];
 
 $bio = $_POST["bio"];
-
+if (CompanyRepository::doesExist("email",$email))
+    sendError("email_already_taken","registerForJobSeeker");
 
 $newUser = new JobSeeker( $email ,
          $password ,

@@ -5,7 +5,6 @@ needsAuthentication();
 $curr  = $_SESSION["currentUser"];
 
 ?>
-
 <body>
 
     <div class="container" >

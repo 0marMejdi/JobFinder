@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <?php
 include_once "allFrags.php";
+// user must be authenticated to access this page
 if (!isAuthenticated())
     sendError("unauthenticated", "login");
+// if no email is specified, then requested profile is the current user's profile
 if (!isset($_GET['email']))
     $user= $_SESSION['currentUser'];
 else {
+    // if email is specified in url, then requested profile is the user with that email
+    // if no user with that email exists, then send error and go back to current user's profile page
     if(JobSeekerRepository::doesExist("email", $_GET['email']))
         $user = JobSeekerRepository::getOneWhere("email", $_GET['email']);
     else
         sendError("request_profile_doesnt_exist", here());
 }
-//$user = new JobSeeker();
-$imgDir = addSuffixForPic("assets/data/$user->email/pdp")?
-            addSuffixForPic("assets/data/$user->email/pdp"):
-            "assets/templates/default-profile-icon-24.jpg";
+
+// calculating user's age
 $currentDate = new DateTime();
 $age = 18;
 try {
@@ -51,27 +53,7 @@ try {
     <body>
 
         <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-
-                <div class="logo">
-                    <h1><a href="jobseekerprofile.php">JobFinder</a></h1>
-                </div>
-
-                <nav id="navbar" class="navbar">
-
-                    <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
-                        <!-- well work on it ghodwa -->
-                        <li><a class="nav-link scrollto active" href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        </header><!-- End Header -->
+        <?php includeNavBarJobSeeker() ?>
 
 
 
@@ -80,7 +62,7 @@ try {
             <?= showErrorIfExists() ?>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" <!--style="width: 18rem;"-->
+                    <div class="card" <!--style="width: 18rem;"--> >
                         <img src="<?= getPicturePathForobject($user) ?> " class="card-img-top" alt="Profile Picture">
                         <div class="card-body">
                             <h5 class="card-title"> <?= ucwords($user->firstName) ?> <?=ucwords($user->lastName)?></h5>

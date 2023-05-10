@@ -25,3 +25,10 @@ function needsNOAuthentication():void
     if (isAuthenticated())
         header("Location: homePage.php");
 }
+
+function CompanyExclusive(){
+
+}
+function JobSeekerExculsive(){
+
+}

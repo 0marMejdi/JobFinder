@@ -1,10 +1,12 @@
 <?php
 include "allFrags.php";
-include "autoload.php";
+//include "autoload.php";
 session_start();
 needsAuthentication();
 $user=$_SESSION["currentUser"];
 $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
+$client=CompanyRepository::getOneWhere("email",$job->companyEmail);
+$clientName=$client->companyName;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,6 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
     <meta content="" name="keywords">
 
     <!-- logo -->
-    <link href="assets\img\logo.png" rel="icon">
 
     <!-- CSS -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -39,13 +40,13 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
-                    <h1><a href="index.php">JobFinder</a></h1>
+                    <h1><a href="UserHome.php">JobFinder</a></h1>
                 </div>
 
                 <nav id="navbar" class="navbar">
 
                     <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home Page</a></li>
+                        <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
                         <!-- well work on it ghodwa -->
                         <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
                         <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
@@ -68,7 +69,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
         <div class="d-flex justify-content-between align-items-center">
           <h2>Job Offer Details</h2>
           <ol>
-            <li><a href="UserHome.html">Home Page</a></li>
+            <li><a href="UserHome.html">Home </a></li>
             <li>Job Offer Details</li>
           </ol>
         </div>
@@ -107,7 +108,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
               <h3>Job Information</h3>
               <ul>
                 <li><strong>Job Title</strong>: <?= $job->title ?></li>
-                <li><strong>Client</strong>: <?= $user->name ?></li>
+                <li><strong>Client</strong>: <?= $clientName ?></li>
                 <li><strong>Published on</strong>: <?= $job->publishDate ?></li>
               </ul>
             </div>
@@ -118,7 +119,7 @@ $job=JobOfferRepository::getOneWhere("id",$_GET["id"]);
               </p>
             </div>
             <br>
-            <a href="applyingforjob.php" class="btn btn-primary">Apply Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now</a>
           </div>
 
         </div>
