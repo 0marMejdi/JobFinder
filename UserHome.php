@@ -4,8 +4,43 @@ include "allFrags.php";
 session_start();
 needsAuthentication();
 
-$alljobs = JobOfferRepository::getAllWhere();
-?>
+
+function printJobOffer($job){
+    $company = CompanyRepository::getOneWhere("email",$job->companyEmail);
+    if ($company==NULL) return;
+    ?>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='card'>
+                <div class='card-body'>
+                    <h5 class='card-title'><a href="joboffer.php?id=<?=$job->id?>"><?=$job->title?></a></h5>
+                    <p class='card-text'><a href="CompanyProfile.php?email=<?=$company->email?>"> <?=$company->companyName?> </a> </p>
+                    <p class='card-text'>Description: <?=$job->description?></p>
+                    <div class='row'>
+                        <div class='col-md-6'>
+                            <p class='card-text'><span class='bi bi-geo-alt'></span> <?=ucwords($company->country)?>, <?=ucwords($company->region)?>, <?=ucwords($company->address)?></p>
+                        </div>
+                        <div class='col-md-6'>
+                            <p class='card-text'><span class='bi bi-clock'></span> <?=$job->workType?></p>
+                        </div>
+                    </div>
+                    <br>
+                    <a href='joboffer.php?id=<?=$job->id?>' class='btn btn-primary'>See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+<?php }
+function printAllJobOffers(){
+    $alljobs = JobOfferRepository::getAllWhere();
+    if ($alljobs==NULL)
+        echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
+    else
+        foreach($alljobs as $job)
+            printJobOffer($job);
+
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,31 +107,7 @@ $alljobs = JobOfferRepository::getAllWhere();
       <!-- Filter  -->
 
       <?php
-
-
-      foreach ($alljobs as $job) {
-        echo "<div class='row'>
-        <div class='col-md-12'>
-          <div class='card'>
-            <div class='card-body'>
-              <h5 class='card-title'><a href='joboffer.php?id={$job->id}'>{$job->title}</a></h5>
-              <p class='card-text'>{$job->description}</p>
-              <div class='row'>
-                <div class='col-md-6'>
-                  <p class='card-text'><span class='bi bi-geo-alt'></span> {$job->location}</p>
-                </div>
-                <div class='col-md-6'>
-                  <p class='card-text'><span class='bi bi-clock'></span> {$job->workType}</p>
-                </div>
-              </div>
-              <br>
-              <a href='joboffer.php?id={$job->id}' class='btn btn-primary'>See More</a>
-            </div>
-          </div>
-        </div>
-      </div>";
-      }
-      ;
+        printAllJobOffers();
       ?>
     </div>
   </section><!-- End Recent Job Offers Section -->

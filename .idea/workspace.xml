@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="659b7631-e045-4217-9a26-4f41fabcb12f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frags/classes/JobApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/classes/JobApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jobApply.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApply.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserHome.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserHome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobseekerjobapplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobseekerjobapplications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jobseekerprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobseekerprofile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
