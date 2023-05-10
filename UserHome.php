@@ -31,13 +31,18 @@ function printJobOffer($job){
     <br>
 <?php
 }
-function printAllJobOffers($alljobs){
+function printAllJobOffers($alljobs)
+{
 
-    if ($alljobs==NULL)
+    if ($alljobs == NULL)
         echo "<div class='alert alert-info' >No Job offers to be shown, you haven't created any one </div>";
-    else
-        foreach($alljobs as $job)
+    else {
+        usort($alljobs, function($a, $b) {
+            return $a->publishDate < $b->publishDate;
+        });
+        foreach ($alljobs as $job)
             printJobOffer($job);
+    }
 }
 if (!isset($_SESSION["filter"]))
 {
