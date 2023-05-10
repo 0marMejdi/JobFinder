@@ -74,7 +74,7 @@ include_once 'allFrags.php';
                                 <p>Job Description</p>
                                 <ul>
                                     <li><strong>Salary:</strong> $60,000 - $80,000</li>
-                                    <li><strong>Company: </strong>XYZ Company </li>
+                                    <li><strong>Company: </strong><a href="companyprofile.php">XYZ Company </a></li>
                                 </ul>
                             </div>
 
