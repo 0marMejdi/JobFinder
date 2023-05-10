@@ -35,28 +35,7 @@ $clientName=$client->companyName;
 
     <body>
 
-        <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-
-                <div class="logo">
-                    <h1><a href="UserHome.php">JobFinder</a></h1>
-                </div>
-
-                <nav id="navbar" class="navbar">
-
-                    <ul>
-                        <li><a class="nav-link scrollto" href="userhome.php">Home </a></li>
-                        <!-- well work on it ghodwa -->
-                        <li><a class="nav-link scrollto " href="jobseekerprofile.php">My Profile</a></li>
-                        <li><a class="nav-link scrollto" href="">I will get to this ghodwa xd</a></li>
-                        <li><a class="login " href="disconnect.php">Disconnect</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
-            </div>
-        </header><!-- End Header -->
+    <?php includeNavBarJobSeeker(here()); ?>
 
 
         <br><br><br>
@@ -68,10 +47,6 @@ $clientName=$client->companyName;
 
         <div class="d-flex justify-content-between align-items-center">
           <h2>Job Offer Details</h2>
-          <ol>
-            <li><a href="UserHome.html">Home </a></li>
-            <li>Job Offer Details</li>
-          </ol>
         </div>
 
       </div>
@@ -119,7 +94,7 @@ $clientName=$client->companyName;
               </p>
             </div>
             <br>
-            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Apply Now</a>
+            <a href="jobApply.php?id=<?=$job->id?>" class="btn btn-primary">Add Job Now</a>
           </div>
 
         </div>

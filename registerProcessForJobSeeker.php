@@ -1,6 +1,7 @@
 <?php
 include_once 'allFrags.php';
 session_start();
+ConnexionBD::checktables();
 
 //needs to be unauthenticated and cannot access directly
 

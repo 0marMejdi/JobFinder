@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include_once 'allFrags.php';
+?>
 <html lang="en">
 
 <head>
@@ -27,7 +30,7 @@
     <body>
 
         <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
+<!--        <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
 
                 <div class="logo">
@@ -43,7 +46,9 @@
                         <li><a class="login " href="login.php">Disconnect</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
+                </nav>-->
+        <?php includeNavBarCompany(here());?>
+                <!-- .navbar -->
 
             </div>
         </header><!-- End Header -->
@@ -78,23 +83,13 @@
                     </div>
             </section>
 
-            <section id="create-job-offer" class="create-job-offer">
-                <div class="container" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>Create a Job Offer</h2>
-                        <p>Click the button below to create a new job offer.</p>
-                    </div>
-                    <center>
-                    <a href="addjoboffer.php" class="btn btn-primary">Create Job Offer</a>
-                    </center>
-                </div>
-            </section>
-
 
 
         </main>
 
 
+        <br><br>
+        <br><br>
 
         <!-- ======= Footer ======= -->
         <footer>
