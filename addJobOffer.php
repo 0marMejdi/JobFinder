@@ -171,10 +171,6 @@ else
     height: 400px;
     text-align: center;
   }
-  button{
-    margin-top: 20px;
-    margin-left: 170px;
-  }
   [type="file"] {
   height: 0;
   overflow: hidden;
@@ -326,6 +322,10 @@ else
     width: 500px;
     height: 450px;
     text-align: center;
+  }
+  button{
+    margin-top: 20px;
+    margin-left: 170px;
   }
 </style>
     <meta content="" name="description">
@@ -586,7 +586,7 @@ else
                     min="0"
             />
         </div>
-        <button type="submit" class="btn-lg btn btn-primary "></button>
+        <button type="submit" class="btn-lg btn btn-primary" style="margin-left: 170px; margin-top:25px;">Add Job Now</button>
     </form>
   </div>
 </div>
