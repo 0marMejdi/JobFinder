@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659b7631-e045-4217-9a26-4f41fabcb12f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="659b7631-e045-4217-9a26-4f41fabcb12f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +48,14 @@
       <updated>1683716678018</updated>
       <workItem from="1683716678998" duration="2274000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;Working on filters and debugging&quot;">
+      <created>1683734721721</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683734721721</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -65,5 +71,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;Working on filters and debugging&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Working on filters and debugging&quot;" />
   </component>
 </project>
