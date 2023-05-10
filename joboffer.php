@@ -78,6 +78,7 @@ $clientName=$client->companyName;
             <li><strong>Required Experience</strong>: <?= $job->experience ?></li>
             <li><strong>Company Name</strong>: <?= $clientName ?></li>
             <li><strong>Contract Type</strong>: <?= $job->contractType ?></li>
+
           </ul>
         </div>
       </div>
@@ -104,8 +105,8 @@ $clientName=$client->companyName;
 
 
   </main><!-- End #main -->
-  
-  
+
+
   <!-- ======= Footer ======= -->
   <footer>
     <div class="container">

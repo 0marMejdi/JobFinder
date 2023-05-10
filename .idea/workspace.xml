@@ -9,6 +9,7 @@
       <change afterPath="$PROJECT_DIR$/filterprocess.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/UserHome.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserHome.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/img/team/team-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/img/team/team-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/team/team-2.jpg" afterDir="false" />
@@ -18,16 +19,22 @@
       <change beforePath="$PROJECT_DIR$/companyJobOffers.php" beforeDir="false" afterPath="$PROJECT_DIR$/companyJobOffers.php" afterDir="false" />
 =======
 >>>>>>> 41620dbf6f8430bedddacf7e10afda81d83eb2f8
+=======
+>>>>>>> 41620dbf6f8430bedddacf7e10afda81d83eb2f8
       <change beforePath="$PROJECT_DIR$/frags/classes/ConnexionBD.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/classes/ConnexionBD.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frags/classes/JobApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/frags/classes/JobApplication.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobApplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApplications.php" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/jobApply.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobApply.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/joboffer.php" beforeDir="false" afterPath="$PROJECT_DIR$/joboffer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobseekerjobapplications.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobseekerjobapplications.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registerForJobSeeker.php" beforeDir="false" afterPath="$PROJECT_DIR$/registerForJobSeeker.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
+>>>>>>> 41620dbf6f8430bedddacf7e10afda81d83eb2f8
 =======
       <change beforePath="$PROJECT_DIR$/jobapplyprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/jobapplyprocess.php" afterDir="false" />
 >>>>>>> 41620dbf6f8430bedddacf7e10afda81d83eb2f8

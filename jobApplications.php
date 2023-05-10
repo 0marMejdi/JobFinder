@@ -100,6 +100,7 @@ function printAllData(){
                             <tbody>
                                 <?php
                                 printAllData();
+
                                 ?>
                             </tbody>
                         </table>
