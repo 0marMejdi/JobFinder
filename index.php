@@ -1,13 +1,14 @@
 <?php
 include_once "allFrags.php";
 session_start();
+ConnexionBD::checkTables();
 $totalseekers=JobSeekerRepository::getAllWhere();
-$totalseekers=count($totalseekers);
 
+$totalseekers=($totalseekers==null)?0:count($totalseekers);
 $totalcompanies=CompanyRepository::getAllWhere();
-$totalcompanies=count($totalcompanies);
+$totalcompanies=($totalcompanies==null)?0:count($totalcompanies);
 $totaljoboffers=JobOfferRepository::getAllWhere();
-$totaljoboffers=count($totaljoboffers);
+$totaljoboffers=($totaljoboffers==null)?0:count($totaljoboffers);
 ?>
 <!DOCTYPE html>
 <html lang="en">
